@@ -108,6 +108,9 @@ The hosted copy is what testers use. To ship a change: bump `APP_VERSION` in
 service worker is network-first, so testers get the new version on their next
 open with a connection, at the same link. The version shows in the settings
 (gear) menu so testers can report which build they're on.
+Anyone with the app already open sees a "new version available · Reload"
+banner within 5 minutes or when they return to the app, because it compares
+its `APP_VERSION` with the one in the live `index.html`.
 
 ## Data shape
 
