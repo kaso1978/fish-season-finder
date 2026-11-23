@@ -5,14 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
 <meta name="color-scheme" content="light dark">
 <title>Fish Season Finder — Prototype</title>
-<meta name="theme-color" content="#14567e">
+<meta name="theme-color" content="#14567e" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0a151d" media="(prefers-color-scheme: dark)">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png" type="image/png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Fish Finder">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <style>
 :root{
@@ -44,19 +45,17 @@ html,body{height:100%}
 body{
   margin:0; background:var(--bg); color:var(--text);
   font:15px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  -webkit-font-smoothing:antialiased; display:flex; align-items:center; justify-content:center;
-  overscroll-behavior:none;
+  -webkit-font-smoothing:antialiased; overscroll-behavior:none; overflow:hidden;
 }
 button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 input,select{font:inherit;color:inherit}
 
-/* ---------- phone frame ---------- */
+/* ---------- full-screen app shell ---------- */
 .phone{
-  position:relative; width:min(430px,100vw); height:min(920px,100dvh);
+  position:relative; width:100%; height:100vh; height:100dvh;
   background:var(--bg); overflow:hidden; display:flex; flex-direction:column;
-  border-radius:26px; box-shadow:var(--shadow);
 }
-@media (max-width:460px){ .phone{border-radius:0; width:100vw; height:100dvh} }
+
 
 /* ---------- prototype banner ---------- */
 .proto{
@@ -316,7 +315,19 @@ ul.plain svg{flex:0 0 auto; color:var(--blue); margin-top:2px}
 .modal .note{font-size:12px}
 .ver{margin:6px 8px 3px; font-size:11.5px; color:var(--faint); font-variant-numeric:tabular-nums}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-</style>
+/* ---------- full-screen fit (after base rules so these win) ---------- */
+/* Phones with a notch / home bar: keep content clear of them. */
+.proto{padding-top:calc(6px + env(safe-area-inset-top))}
+.panel__bar{padding-top:calc(9px + env(safe-area-inset-top))}
+.list{padding-bottom:calc(28px + env(safe-area-inset-bottom))}
+.panel__scroll{padding-bottom:calc(34px + env(safe-area-inset-bottom))}
+.toast{bottom:calc(22px + env(safe-area-inset-bottom))}
+/* Tablets and desktops: full-screen map, with the species list docked on the left. */
+@media (min-width:760px){
+  .sheet{right:auto; left:12px; width:420px}
+  .panel{right:auto; width:460px; border-right:1px solid var(--line); box-shadow:var(--shadow)}
+  .scrim .modal{max-width:440px}
+}</style>
 </head>
 <body>
 <div class="phone" id="phone">
@@ -1277,7 +1288,7 @@ el('spotName').addEventListener('keydown', e => { if(e.key === 'Enter') el('conf
    and how to fix it. Fixes are refined for a few seconds (the first one
    from a phone is often coarse) and the accuracy is always shown.
    ===================================================================== */
-const APP_VERSION = '2026-11-23.1';   // bump with sw.js VERSION on each release
+const APP_VERSION = '2026-11-23.2';   // bump with sw.js VERSION on each release
 const GPS = {
   GOOD_M:    25,     // stop refining once the fix is this accurate
   REFINE_MS: 10000,  // after the first fix, keep improving for up to this long
