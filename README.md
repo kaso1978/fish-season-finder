@@ -7,10 +7,13 @@ Pick a point on the map or use your location. The app resolves which fisheries
 management zone you're in and lists the species open on the selected date, with
 the season, size and catch rules that apply.
 
-> **PROTOTYPE — sample data only. Do not use for actual fishing.**
-> Every regulation in this repository is invented. The publisher name
-> ("Provincial Fisheries Data Service") is fictional. Consult the official
-> regulations for your jurisdiction.
+> **PROTOTYPE — not an official source. Do not rely on it for actual fishing.**
+> **FMZ 16** carries real rules: the zone-wide seasons and limits and the Lake
+> Simcoe exception, transcribed by hand from the 2026 Ontario Fishing
+> Regulations Summary. It is not an official copy, its boundary is approximate,
+> and its river and stream exceptions are not loaded yet (the app lists them and
+> warns). **FMZ 5, 15, 17 and 20 are invented sample data**, labelled as such
+> on every screen. Always check the official summary at ontario.ca/fishing.
 
 ## Quick start
 
@@ -36,16 +39,19 @@ explains how to fix it on that phone instead of guessing a spot.
 
 ## What to look at
 
-The sample data was authored with deliberate teaching cases. Around September
-2026 these read as intended:
-
-- **FMZ 5** (far north-west) — lake trout closing within the week, and splake
-  with a season that wraps the new year.
-- **FMZ 16** (Lake Simcoe) — lake whitefish is the only closed species, opening
-  in nine days.
-- **FMZ 17** (Kawarthas) — tap inside the dashed box for a sub-area exception,
-  and open Walleye for a protected slot limit drawn as a keep/release bar.
-- **Change the date to January** and watch the counts and statuses re-evaluate.
+- **FMZ 16 (real 2026 rules).** The app opens on Lake Simcoe, which has its own
+  rules for lake trout, whitefish, cisco, musky (closed all year) and perch
+  (daily and possession limits). Tap inland (Kitchener, London) for the
+  zone-wide rules. Pick **April 24** and then **April 25, 2026** to see the
+  "fourth Saturday in April" trout opener resolve. Bass and walleye show their
+  shared (combined) limits; trout also count toward the trout-and-salmon total.
+- **Out on a Great Lake** (Lake Erie, Lake Huron) the app says which zone that
+  is and that its rules aren't loaded, instead of falling back to FMZ 16.
+- **Near a boundary** (the Toronto waterfront, the Lake Simcoe shore, the FMZ
+  16/17 edge east of Lake Simcoe) the app warns that the boundary is
+  approximate.
+- **FMZ 17** (sample) still has the Whitepine Lake sub-area and the protected
+  slot limit; **FMZ 5** (sample) has a season that wraps the new year.
 
 ## Structure
 
@@ -58,7 +64,7 @@ icons/                app icons
 CLAUDE.md             orientation for Claude Code: architecture, constraints
 docs/
   prototype-brief.md  the original brief this was built from
-  data-model.md       payload spec + what authorities must supply and validate
+  data-model.md       the first prototype's payload (sample zones still use it)
   roadmap.md          staged plan from prototype to production
 ```
 
@@ -69,10 +75,11 @@ authentication, and no conservation-authority portal.
 
 In the real product, data comes from a central database that authorities
 populate through their own admin portal: they upload GIS boundaries for their
-management zones and attach species, season and limit records to each one. The
-hard-coded `API_RESPONSE` object in `index.html` is shaped like that service's
-response, so the fetch layer can be swapped in without touching the UI. The seam
-is marked with a comment.
+management zones and attach species, season and limit records to each one. The app
+reads zone documents (`ZONE_DOCS` in `index.html`) shaped like what that
+service will publish: a zone, the areas inside it, and a flat list of rules
+(seasons, limits, restrictions, closures, notices) that the phone resolves for
+a point and date. The fetch seam is marked with a comment.
 
 See `docs/roadmap.md` for what comes next, and why validating the end-user model
 comes before building any of it.
