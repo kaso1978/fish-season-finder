@@ -1,8 +1,7 @@
 > **Superseded (Nov 2026).** The app now reads *zone documents*: a zone, its
 > areas, and a flat list of provisions with date expressions such as "fourth
 > Saturday in April". See the `DATA LAYER` banner in `index.html`. This file
-> describes the original 0.3 payload, which the invented sample zones are still
-> written in and converted from by `fromLegacy()`.
+> describes the original 0.3 payload. Nothing in the app uses it any more.
 
 # Data model
 

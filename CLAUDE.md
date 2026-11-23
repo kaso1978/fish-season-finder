@@ -12,7 +12,7 @@ which fisheries management zone that point falls in and lists the species that
 are open on the selected date, with the rules that apply.
 
 **This repository currently contains the end-user prototype only.** It is a
-front-end demo with hard-coded sample data. There is no backend, no
+front-end demo with hard-coded data (real 2026 rules, transcribed by hand). There is no backend, no
 authentication, and no conservation-authority portal. That is deliberate — see
 `docs/roadmap.md`.
 
@@ -42,7 +42,7 @@ The file is divided by banner comments. In reading order:
 
 | Section | What lives there |
 | --- | --- |
-| `DATA LAYER` | `GEO` shapes, `SPECIES`/`GROUPS` catalogue, the real `FMZ16` zone document, `SAMPLE_ZONES` (invented) and `fromLegacy()`, `ZONE_DOCS` |
+| `DATA LAYER` | `GEO` shapes, `SPECIES`/`GROUPS` catalogue, the hand-written `FMZ16` zone document, `ZONE_DOCS_GEN` (the other 19 zones, generated), `ZONE_DOCS` |
 | `FISH SILHOUETTES` | Hand-drawn generic SVG paths, one per body shape |
 | `DATE + SEASON LOGIC` | `resolveDate()` (date expressions), `intervals()`, `evaluate()`, `statusLine()` |
 | `GEOMETRY` | Point in Polygon/MultiPolygon (holes aware), `zonesAt()`, `areasAt()` |
@@ -84,8 +84,10 @@ Toronto), and closed all year (Lake Simcoe musky).
 
 ## Hard constraints — do not break these
 
-1. **Real and invented data are always labelled.** FMZ 16 holds real 2026
-   rules transcribed by hand; every other zone is invented. The `PROTOTYPE ·
+1. **Real data is always labelled as an unofficial transcription.** Every
+   zone holds real 2026 zone-wide rules transcribed by hand (FMZ 16 also has
+   the Lake Simcoe exception). There is no sample data any more; if invented
+   data ever comes back it must be badged `sample`. The `PROTOTYPE ·
    NOT OFFICIAL` banner stays visible on every screen, every zone shows a badge
    saying which kind of data it is (`meta.dataStatus`: `transcribed` or
    `sample`), and the footer and species detail say where the rules came from.
@@ -95,8 +97,7 @@ Toronto), and closed all year (Lake Simcoe musky).
 2. **No authority logos or wordmarks, and no implied endorsement.** The real
    data cites its source document (the 2026 Ontario Fishing Regulations
    Summary) by name and page; it does not claim the ministry as publisher.
-   Sample zones are credited to the invented "Provincial Fisheries Data
-   Service". Portal design files (schema, data-structure notes) stay out of
+   Portal design files (schema, data-structure notes) stay out of
    this public repo.
 3. **No `localStorage` / `sessionStorage`.** Saved spots live in
    `state.spots` for the page session only. This was a brief constraint so the
@@ -109,12 +110,15 @@ Toronto), and closed all year (Lake Simcoe musky).
 6. **Never guess the user's location.** Which rules apply depends on where the
    angler is standing. If GPS fails, say why and how to fix it; never drop a
    pin somewhere and present it as theirs. Always show where the pin came from
-   (GPS with ±accuracy, a tapped point, a saved spot, or the sample spot), and
+   (GPS with ±accuracy, a tapped point or a saved spot), and
    warn when the accuracy circle crosses a zone or sub-area boundary. Because
    boundaries are approximate, also warn (for any pin, tapped or GPS) when the
    point is within a geometry's `toleranceM` of a zone or lake edge, and when
    it falls in an `advisory` area. A point out on a Great Lake must resolve to
-   that lake's zone (shown as "no data"), never to FMZ 16.
+   that lake's zone, never to FMZ 16. A point the map can't place shows
+   "zone not on the map yet" and a list of zones; a zone picked from the list
+   is always labelled "chosen by you, not by GPS", and the pick is dropped
+   once the pin moves more than 20 km away (`PICK_KEEP_M`).
 
 ## Location (GEOLOCATION section)
 
@@ -150,35 +154,43 @@ null for all species). Limits carry licence (sport/conservation) and kind
 (catch/possession); size rules are length bands with a max count. The
 commented-out `fetch()` at the top of `DATA LAYER` marks the seam.
 
-The invented sample zones are still written in the old 0.3 shape
-(`docs/data-model.md`) and converted by `fromLegacy()`. Add new real data as
-zone documents, not in the old shape.
+A limit provision can carry `when` (windows, same date expressions as a
+season) plus `whenText`: it only exists on those dates and, at equal rank,
+beats the undated one for the same slot (e.g. "must be less than 35 cm from
+January 1 to June 30"). `residentNote` holds the non-Canadian-resident limits
+the summary prints for FMZ 5. Size bands may carry `licence` when they apply
+to one licence only; the detail page then draws one bar per licence.
+
+FMZ 16 is hand-written. Zones 1–15 and 17–20 are generated from the
+summary's zone-wide tables by a one-off script and checked by hand; edit them in `index.html` directly, and keep the
+`text` field exactly as printed. `docs/data-model.md` is the old 0.3 shape and
+is superseded.
 
 ## Known limitations
 
-- **FMZ 16 is partial.** Zone-wide seasons and limits (pp. 117–118) and the
-  Lake Simcoe exception (p. 121) are loaded. Species exceptions, additional
-  fishing opportunities, other waterbody exceptions and fish sanctuaries
-  (pp. 118–124) are not; the app lists the affected waters and warns. The
-  logic already supports closures (sanctuaries) and night-only rules in the
-  data shape, so loading them is data entry plus drawing the areas.
-- **FMZ 16 runs to Dec 31, 2026** (`meta.effectiveTo`). After that the app
+- **Only zone-wide rules are loaded.** Every zone has its zone-wide seasons
+  and limits and general rules. Species exceptions, additional fishing
+  opportunities, waterbody exceptions and fish sanctuaries are not, apart
+  from Lake Simcoe (FMZ 16, p. 121). Each zone lists the affected waters (or
+  says where to look) and warns. The logic already supports closures
+  (sanctuaries) and night-only rules, so loading them is data entry plus
+  drawing the areas.
+- **The rules run to Dec 31, 2026** (`meta.effectiveTo`). After that the app
   still resolves dates but shows a banner that the 2027 summary may differ.
-- **Boundaries are approximate.** The official FMZ layer (Ontario GeoHub / LIO)
-  was blocked from the build environment. `GEO.fmz16` is Natural Earth 1:10m
-  shorelines and the Ontario border, minus the Great Lakes, with a hand-drawn
-  eastern/northern edge (`ADV-FMZ16-EDGE` warns along it). Lake Simcoe is
-  Natural Earth plus a hand-drawn Kempenfelt Bay. Replace them with the
-  official layer when it can be downloaded; keep the `toleranceM` warnings
-  until then.
-- **Sample zones (5, 15, 17, 20) are invented** and their dates were tuned to
-  September 2026. Their shapes were trimmed so they don't overlap FMZ 16.
+- **Only some zones are on the map.** The official FMZ layer (Ontario GeoHub /
+  LIO) was blocked from the build environment; Andrew is downloading it, and
+  it is meant to become the source of truth for every zone. Until then:
+  `GEO.fmz16` is Natural Earth 1:10m shorelines and the Ontario border, minus
+  the Great Lakes, with a hand-drawn eastern/northern edge (`ADV-FMZ16-EDGE`
+  warns along it); FMZ 9, 13, 14, 19 and 20 are Natural Earth lake outlines
+  clipped to Ontario (13/14 split along Natural Earth's Georgian Bay and
+  North Channel polygons); Lake Simcoe is Natural Earth plus a hand-drawn
+  Kempenfelt Bay. All other zones have `geometry: null` and are reached
+  through the zone list. Keep the `toleranceM` warnings until the official
+  layer is in.
 - **Leaflet loads from cdnjs.** If it fails, the app degrades to a "Map
   unavailable" notice and still renders species data — preserve that fallback if
   you touch the `MAP` section.
-- **Sub-area exceptions are rendered but shallow.** One sub-area (Whitepine
-  Lake, in FMZ 17) exists to prove the pattern; it does not override the parent
-  zone's limits, it only displays a rule.
 
 ## Conventions
 

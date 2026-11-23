@@ -8,12 +8,14 @@ management zone you're in and lists the species open on the selected date, with
 the season, size and catch rules that apply.
 
 > **PROTOTYPE — not an official source. Do not rely on it for actual fishing.**
-> **FMZ 16** carries real rules: the zone-wide seasons and limits and the Lake
-> Simcoe exception, transcribed by hand from the 2026 Ontario Fishing
-> Regulations Summary. It is not an official copy, its boundary is approximate,
-> and its river and stream exceptions are not loaded yet (the app lists them and
-> warns). **FMZ 5, 15, 17 and 20 are invented sample data**, labelled as such
-> on every screen. Always check the official summary at ontario.ca/fishing.
+> Every zone (FMZ 1 to 20) carries its real **zone-wide** seasons and limits,
+> transcribed by hand from the 2026 Ontario Fishing Regulations Summary, plus
+> the Lake Simcoe exception in FMZ 16. It is not an official copy. Lake, river
+> and sanctuary exceptions are not loaded yet (the app lists them and warns).
+> Only FMZ 16 and the Great Lakes zones are drawn on the map so far, with
+> approximate boundaries; anywhere else you choose your zone from a list, and
+> the app says that choice is yours. Always check the official summary at
+> ontario.ca/fishing.
 
 ## Quick start
 
@@ -39,19 +41,22 @@ explains how to fix it on that phone instead of guessing a spot.
 
 ## What to look at
 
-- **FMZ 16 (real 2026 rules).** The app opens on Lake Simcoe, which has its own
-  rules for lake trout, whitefish, cisco, musky (closed all year) and perch
-  (daily and possession limits). Tap inland (Kitchener, London) for the
-  zone-wide rules. Pick **April 24** and then **April 25, 2026** to see the
-  "fourth Saturday in April" trout opener resolve. Bass and walleye show their
-  shared (combined) limits; trout also count toward the trout-and-salmon total.
-- **Out on a Great Lake** (Lake Erie, Lake Huron) the app says which zone that
-  is and that its rules aren't loaded, instead of falling back to FMZ 16.
+- **FMZ 16.** Tap Lake Simcoe: it has its own rules for lake trout, whitefish,
+  cisco, musky (closed all year) and perch (daily and possession limits). Tap
+  inland (Kitchener, London) for the zone-wide rules. Pick **April 24** and
+  then **April 25, 2026** to see the "fourth Saturday in April" trout opener
+  resolve.
+- **The Great Lakes** (FMZ 9, 13, 14, 19, 20). Tap out on a lake. On Lake
+  Ontario before May 10, bass are open for catch and release only.
+- **Anywhere else** (Peterborough, Ottawa, Sudbury) the app says it can't
+  place the spot yet and lists the 20 zones. Pick one and it is labelled
+  "chosen by you, not by GPS" until the pin moves more than 20 km.
+- **Limits that change through the year.** FMZ 2 lake trout (a size limit in
+  September only), FMZ 2/4/5 bass (under 35 cm early in the year), FMZ 12
+  walleye (under 40 cm in spring), FMZ 5 limits for non-Canadian residents.
 - **Near a boundary** (the Toronto waterfront, the Lake Simcoe shore, the FMZ
   16/17 edge east of Lake Simcoe) the app warns that the boundary is
   approximate.
-- **FMZ 17** (sample) still has the Whitepine Lake sub-area and the protected
-  slot limit; **FMZ 5** (sample) has a season that wraps the new year.
 
 ## Structure
 
@@ -64,7 +69,7 @@ icons/                app icons
 CLAUDE.md             orientation for Claude Code: architecture, constraints
 docs/
   prototype-brief.md  the original brief this was built from
-  data-model.md       the first prototype's payload (sample zones still use it)
+  data-model.md       the first prototype's payload (superseded)
   roadmap.md          staged plan from prototype to production
 ```
 
