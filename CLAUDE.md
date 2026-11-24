@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-Guidance for Claude Code working in this repository.
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## What this is
 
@@ -29,10 +29,21 @@ will not** — browsers only grant it in a secure context. `localhost` counts as
 secure; a `file://` path does not. Always use the dev server when testing
 "Use my location".
 
+There is no test suite, linter or package.json. Check changes by running the
+app (headless Chromium via Playwright works against `node serve.js`) and
+walking the cases under "The part that matters most" and the README's "What
+to look at" list.
+
 ## Architecture
 
-Everything lives in **`index.html`** — one self-contained file, ~1,300 lines, no
-build step, no framework, no dependencies beyond Leaflet from a CDN.
+Everything lives in **`index.html`** — one self-contained file, no build step,
+no framework, no dependencies beyond Leaflet from a CDN.
+
+It is about 3,500 lines but ~1 MB: zone and exception geometry sits on a few
+dozen single lines tens of thousands of characters long. Don't read the whole
+file; jump to a banner with `grep -n '^   [A-Z]' index.html` and read ranges,
+and grep for a const (`EXC16_`, `ZONE_DOCS_GEN`) rather than paging through
+data.
 
 Keep it that way unless the user explicitly asks to split it up. The single file
 is a feature: it can be emailed, dropped on any static host, or opened straight
@@ -54,7 +65,19 @@ The file is divided by banner comments. In reading order:
 | `SPECIES DETAIL` | The full-screen slide-over, season timeline, size-limit bar |
 | `SAVED SPOTS` | In-memory saved locations |
 | `UI WIRING` | All event listeners |
-| `INIT` | `boot()` |
+| `GEOLOCATION` | `locate()`, failure help dialogs, `nearBoundary()` |
+| `INIT` | `boot()`; `APP_VERSION` lives here |
+| `INSTALLABLE APP` | Service worker registration and the new-version banner check |
+
+Generated blocks inside `DATA LAYER`: the zone geometry comes from
+`boundaries/simplify_fmz.py`, and the `EXC16_*` / `EXC17_*` exception blocks
+are written by `boundaries/exceptions/gen_exc.py` (pipeline in
+`boundaries/exceptions/HOW-TO-UPDATE-EXCEPTIONS.md`). Hand edits to those
+blocks are lost on the next regeneration; change the Python sources
+(`data16_17.py`, `ends.py`, `official.py`) instead. The fetch scripts
+(`fetch_fmz.py`, `fetch_waters.py`, `fetch_regs.py`) need Land Information
+Ontario / data.ontario.ca, which the cloud can't reach: they are run on
+Andrew's PC and their outputs (or `.meta.json` records) committed.
 
 ### The part that matters most
 
@@ -136,7 +159,9 @@ user who already granted it is located on load.
 ## Releasing
 
 The hosted copy is what testers use. To ship a change: bump `APP_VERSION` in
-`index.html` and `VERSION` in `sw.js` to the same value, then publish. The
+`index.html` and `VERSION` in `sw.js` to the same value (format
+`YYYY-MM-DD.N`), then publish. Publishing means landing on `main`: GitHub
+Pages serves the repo root. Ask Andrew before publishing data changes. The
 service worker is network-first, so testers get the new version on their next
 open with a connection, at the same link. The version shows in the settings
 (gear) menu so testers can report which build they're on.
