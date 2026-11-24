@@ -3,3 +3,4 @@ waters/*.geojson
 exceptions/geoms*.json
 regs/*.xlsx
 regs/*.docx
+__pycache__/
