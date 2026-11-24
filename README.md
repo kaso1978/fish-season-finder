@@ -11,7 +11,8 @@ the season, size and catch rules that apply.
 > Every zone (FMZ 1 to 20) carries its real **zone-wide** seasons and limits,
 > transcribed by hand from the 2026 Ontario Fishing Regulations Summary, plus
 > the Lake Simcoe exception in FMZ 16. It is not an official copy. Lake, river
-> and sanctuary exceptions are not loaded yet (the app lists them and warns).
+> and sanctuary exceptions are loaded for FMZ 16 and 17 as a trial (where a
+> stretch starts and ends can be approximate); other zones list them and warn.
 > Zone boundaries come from the official Land Information Ontario layer,
 > simplified for phones (within about 170 m), and the app warns near zone
 > lines. Always check the official summary at ontario.ca/fishing.

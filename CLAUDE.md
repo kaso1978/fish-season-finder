@@ -170,13 +170,16 @@ is superseded.
 
 ## Known limitations
 
-- **Only zone-wide rules are loaded.** Every zone has its zone-wide seasons
-  and limits and general rules. Species exceptions, additional fishing
-  opportunities, waterbody exceptions and fish sanctuaries are not, apart
-  from Lake Simcoe (FMZ 16, p. 121). Each zone lists the affected waters (or
-  says where to look) and warns. The logic already supports closures
-  (sanctuaries) and night-only rules, so loading them is data entry plus
-  drawing the areas.
+- **Exceptions are only loaded for FMZ 16 and 17 (trial).** Every zone has
+  its zone-wide seasons and limits and general rules. In FMZ 16 and 17 the
+  species exceptions, waterbody exceptions and fish sanctuaries are loaded too
+  (153 places, `EXC16_*` / `EXC17_*`, built by `boundaries/exceptions/`). Each
+  is an area with `exc:true` and a `precision`: `drawn` (official hydro shape
+  cut at both printed ends: its rules replace the zone-wide ones when the pin
+  is on it), `approx` (shown as "may apply here") or `point` (only listed as
+  nearby). Anything within 2 km (`EXC_NEAR_M`) is listed; an active sanctuary
+  under the pin shows a red "No fishing here now" block. The other 18 zones
+  still list the affected waters and warn.
 - **The rules run to Dec 31, 2026** (`meta.effectiveTo`). After that the app
   still resolves dates but shows a banner that the 2027 summary may differ.
 - **Zone boundaries are simplified.** All 20 zones come from the official

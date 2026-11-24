@@ -1,1 +1,3 @@
 official/*.geojson
+waters/*.geojson
+exceptions/geoms*.json
