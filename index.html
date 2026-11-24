@@ -18,22 +18,34 @@
 <style>
 :root{
   --bg:#eef3f6; --surface:#ffffff; --surface-2:#f5f8fa; --surface-3:#e9eff3;
-  --text:#0e2230; --muted:#5b7183; --faint:#8fa3b2; --line:#dbe4ea;
+  /* --muted is the lightest colour used for text (>=4.5:1 on every surface).
+     --faint is for icons, chevrons and outlines only (>=3:1). */
+  --text:#0e2230; --muted:#5b7183; --faint:#6b7f8e; --line:#dbe4ea;
   --blue:#14567e; --blue-deep:#0b3a56; --blue-soft:#e3eef5;
   --green:#1a7a4c; --green-soft:#e2f2ea;
-  --accent:#d2662a; --accent-soft:#fbeade;
+  /* Burnt orange: dark enough for white text on it and for orange text on
+     white and on --accent-soft (all >=4.5:1) in bright light. */
+  --accent:#ad4d1a; --accent-soft:#fbeade;
   --warn:#8a5a12; --warn-bg:#fdf1d8;
   --danger:#b3261e; --danger-bg:#fdecea; --exc-line:#c2410c;
   --map-sanct:#d1202f; --map-exc:#6d28d9; --map-halo:#ffffff;
   --gps:#1a73e8; --gps-ring:#ffffff;
+  /* Text on solid fills, and the slot bar's RELEASE fill. */
+  --on-blue:#ffffff; --on-accent:#ffffff; --on-green:#ffffff;
+  --release:#56697a; --on-release:#ffffff;
+  /* Map overlays sit on light OSM tiles in both themes, so they don't flip. */
+  --map-zone:#14567e; --map-sel:#d2662a; --map-pin-dot:#ffffff;
+  --zonelabel-bg:rgba(255,255,255,.86); --zonelabel-text:#0e2230; --zonelabel-line:rgba(20,86,126,.28);
+  --scrim:rgba(9,26,38,.5);
   --shadow:0 2px 8px rgba(11,58,86,.08), 0 10px 30px rgba(11,58,86,.10);
+  --sheet-shadow:0 -6px 28px rgba(11,58,86,.16);
   --r:14px; --r-sm:10px;
   --t:180ms cubic-bezier(.32,.72,.35,1);
 }
 @media (prefers-color-scheme:dark){
   :root{
     --bg:#0a151d; --surface:#132430; --surface-2:#182c39; --surface-3:#1e3543;
-    --text:#e6eff4; --muted:#9db1c0; --faint:#6d8496; --line:#25404f;
+    --text:#e6eff4; --muted:#9db1c0; --faint:#8299aa; --line:#25404f;
     --blue:#4d9fd0; --blue-deep:#8dc6e8; --blue-soft:#16303f;
     --green:#4fbc85; --green-soft:#12312a;
     --accent:#f08a4b; --accent-soft:#33231a;
@@ -41,7 +53,12 @@
     --danger:#ff8a80; --danger-bg:#3a1a17; --exc-line:#fb923c;
     --map-sanct:#e0313f; --map-exc:#7c3aed; --map-halo:#ffffff;
     --gps:#5aa2ff; --gps-ring:#0a151d;
+    /* Dark-mode fills are light, so text on them goes dark. */
+    --on-blue:#08161e; --on-accent:#08161e; --on-green:#08161e;
+    --release:#9db1c0; --on-release:#08161e;
+    --zonelabel-bg:rgba(11,26,36,.86); --zonelabel-text:#e6eff4; --zonelabel-line:rgba(77,159,208,.4);
     --shadow:0 2px 8px rgba(0,0,0,.3), 0 12px 32px rgba(0,0,0,.4);
+    --sheet-shadow:0 -6px 28px rgba(0,0,0,.45);
   }
 }
 *,*::before,*::after{box-sizing:border-box}
@@ -62,7 +79,10 @@ input,select{font:inherit;color:inherit}
 
 
 /* ---------- prototype banner ---------- */
+/* Sits above the slide-over panels (z 900) so it stays visible on every
+   screen; panels start below it via --proto-h, set in boot(). */
 .proto{
+  position:relative; z-index:1000;
   flex:0 0 auto; background:var(--warn-bg); color:var(--warn);
   font-size:10.5px; font-weight:650; letter-spacing:.02em; line-height:1.3;
   padding:6px 12px; text-align:center; border-bottom:1px solid var(--line);
@@ -90,8 +110,7 @@ input,select{font:inherit;color:inherit}
   display:flex; align-items:center; transition:background var(--t),color var(--t),border-color var(--t);
 }
 .chip:hover{border-color:var(--faint)}
-.chip[aria-pressed="true"]{background:var(--blue); border-color:var(--blue); color:#fff}
-@media (prefers-color-scheme:dark){ .chip[aria-pressed="true"]{color:#08161e} }
+.chip[aria-pressed="true"]{background:var(--blue); border-color:var(--blue); color:var(--on-blue)}
 .datewrap{position:relative; flex:0 0 auto}
 .datewrap input{
   min-height:34px; padding:0 10px; border-radius:999px; background:var(--surface-2);
@@ -103,14 +122,13 @@ input,select{font:inherit;color:inherit}
 .mapwrap{position:relative; flex:1 1 auto; min-height:0}
 #map{position:absolute; inset:0; z-index:0; background:var(--surface-3)}   /* own stacking context: Leaflet controls stay under panels */
 .leaflet-container{font:inherit; background:var(--surface-3)}
+/* Bright OSM tiles glare inside a dark UI; dim them, leave overlays alone. */
+@media (prefers-color-scheme:dark){ .leaflet-tile-pane{filter:brightness(.78) contrast(1.06)} }
 .zonelabel{
-  background:rgba(255,255,255,.86); color:#0e2230; border:1px solid rgba(20,86,126,.28);
+  background:var(--zonelabel-bg); color:var(--zonelabel-text); border:1px solid var(--zonelabel-line);
   border-radius:6px; padding:1px 6px; font-size:10.5px; font-weight:700; box-shadow:none; white-space:nowrap;
 }
 .zonelabel::before{display:none}
-@media (prefers-color-scheme:dark){
-  .zonelabel{background:rgba(11,26,36,.86); color:#e6eff4; border-color:rgba(77,159,208,.4)}
-}
 .excmark{width:20px; height:20px; display:grid; place-items:center; filter:drop-shadow(0 1px 2px rgba(0,0,0,.35))}
 .exckey{position:absolute; right:12px; top:12px; z-index:500; background:var(--surface); color:var(--text); border:1px solid var(--line); border-radius:var(--r-sm); box-shadow:var(--shadow); font-size:12px; max-width:230px;}
 .exckey summary{list-style:none; cursor:pointer; padding:7px 10px; font-weight:700; display:flex; align-items:center; gap:6px}
@@ -128,7 +146,7 @@ input,select{font:inherit;color:inherit}
   border:1px solid var(--line);
 }
 .fab:active{transform:scale(.97)}
-.fab--accent{background:var(--accent); color:#fff; border-color:transparent}
+.fab--accent{background:var(--accent); color:var(--on-accent); border-color:transparent}
 .offbanner{
   position:absolute; left:12px; right:12px; top:12px; z-index:500; display:none;
   background:var(--warn-bg); color:var(--warn); border:1px solid currentColor; border-radius:var(--r-sm);
@@ -139,7 +157,7 @@ input,select{font:inherit;color:inherit}
 /* ---------- bottom sheet ---------- */
 .sheet{
   position:absolute; left:0; right:0; bottom:0; height:86%; z-index:600;
-  background:var(--surface); border-radius:20px 20px 0 0; box-shadow:0 -6px 28px rgba(11,58,86,.16);
+  background:var(--surface); border-radius:20px 20px 0 0; box-shadow:var(--sheet-shadow);
   display:flex; flex-direction:column; touch-action:none;
 }
 .sheet.anim{transition:transform var(--t)}
@@ -163,6 +181,7 @@ input,select{font:inherit;color:inherit}
   border:1px solid var(--line); background:var(--surface-2);
 }
 .search input:focus{outline:2px solid var(--blue); outline-offset:-1px}
+.search input::placeholder,.modal input::placeholder{color:var(--muted); opacity:1}
 .search__clear{position:absolute; right:4px; top:50%; transform:translateY(-50%); width:30px;height:30px; border-radius:50%; display:none; place-items:center; color:var(--faint)}
 .search__clear.show{display:grid}
 .filters{display:flex; gap:6px; overflow-x:auto; scrollbar-width:none}
@@ -187,7 +206,7 @@ input,select{font:inherit;color:inherit}
 .card.closed .card__fish{color:var(--faint); opacity:.75}
 .card__body{flex:1; min-width:0}
 .card__name{font-size:15px; font-weight:670; letter-spacing:-.01em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
-.card__sci{font-size:11.5px; color:var(--faint); font-style:italic; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.card__sci{font-size:11.5px; color:var(--muted); font-style:italic; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
 .card__line{display:flex; align-items:center; gap:5px; margin-top:4px; font-size:12.5px; font-weight:640}
 .open{color:var(--green)}
 .shut{color:var(--muted)}
@@ -195,11 +214,11 @@ input,select{font:inherit;color:inherit}
 .card__chev{flex:0 0 auto; color:var(--faint)}
 .empty{text-align:center; padding:38px 20px; color:var(--muted); font-size:13.5px}
 .empty strong{display:block; color:var(--text); font-size:15px; margin-bottom:5px}
-.foot{padding:16px 2px 6px; font-size:11px; color:var(--faint); line-height:1.5; text-align:center; border-top:1px solid var(--line); margin-top:14px}
+.foot{padding:16px 2px 6px; font-size:11px; color:var(--muted); line-height:1.5; text-align:center; border-top:1px solid var(--line); margin-top:14px}
 
 /* ---------- slide-over panels ---------- */
 .panel{
-  position:absolute; inset:0; z-index:900; background:var(--bg);
+  position:absolute; inset:0; top:var(--proto-h, 0px); z-index:900; background:var(--bg);
   transform:translateX(100%); transition:transform 220ms cubic-bezier(.32,.72,.35,1);
   display:flex; flex-direction:column; visibility:hidden;
 }
@@ -229,8 +248,8 @@ input,select{font:inherit;color:inherit}
 .box{background:var(--surface); border:1px solid var(--line); border-radius:var(--r); padding:13px}
 
 /* season timeline */
-.tl__months{display:grid; grid-template-columns:repeat(12,1fr); font-size:9px; color:var(--faint); font-weight:700; text-align:center; margin-bottom:4px; letter-spacing:.02em}
-.tl__track{position:relative; height:26px; border-radius:7px; background:var(--surface-3); overflow:hidden}
+.tl__months{display:grid; grid-template-columns:repeat(12,1fr); font-size:9px; color:var(--muted); font-weight:700; text-align:center; margin-bottom:4px; letter-spacing:.02em}
+.tl__track{position:relative; height:26px; border-radius:7px; background:var(--surface-3); overflow:hidden; box-shadow:inset 0 0 0 1px var(--faint)}
 .tl__band{position:absolute; top:0; bottom:0; background:var(--green); opacity:.9}
 .tl__grid{position:absolute; inset:0; display:grid; grid-template-columns:repeat(12,1fr); pointer-events:none}
 .tl__grid i{border-right:1px solid var(--surface); opacity:.5}
@@ -249,10 +268,10 @@ table.limits td{text-align:right; font-weight:730; font-variant-numeric:tabular-
 table.limits td em{font-style:normal; font-weight:560; color:var(--muted); font-size:12px}
 
 .slot{margin-top:11px}
-.slot__bar{position:relative; height:32px; border-radius:7px; overflow:hidden; display:flex; font-size:10.5px; font-weight:730; color:#fff}
+.slot__bar{position:relative; height:32px; border-radius:7px; overflow:hidden; display:flex; font-size:10.5px; font-weight:730}
 .slot__seg{display:grid; place-items:center; text-align:center; padding:0 3px; line-height:1.1}
-.slot__seg.keep{background:var(--green)}
-.slot__seg.rel{background:var(--faint)}
+.slot__seg.keep{background:var(--green); color:var(--on-green)}
+.slot__seg.rel{background:var(--release); color:var(--on-release)}
 .slot__ticks{display:flex; font-size:10.5px; color:var(--muted); font-weight:700; margin-top:4px; font-variant-numeric:tabular-nums}
 .slot__ticks span{flex:1}
 .slot__ticks span+span{text-align:center}
@@ -262,6 +281,7 @@ ul.plain{margin:0; padding:0; list-style:none}
 ul.plain li{display:flex; gap:9px; padding:7px 0; font-size:13.5px; border-bottom:1px solid var(--line)}
 ul.plain li:last-child{border-bottom:0}
 ul.plain svg{flex:0 0 auto; color:var(--blue); margin-top:2px}
+ul.plain li.is-ban svg{color:var(--accent)}
 .note{font-size:13.5px; color:var(--muted); line-height:1.55}
 .exception{background:var(--accent-soft); border:1px solid var(--accent); border-radius:var(--r); padding:12px; font-size:13px}
 .exception b{display:block; color:var(--accent); font-size:12px; text-transform:uppercase; letter-spacing:.05em; margin-bottom:4px}
@@ -271,9 +291,8 @@ ul.plain svg{flex:0 0 auto; color:var(--blue); margin-top:2px}
 }
 .btn--ghost{background:var(--surface); border:1px solid var(--line); color:var(--muted)}
 .btn--ghost:hover{background:var(--surface-2); color:var(--text)}
-.btn--accent{background:var(--accent); color:#fff}
-.btn--block{background:var(--blue); color:#fff}
-@media (prefers-color-scheme:dark){ .btn--block,.btn--accent{color:#08161e} }
+.btn--accent{background:var(--accent); color:var(--on-accent)}
+.btn--block{background:var(--blue); color:var(--on-blue)}
 
 /* saved spots */
 .spot{display:flex; align-items:center; gap:12px; width:100%; text-align:left; padding:13px; border-radius:var(--r); background:var(--surface); border:1px solid var(--line); margin-bottom:9px}
@@ -292,7 +311,7 @@ ul.plain svg{flex:0 0 auto; color:var(--blue); margin-top:2px}
   padding:6px; display:none;
 }
 .dev.show{display:block}
-.dev h4{margin:5px 8px 6px; font-size:10.5px; letter-spacing:.07em; text-transform:uppercase; color:var(--faint)}
+.dev h4{margin:5px 8px 6px; font-size:10.5px; letter-spacing:.07em; text-transform:uppercase; color:var(--muted)}
 .dev label{display:flex; align-items:center; gap:9px; padding:9px 8px; border-radius:var(--r-sm); font-size:13.5px; font-weight:600; cursor:pointer}
 .dev label:hover{background:var(--surface-2)}
 .dev input{width:17px;height:17px;accent-color:var(--accent)}
@@ -300,7 +319,7 @@ ul.plain svg{flex:0 0 auto; color:var(--blue); margin-top:2px}
 /* toast */
 .toast{
   position:absolute; left:16px; right:16px; bottom:22px; z-index:1200;
-  background:var(--blue-deep); color:#fff; border-radius:var(--r); padding:13px 15px;
+  background:var(--blue-deep); color:var(--on-blue); border-radius:var(--r); padding:13px 15px;
   font-size:13.5px; font-weight:620; box-shadow:var(--shadow); text-align:center;
   opacity:0; transform:translateY(12px); pointer-events:none; transition:opacity var(--t),transform var(--t);
 }
@@ -308,7 +327,7 @@ ul.plain svg{flex:0 0 auto; color:var(--blue); margin-top:2px}
 .toast.show{opacity:1; transform:translateY(0)}
 
 /* modal */
-.scrim{position:absolute; inset:0; z-index:1100; background:rgba(9,26,38,.5); display:none; align-items:center; justify-content:center; padding:24px}
+.scrim{position:absolute; inset:0; z-index:1100; background:var(--scrim); display:none; align-items:center; justify-content:center; padding:24px}
 .scrim.show{display:flex}
 .modal{background:var(--surface); border-radius:18px; padding:18px; width:100%; box-shadow:var(--shadow)}
 .modal h3{margin:0 0 5px; font-size:17px; font-weight:720}
@@ -337,7 +356,7 @@ ul.plain svg{flex:0 0 auto; color:var(--blue); margin-top:2px}
 .zonepick button:hover{background:var(--surface-2)}
 .zonepick b{min-width:56px}
 .zonepick span{color:var(--muted)}
-.zonepick em{margin-left:auto; font-style:normal; font-size:11px; color:var(--faint); white-space:nowrap}
+.zonepick em{margin-left:auto; font-style:normal; font-size:11px; color:var(--muted); white-space:nowrap}
 .pickhead{margin:16px 0 0; font-size:13px; color:var(--muted); text-align:left}
 .databadge.nodata{color:var(--muted); background:var(--surface-3)}
 .ruletag{display:inline-block; margin-top:5px; font-size:11px; font-weight:700; color:var(--accent); background:var(--accent-soft); border-radius:6px; padding:1px 6px}
@@ -348,7 +367,7 @@ ul.plain svg{flex:0 0 auto; color:var(--blue); margin-top:2px}
 .excbox p, .excbox ul{color:var(--text); margin:8px 0 0}
 .excbox ul{padding-left:20px; columns:2; column-gap:16px}
 .excbox li{margin-bottom:3px; break-inside:avoid}
-.printed{margin:10px 0 0; font-size:11.5px; color:var(--faint); line-height:1.45}
+.printed{margin:10px 0 0; font-size:11.5px; color:var(--muted); line-height:1.45}
 .legal{display:block; margin-top:6px; font-size:11.5px; color:var(--muted)}
 .sanct{margin-top:14px; background:var(--danger-bg); color:var(--danger); border:2px solid currentColor; border-radius:var(--r); padding:12px; font-size:13px}
 .sanct__h{display:flex; gap:8px; align-items:center; font-size:16px; font-weight:800}
@@ -377,25 +396,24 @@ em.res{font-style:normal; color:var(--muted)}
 .modal ol{margin:0 0 13px; padding-left:20px; font-size:13px; color:var(--text)}
 .modal ol li{margin-bottom:5px}
 .modal .note{font-size:12px}
-.ver{margin:6px 8px 3px; font-size:11.5px; color:var(--faint); font-variant-numeric:tabular-nums}
+.ver{margin:6px 8px 3px; font-size:11.5px; color:var(--muted); font-variant-numeric:tabular-nums}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 /* ---------- update-available banner ---------- */
 .updbar{
   position:absolute; left:56px; right:12px; top:12px; z-index:700; display:none;
-  background:var(--blue-deep); color:#fff; border-radius:var(--r-sm); box-shadow:var(--shadow);
+  background:var(--blue-deep); color:var(--on-blue); border-radius:var(--r-sm); box-shadow:var(--shadow);
   padding:8px 8px 8px 13px; font-size:13px; font-weight:650; align-items:center; gap:10px;
 }
 .updbar.show{display:flex}
 .updbar span{flex:1}
-.updbar button{min-height:36px; padding:0 14px; border-radius:999px; background:#fff; color:var(--blue-deep); font-weight:750; font-size:13px}
-@media (prefers-color-scheme:dark){ .updbar{background:var(--blue-soft); color:var(--text); border:1px solid var(--blue)} .updbar button{background:var(--blue); color:#08161e} }
+.updbar button{min-height:36px; padding:0 14px; border-radius:999px; background:var(--surface); color:var(--blue-deep); font-weight:750; font-size:13px}
+@media (prefers-color-scheme:dark){ .updbar{background:var(--blue-soft); color:var(--text); border:1px solid var(--blue)} .updbar button{background:var(--blue); color:var(--on-blue)} }
 .offbanner.show ~ .updbar.show{top:56px}
 .offbanner.show ~ .exckey, .updbar.show ~ .exckey{top:56px}
 .offbanner.show ~ .updbar.show ~ .exckey{top:100px}
 /* ---------- full-screen fit (after base rules so these win) ---------- */
 /* Phones with a notch / home bar: keep content clear of them. */
 .proto{padding-top:calc(6px + env(safe-area-inset-top))}
-.panel__bar{padding-top:calc(9px + env(safe-area-inset-top))}
 .list{padding-bottom:calc(28px + env(safe-area-inset-bottom))}
 .panel__scroll{padding-bottom:calc(34px + env(safe-area-inset-bottom))}
 .toast{bottom:calc(22px + env(safe-area-inset-bottom))}
@@ -414,7 +432,7 @@ em.res{font-style:normal; color:var(--muted)}
   <header class="appbar">
     <div class="appbar__top">
       <div class="brand">
-        <svg width="26" height="26" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46" fill="var(--blue)"/><path d="M18 52c14-16 40-16 52-4l14-11-4 15 4 15-14-11c-12 12-38 12-52-4z" fill="#fff"/><circle cx="34" cy="47" r="3.4" fill="var(--blue)"/></svg>
+        <svg width="26" height="26" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46" fill="var(--blue)"/><path d="M18 52c14-16 40-16 52-4l14-11-4 15 4 15-14-11c-12 12-38 12-52-4z" fill="var(--on-blue)"/><circle cx="34" cy="47" r="3.4" fill="var(--blue)"/></svg>
         <h1>Fish Season Finder</h1>
       </div>
       <div class="spacer"></div>
@@ -450,10 +468,10 @@ em.res{font-style:normal; color:var(--muted)}
       <button id="updReload">Reload</button>
     </div>
     <details class="exckey" id="excKey">
-      <summary><svg width="14" height="14" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2l8 8-8 8-8-8z" fill="var(--map-exc)" stroke="#fff" stroke-width="2"/></svg>Exception waters</summary>
+      <summary><svg width="14" height="14" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2l8 8-8 8-8-8z" fill="var(--map-exc)" stroke="var(--map-halo)" stroke-width="2"/></svg>Exception waters</summary>
       <ul>
-        <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8" fill="var(--map-sanct)" stroke="#fff" stroke-width="2"/><path d="M5.5 14.5l9-9" stroke="#fff" stroke-width="2.4"/></svg>Fish sanctuary: no fishing at set times</li>
-        <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l8.5 8.5-8.5 8.5L1.5 10z" fill="var(--map-exc)" stroke="#fff" stroke-width="2"/><path d="M10 6v5" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/><circle cx="10" cy="13.8" r="1.2" fill="#fff"/></svg>Special rules: different seasons or limits</li>
+        <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8" fill="var(--map-sanct)" stroke="var(--map-halo)" stroke-width="2"/><path d="M5.5 14.5l9-9" stroke="var(--map-halo)" stroke-width="2.4"/></svg>Fish sanctuary: no fishing at set times</li>
+        <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l8.5 8.5-8.5 8.5L1.5 10z" fill="var(--map-exc)" stroke="var(--map-halo)" stroke-width="2"/><path d="M10 6v5" stroke="var(--map-halo)" stroke-width="2.2" stroke-linecap="round"/><circle cx="10" cy="13.8" r="1.2" fill="var(--map-halo)"/></svg>Special rules: different seasons or limits</li>
         <li><svg width="20" height="8" viewBox="0 0 20 8" aria-hidden="true"><path d="M1 4h18" stroke="var(--map-exc)" stroke-width="4"/></svg>Solid: stretch drawn from both printed ends</li>
         <li><svg width="20" height="8" viewBox="0 0 20 8" aria-hidden="true"><path d="M1 4h18" stroke="var(--map-exc)" stroke-width="4" stroke-dasharray="5 3"/></svg>Dashed: approximate, check the description</li>
       </ul>
@@ -2244,11 +2262,13 @@ function statusLine(ev, closure){
     return {cls:'open', icon:'check', text:'Open until '+prettyDate(ev.closesOn, ev.closesOn.getFullYear()!==state.date.getFullYear())};
   }
   const n = ev.daysUntil;
-  if(n <= 14) return {cls:'soon', icon:'clock', text:'Opens '+prettyDate(ev.opensOn)+' — in '+n+' day'+(n===1?'':'s')};
-  return {cls:'shut', icon:'x', text:'Opens '+prettyDate(ev.opensOn, ev.opensOn.getFullYear()!==state.date.getFullYear())};
+  if(n <= 14) return {cls:'soon', icon:'clock', text:'Closed · opens '+prettyDate(ev.opensOn)+' — in '+n+' day'+(n===1?'':'s')};
+  return {cls:'shut', icon:'x', text:'Closed · opens '+prettyDate(ev.opensOn, ev.opensOn.getFullYear()!==state.date.getFullYear())};
 }
 
 const ICONS = {
+  ban:'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg>',
+  rule:'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.01"/></svg>',
   check:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>',
   x:    '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>',
   clock:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
@@ -2581,9 +2601,11 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
   maxZoom:17, attribution:'&copy; OpenStreetMap'
 }).addTo(map);
 
-const zoneStyle    = {color:'#14567e', weight:1.6, opacity:.85, fillColor:'#14567e', fillOpacity:.10};
-const zoneSelected = {color:'#d2662a', weight:2.6, opacity:1, dashArray:null, fillColor:'#d2662a', fillOpacity:.16};
-const subStyle     = {color:'#d2662a', weight:1.6, dashArray:'4 3', fillColor:'#d2662a', fillOpacity:.22};
+// Map colours come from the --map-* tokens on :root (one source of truth).
+const MAP_ZONE = cssVar('--map-zone'), MAP_SEL = cssVar('--map-sel');
+const zoneStyle    = {color:MAP_ZONE, weight:1.6, opacity:.85, fillColor:MAP_ZONE, fillOpacity:.10};
+const zoneSelected = {color:MAP_SEL, weight:2.6, opacity:1, dashArray:null, fillColor:MAP_SEL, fillOpacity:.16};
+const subStyle     = {color:MAP_SEL, weight:1.6, dashArray:'4 3', fillColor:MAP_SEL, fillOpacity:.22};
 const baseStyle = () => zoneStyle;
 const zoneLabel = d => d.zone.name;
 
@@ -2611,8 +2633,8 @@ function excIsSanct(d, a){ return a.kind === 'sanctuary' || d.provisions.some(p 
 function excIcon(sanct){
   const col = sanct ? 'var(--map-sanct)' : 'var(--map-exc)';
   const svg = sanct
-    ? '<svg width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="'+col+'" stroke="#fff" stroke-width="2"/><path d="M5.5 14.5l9-9" stroke="#fff" stroke-width="2.4"/></svg>'
-    : '<svg width="20" height="20" viewBox="0 0 20 20"><path d="M10 1.5l8.5 8.5-8.5 8.5L1.5 10z" fill="'+col+'" stroke="#fff" stroke-width="2"/><path d="M10 6v5" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/><circle cx="10" cy="13.8" r="1.2" fill="#fff"/></svg>';
+    ? '<svg width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="'+col+'" stroke="var(--map-halo)" stroke-width="2"/><path d="M5.5 14.5l9-9" stroke="var(--map-halo)" stroke-width="2.4"/></svg>'
+    : '<svg width="20" height="20" viewBox="0 0 20 20"><path d="M10 1.5l8.5 8.5-8.5 8.5L1.5 10z" fill="'+col+'" stroke="var(--map-halo)" stroke-width="2"/><path d="M10 6v5" stroke="var(--map-halo)" stroke-width="2.2" stroke-linecap="round"/><circle cx="10" cy="13.8" r="1.2" fill="var(--map-halo)"/></svg>';
   return L.divIcon({className:'excmark', html:svg, iconSize:[20,20], iconAnchor:[10,10]});
 }
 /* a point on the water itself (the vertex nearest the middle of its box), so the symbol sits on the river */
@@ -2670,7 +2692,7 @@ function showExc(id){
 
 const pinIcon = L.divIcon({
   className:'', iconSize:[30,38], iconAnchor:[15,36],
-  html:'<svg width="30" height="38" viewBox="0 0 30 38"><path d="M15 37C15 37 28 22.5 28 14A13 13 0 1 0 2 14c0 8.5 13 23 13 23z" fill="#d2662a" stroke="#fff" stroke-width="2.4"/><circle cx="15" cy="14" r="5" fill="#fff"/></svg>'
+  html:'<svg width="30" height="38" viewBox="0 0 30 38"><path d="M15 37C15 37 28 22.5 28 14A13 13 0 1 0 2 14c0 8.5 13 23 13 23z" fill="var(--map-sel)" stroke="var(--map-pin-dot)" stroke-width="2.4"/><circle cx="15" cy="14" r="5" fill="var(--map-pin-dot)"/></svg>'
 });
 let pinMarker = null;
 
@@ -2875,12 +2897,18 @@ function render(){
 
   if(res.restrictions.length){
     html += '<div class="sec" style="padding:14px 0 0"><h3>Rules for the whole zone</h3><div class="box"><ul class="plain">'+
-      res.restrictions.map(p => '<li>'+ICONS.check+'<span>'+esc(p.text)+'</span></li>').join('')+'</ul></div></div>';
+      res.restrictions.map(p => ruleLi(p.text)).join('')+'</ul></div></div>';
   }
   html += '<div class="foot">'+sourceLine(doc)+'</div>';
   list.innerHTML = html;
 }
 
+/* A rule line. Prohibitions get a "no" mark and requirements a neutral one,
+   never a tick, which reads as "allowed". */
+function ruleLi(t){
+  const ban = /^no\b|\b(may|shall|must) not\b|prohibited|not permitted|not allowed/i.test(t);
+  return '<li'+(ban ? ' class="is-ban"' : '')+'>'+(ban ? ICONS.ban : ICONS.rule)+'<span>'+esc(t)+'</span></li>';
+}
 function excItem(x, dd, opts){
   const a = x.area, doc = x.doc, shut = excActiveClosure(doc, a, dd);
   return '<details class="excitem"><summary><span class="nm">'+esc(a.name)+'</span>'+
@@ -2900,7 +2928,7 @@ function excRules(doc, a){
   const ps = doc.provisions.filter(p => p.areaId === a.id);
   const seen = new Set(), items = [];
   ps.forEach(p => { if(!seen.has(p.text)){ seen.add(p.text); items.push(p.text); } });
-  return items.length ? '<ul class="plain" style="margin-top:6px">'+items.map(t => '<li>'+ICONS.check+'<span>'+esc(t)+'</span></li>').join('')+'</ul>' : '';
+  return items.length ? '<ul class="plain" style="margin-top:6px">'+items.map(ruleLi).join('')+'</ul>' : '';
 }
 function maybeBox(x, dd){
   const a = x.area, doc = x.doc, shut = excActiveClosure(doc, a, dd);
@@ -2979,7 +3007,7 @@ function timeline(season, date){
       '<div class="tl__now" style="left:'+pct(idx(date)).toFixed(2)+'%" title="Selected date"></div>'+
     '</div>'+
     '<div class="tl__key"><span><b style="background:var(--green)"></b>Open</span>'+
-      '<span><b style="background:var(--surface-3)"></b>Closed</span>'+
+      '<span><b style="background:var(--surface-3);box-shadow:inset 0 0 0 1px var(--faint)"></b>Closed</span>'+
       '<span><b style="background:var(--accent)"></b>Selected date</span></div>'+
     '<ul class="tl__list">'+rows.join('')+'</ul>'+
     '<p class="printed">As printed: “'+esc(season.text)+'” · '+esc(season.areaName)+'</p>'+
@@ -3086,7 +3114,7 @@ function openDetail(cardId){
     (c.ev.closedAllYear ? '' : '<div class="sec"><h3>Size limits</h3>'+sizeBlock(c.mainLimit)+'</div>')+
 
     (allRestr.length ? '<div class="sec"><h3>Gear, bait &amp; method</h3><div class="box"><ul class="plain">'+
-      allRestr.map(p => '<li>'+ICONS.check+'<span>'+esc(p.text)+'</span></li>').join('')+
+      allRestr.map(p => ruleLi(p.text)).join('')+
       '</ul></div></div>' : '')+
 
     c.areaNotes.map(p => '<div class="sec"><h3>Sub-area exception</h3><div class="exception"><b>'+esc(p.areaName)+'</b>'+esc(p.text)+'</div></div>').join('')+
@@ -3097,7 +3125,7 @@ function openDetail(cardId){
       '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 9v4M12 17v.01"/><circle cx="12" cy="12" r="9"/></svg>'+
       'Report a problem with this listing</button></div>'+
 
-    '<div class="sec"><p class="note" style="font-size:11.5px;color:var(--faint);text-align:center">'+sourceLine(doc)+'<br>PROTOTYPE — not an official source.</p></div>'+
+    '<div class="sec"><p class="note" style="font-size:11.5px;color:var(--muted);text-align:center">'+sourceLine(doc)+'<br>PROTOTYPE — not an official source.</p></div>'+
   '</div>';
 
   el('detail').classList.add('show');
@@ -3204,7 +3232,7 @@ el('list').addEventListener('click', e => {
 document.addEventListener('click', e => {
   const back = e.target.closest('[data-close]');
   if(back) el(back.dataset.close).classList.remove('show');
-  if(e.target.closest('#report')) toast("Thanks — your report was queued for the publishing authority.");
+  if(e.target.closest('#report')) toast("Reporting isn't connected in this prototype. Nothing was sent.");
 });
 
 // saved spots
@@ -3248,7 +3276,7 @@ el('spotName').addEventListener('keydown', e => { if(e.key === 'Enter') el('conf
    and how to fix it. Fixes are refined for a few seconds (the first one
    from a phone is often coarse) and the accuracy is always shown.
    ===================================================================== */
-const APP_VERSION = '2026-11-24.4';   // bump with sw.js VERSION on each release
+const APP_VERSION = '2026-11-24.5';   // bump with sw.js VERSION on each release
 const GPS = {
   GOOD_M:    25,     // stop refining once the fix is this accurate
   REFINE_MS: 10000,  // after the first fix, keep improving for up to this long
@@ -3486,6 +3514,13 @@ el('offToggle').addEventListener('change', e => {
    INIT
    ===================================================================== */
 function boot(){
+  // Panels start below the prototype banner, which wraps to a different
+  // height depending on screen width and the notch inset.
+  const proto = document.querySelector('.proto');
+  const syncProto = () => el('phone').style.setProperty('--proto-h', proto.offsetHeight + 'px');
+  syncProto();
+  if('ResizeObserver' in window) new ResizeObserver(syncProto).observe(proto);
+  else window.addEventListener('resize', syncProto);
   measure();
   setSheet(SNAP.peek, false);
   restoreLocBtn();
