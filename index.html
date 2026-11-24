@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
 <title>Fish Season Finder — Prototype</title>
 <meta name="theme-color" content="#14567e" media="(prefers-color-scheme: light)">
@@ -84,7 +84,7 @@ input,select{font:inherit;color:inherit}
 .proto{
   position:relative; z-index:1000;
   flex:0 0 auto; background:var(--warn-bg); color:var(--warn);
-  font-size:10.5px; font-weight:650; letter-spacing:.02em; line-height:1.3;
+  font-size:12px; font-weight:600; letter-spacing:0; line-height:1.35;
   padding:6px 12px; text-align:center; border-bottom:1px solid var(--line);
 }
 
@@ -122,11 +122,14 @@ input,select{font:inherit;color:inherit}
 .mapwrap{position:relative; flex:1 1 auto; min-height:0}
 #map{position:absolute; inset:0; z-index:0; background:var(--surface-3)}   /* own stacking context: Leaflet controls stay under panels */
 .leaflet-container{font:inherit; background:var(--surface-3)}
+/* Map credit in the app's own colours, readable on any tile. */
+.leaflet-container .leaflet-control-attribution{background:var(--surface); color:var(--muted); border-radius:6px 6px 0 0; font-size:12px; padding:1px 6px}
+.leaflet-container .leaflet-control-attribution a{color:var(--blue)}
 /* Bright OSM tiles glare inside a dark UI; dim them, leave overlays alone. */
 @media (prefers-color-scheme:dark){ .leaflet-tile-pane{filter:brightness(.78) contrast(1.06)} }
 .zonelabel{
   background:var(--zonelabel-bg); color:var(--zonelabel-text); border:1px solid var(--zonelabel-line);
-  border-radius:6px; padding:1px 6px; font-size:10.5px; font-weight:700; box-shadow:none; white-space:nowrap;
+  border-radius:6px; padding:1px 6px; font-size:12px; font-weight:700; box-shadow:none; white-space:nowrap;
 }
 .zonelabel::before{display:none}
 .excmark{width:20px; height:20px; display:grid; place-items:center; filter:drop-shadow(0 1px 2px rgba(0,0,0,.35))}
@@ -138,7 +141,7 @@ input,select{font:inherit;color:inherit}
 .exckey li{display:flex; align-items:center; gap:8px; line-height:1.25}
 .exckey li svg{flex:none}
 .exckey label{display:flex; align-items:center; gap:8px; padding:0 10px 9px; color:var(--muted)}
-.exckey p{margin:0; padding:0 10px 8px; color:var(--muted); font-size:11px}
+.exckey p{margin:0; padding:0 10px 8px; color:var(--muted); font-size:12px}
 .mapbtns{position:absolute; right:12px; z-index:500; display:flex; flex-direction:column; gap:8px; transition:bottom var(--t)}
 .fab{
   min-height:44px; padding:0 15px; border-radius:999px; background:var(--surface); color:var(--blue);
@@ -163,7 +166,11 @@ input,select{font:inherit;color:inherit}
 .sheet.anim{transition:transform var(--t)}
 .sheet__grab{flex:0 0 auto; padding:9px 16px 4px; cursor:grab}
 .sheet__grab:active{cursor:grabbing}
-.bar{width:38px;height:4px;border-radius:2px;background:var(--line);margin:0 auto 9px}
+.bar{display:block; position:relative; width:38px;height:4px;padding:0;border-radius:2px;background:var(--line);margin:0 auto 9px; cursor:grab}
+/* The handle is a real button (keyboard: Enter cycles peek → half → full);
+   an invisible area makes it a 44px target without changing its look. */
+.bar::before{content:''; position:absolute; inset:-14px -40px -12px}
+.bar:focus-visible{outline:2px solid var(--blue); outline-offset:8px}
 .sheet__head{display:flex; align-items:flex-start; gap:10px; padding-bottom:10px}
 .zonename{margin:0; font-size:17px; font-weight:700; letter-spacing:-.01em}
 .zonesub{margin:2px 0 0; font-size:12.5px; color:var(--muted)}
@@ -191,7 +198,7 @@ input,select{font:inherit;color:inherit}
 .list{flex:1 1 auto; overflow-y:auto; -webkit-overflow-scrolling:touch; padding:0 16px 28px; overscroll-behavior:contain}
 .grouphead{
   display:flex; align-items:center; gap:8px; padding:15px 2px 8px;
-  font-size:11.5px; font-weight:750; letter-spacing:.07em; text-transform:uppercase; color:var(--muted);
+  font-size:12px; font-weight:750; letter-spacing:.07em; text-transform:uppercase; color:var(--muted);
   position:sticky; top:0; background:var(--surface); z-index:2;
 }
 .grouphead span{flex:1; height:1px; background:var(--line)}
@@ -206,15 +213,16 @@ input,select{font:inherit;color:inherit}
 .card.closed .card__fish{color:var(--faint); opacity:.75}
 .card__body{flex:1; min-width:0}
 .card__name{font-size:15px; font-weight:670; letter-spacing:-.01em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
-.card__sci{font-size:11.5px; color:var(--muted); font-style:italic; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.card__sci{font-size:12px; color:var(--muted); font-style:italic; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
 .card__line{display:flex; align-items:center; gap:5px; margin-top:4px; font-size:12.5px; font-weight:640}
+.card__zone{margin-top:2px; font-size:12px; font-weight:600; color:var(--muted)}
 .open{color:var(--green)}
 .shut{color:var(--muted)}
 .soon{color:var(--accent)}
 .card__chev{flex:0 0 auto; color:var(--faint)}
 .empty{text-align:center; padding:38px 20px; color:var(--muted); font-size:13.5px}
 .empty strong{display:block; color:var(--text); font-size:15px; margin-bottom:5px}
-.foot{padding:16px 2px 6px; font-size:11px; color:var(--muted); line-height:1.5; text-align:center; border-top:1px solid var(--line); margin-top:14px}
+.foot{padding:16px 2px 6px; font-size:12px; color:var(--muted); line-height:1.5; text-align:center; border-top:1px solid var(--line); margin-top:14px}
 
 /* ---------- slide-over panels ---------- */
 .panel{
@@ -235,7 +243,7 @@ input,select{font:inherit;color:inherit}
 .hero__fish{width:104px; height:56px; color:var(--blue); flex:0 0 auto}
 .hero h2{margin:0; font-size:21px; font-weight:730; letter-spacing:-.02em; line-height:1.15}
 .hero p{margin:3px 0 0; font-size:12.5px; font-style:italic; color:var(--muted)}
-.tag{display:inline-block; margin-top:7px; background:var(--surface); border:1px solid var(--line); border-radius:999px; padding:2px 9px; font-size:11px; font-weight:680; color:var(--muted)}
+.tag{display:inline-block; margin-top:7px; background:var(--surface); border:1px solid var(--line); border-radius:999px; padding:2px 9px; font-size:12px; font-weight:680; color:var(--muted)}
 
 .status{display:flex; align-items:center; gap:10px; padding:13px 16px; font-weight:680; font-size:14.5px}
 .status.is-open{background:var(--green-soft); color:var(--green)}
@@ -244,18 +252,18 @@ input,select{font:inherit;color:inherit}
 .status small{display:block; font-weight:560; font-size:12px; opacity:.85; margin-top:1px}
 
 .sec{padding:18px 16px 0}
-.sec h3{margin:0 0 9px; font-size:11.5px; font-weight:750; letter-spacing:.07em; text-transform:uppercase; color:var(--muted)}
+.sec h3{margin:0 0 9px; font-size:12px; font-weight:750; letter-spacing:.07em; text-transform:uppercase; color:var(--muted)}
 .box{background:var(--surface); border:1px solid var(--line); border-radius:var(--r); padding:13px}
 
 /* season timeline */
-.tl__months{display:grid; grid-template-columns:repeat(12,1fr); font-size:9px; color:var(--muted); font-weight:700; text-align:center; margin-bottom:4px; letter-spacing:.02em}
+.tl__months{display:grid; grid-template-columns:repeat(12,1fr); font-size:11px; color:var(--muted); font-weight:700; text-align:center; margin-bottom:4px; letter-spacing:.02em}
 .tl__track{position:relative; height:26px; border-radius:7px; background:var(--surface-3); overflow:hidden; box-shadow:inset 0 0 0 1px var(--faint)}
 .tl__band{position:absolute; top:0; bottom:0; background:var(--green); opacity:.9}
 .tl__grid{position:absolute; inset:0; display:grid; grid-template-columns:repeat(12,1fr); pointer-events:none}
 .tl__grid i{border-right:1px solid var(--surface); opacity:.5}
 .tl__grid i:last-child{border:0}
 .tl__now{position:absolute; top:-4px; bottom:-4px; width:2px; background:var(--accent); border-radius:2px; box-shadow:0 0 0 2px var(--surface)}
-.tl__key{display:flex; gap:14px; margin-top:9px; font-size:11.5px; color:var(--muted); font-weight:600; flex-wrap:wrap}
+.tl__key{display:flex; gap:14px; margin-top:9px; font-size:12px; color:var(--muted); font-weight:600; flex-wrap:wrap}
 .tl__key b{display:inline-block; width:10px; height:10px; border-radius:3px; margin-right:5px; vertical-align:-1px}
 .tl__list{margin:10px 0 0; padding:0; list-style:none; font-size:12.5px; color:var(--muted); font-weight:600}
 .tl__list li{padding:3px 0; border-top:1px dashed var(--line)}
@@ -268,11 +276,11 @@ table.limits td{text-align:right; font-weight:730; font-variant-numeric:tabular-
 table.limits td em{font-style:normal; font-weight:560; color:var(--muted); font-size:12px}
 
 .slot{margin-top:11px}
-.slot__bar{position:relative; height:32px; border-radius:7px; overflow:hidden; display:flex; font-size:10.5px; font-weight:730}
+.slot__bar{position:relative; height:36px; border-radius:7px; overflow:hidden; display:flex; font-size:12px; font-weight:730}
 .slot__seg{display:grid; place-items:center; text-align:center; padding:0 3px; line-height:1.1}
 .slot__seg.keep{background:var(--green); color:var(--on-green)}
 .slot__seg.rel{background:var(--release); color:var(--on-release)}
-.slot__ticks{display:flex; font-size:10.5px; color:var(--muted); font-weight:700; margin-top:4px; font-variant-numeric:tabular-nums}
+.slot__ticks{display:flex; font-size:12px; color:var(--muted); font-weight:700; margin-top:4px; font-variant-numeric:tabular-nums}
 .slot__ticks span{flex:1}
 .slot__ticks span+span{text-align:center}
 .slot__ticks span:last-child{text-align:right}
@@ -296,6 +304,7 @@ ul.plain li.is-ban svg{color:var(--accent)}
 
 /* saved spots */
 .spot{display:flex; align-items:center; gap:12px; width:100%; text-align:left; padding:13px; border-radius:var(--r); background:var(--surface); border:1px solid var(--line); margin-bottom:9px}
+.spot__go{display:flex; align-items:center; gap:12px; flex:1; min-width:0; min-height:44px; padding:0; text-align:left; border-radius:var(--r-sm)}
 .spot:hover{background:var(--surface-2)}
 .spot__pin{width:38px;height:38px;border-radius:50%;background:var(--blue-soft);color:var(--blue);display:grid;place-items:center;flex:0 0 auto}
 .spot__b{flex:1;min-width:0}
@@ -311,7 +320,7 @@ ul.plain li.is-ban svg{color:var(--accent)}
   padding:6px; display:none;
 }
 .dev.show{display:block}
-.dev h4{margin:5px 8px 6px; font-size:10.5px; letter-spacing:.07em; text-transform:uppercase; color:var(--muted)}
+.dev h2{margin:5px 8px 6px; font-size:12px; letter-spacing:.07em; text-transform:uppercase; color:var(--muted)}
 .dev label{display:flex; align-items:center; gap:9px; padding:9px 8px; border-radius:var(--r-sm); font-size:13.5px; font-weight:600; cursor:pointer}
 .dev label:hover{background:var(--surface-2)}
 .dev input{width:17px;height:17px;accent-color:var(--accent)}
@@ -345,21 +354,31 @@ ul.plain li.is-ban svg{color:var(--accent)}
 .locwarn p{margin:0}
 .locwarn p+p{margin-top:6px; padding-top:6px; border-top:1px solid currentColor}
 /* data source badge + rule tags */
-.badgerow{margin:5px 0 0; min-height:0}
+.metarow{display:flex; flex-wrap:wrap; align-items:center; gap:4px 8px; margin-top:5px}
+.metarow .locstat{margin:0}
+.badgerow{min-height:0}
+/* The date row is under the sheet when it is fully open; repeat it here. */
+.sheetdate{display:none; margin-top:6px; padding:0; min-height:24px; font-size:12.5px; font-weight:650; color:var(--blue); text-decoration:underline; text-underline-offset:3px; text-align:left}
+.sheet.is-full .sheetdate{display:block}
+.locwarn details summary{list-style:none; cursor:pointer}
+.locwarn details summary::-webkit-details-marker{display:none}
+.locwarn details summary u{margin-left:4px; font-weight:700}
+.locwarn details[open] summary u{display:none}
+.locwarn details p:first-of-type{margin-top:6px}
 .badgerow:empty{display:none}
-.databadge{display:inline-flex; align-items:center; gap:5px; font-size:11.5px; font-weight:700; padding:3px 8px; border-radius:999px; border:1px solid currentColor}
+.databadge{display:inline-flex; align-items:center; gap:5px; font-size:12px; font-weight:700; padding:3px 8px; border-radius:999px; border:1px solid currentColor}
 .databadge svg{width:12px; height:12px}
-.databadge.real{color:var(--green); background:var(--green-soft)}
+.databadge.real{color:var(--muted); background:var(--surface-2); border-color:var(--line)}
 .databadge.picked{color:var(--warn); background:var(--warn-bg)}
 .zonepick{display:grid; gap:6px; margin:10px 0 4px; text-align:left}
 .zonepick button{display:flex; gap:10px; align-items:baseline; width:100%; padding:10px 12px; border:1px solid var(--line); border-radius:10px; background:var(--surface); color:var(--text); font:inherit; font-size:13.5px; cursor:pointer; text-align:left}
 .zonepick button:hover{background:var(--surface-2)}
 .zonepick b{min-width:56px}
 .zonepick span{color:var(--muted)}
-.zonepick em{margin-left:auto; font-style:normal; font-size:11px; color:var(--muted); white-space:nowrap}
+.zonepick em{margin-left:auto; font-style:normal; font-size:12px; color:var(--muted); white-space:nowrap}
 .pickhead{margin:16px 0 0; font-size:13px; color:var(--muted); text-align:left}
 .databadge.nodata{color:var(--muted); background:var(--surface-3)}
-.ruletag{display:inline-block; margin-top:5px; font-size:11px; font-weight:700; color:var(--accent); background:var(--accent-soft); border-radius:6px; padding:1px 6px}
+.ruletag{display:inline-block; margin-top:5px; font-size:12px; font-weight:700; color:var(--accent); background:var(--accent-soft); border-radius:6px; padding:1px 6px}
 .excbox{margin-top:14px; background:var(--warn-bg); color:var(--warn); border:1px solid currentColor; border-radius:var(--r); padding:10px 12px; font-size:13px}
 .excbox summary{display:flex; gap:8px; align-items:flex-start; cursor:pointer; list-style:none; line-height:1.4}
 .excbox summary::-webkit-details-marker{display:none}
@@ -367,8 +386,8 @@ ul.plain li.is-ban svg{color:var(--accent)}
 .excbox p, .excbox ul{color:var(--text); margin:8px 0 0}
 .excbox ul{padding-left:20px; columns:2; column-gap:16px}
 .excbox li{margin-bottom:3px; break-inside:avoid}
-.printed{margin:10px 0 0; font-size:11.5px; color:var(--muted); line-height:1.45}
-.legal{display:block; margin-top:6px; font-size:11.5px; color:var(--muted)}
+.printed{margin:10px 0 0; font-size:12px; color:var(--muted); line-height:1.45}
+.legal{display:block; margin-top:6px; font-size:12px; color:var(--muted)}
 .sanct{margin-top:14px; background:var(--danger-bg); color:var(--danger); border:2px solid currentColor; border-radius:var(--r); padding:12px; font-size:13px}
 .sanct__h{display:flex; gap:8px; align-items:center; font-size:16px; font-weight:800}
 .sanct__h svg{width:20px; height:20px; flex:0 0 auto}
@@ -396,7 +415,7 @@ em.res{font-style:normal; color:var(--muted)}
 .modal ol{margin:0 0 13px; padding-left:20px; font-size:13px; color:var(--text)}
 .modal ol li{margin-bottom:5px}
 .modal .note{font-size:12px}
-.ver{margin:6px 8px 3px; font-size:11.5px; color:var(--muted); font-variant-numeric:tabular-nums}
+.ver{margin:6px 8px 3px; font-size:12px; color:var(--muted); font-variant-numeric:tabular-nums}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 /* ---------- update-available banner ---------- */
 .updbar{
@@ -418,6 +437,34 @@ em.res{font-style:normal; color:var(--muted)}
 .panel__scroll{padding-bottom:calc(34px + env(safe-area-inset-bottom))}
 .toast{bottom:calc(22px + env(safe-area-inset-bottom))}
 /* Tablets and desktops: full-screen map, with the species list docked on the left. */
+/* ---------- reduced motion ----------
+   Sliding panels, the sheet snap and the toast rise become instant or a
+   short fade: every state change still happens and is still visible. */
+@media (prefers-reduced-motion:reduce){
+  .sheet.anim, .panel, .mapbtns{transition:none}
+  .toast{transition:opacity 120ms linear; transform:none}
+  .toast.show{transform:none}
+  .card:active{transform:none}
+}
+
+/* ---------- touch targets: 44px tap areas, same look ----------
+   Invisible ::before areas extend small controls to 44px. The scrolling chip
+   rows get matching padding (with negative margin, so layout is unchanged)
+   so the extended areas aren't clipped by overflow. */
+.iconbtn, .chip, .spot__del{position:relative}
+.iconbtn::before, .spot__del::before, .search__clear::before{content:''; position:absolute; inset:-5px}
+.search__clear::before{inset:-7px}
+.dates{padding-block:6px; margin-block:-6px}
+.filters{padding-block:7px; margin-block:-7px}
+.dates .chip::before{content:''; position:absolute; inset:-6px -2px}
+.filters .chip::before{content:''; position:absolute; inset:-7px -2px}
+.back{min-height:44px}
+.search input{min-height:44px}
+.zonepick button{min-height:44px; align-items:center}
+.exckey label{min-height:44px; padding-block:0; cursor:pointer}
+.exckey label input{width:20px; height:20px; margin:0}
+/* Touch screens pinch to zoom; the +/− buttons are 30px and redundant there. */
+@media (pointer:coarse){ .leaflet-control-zoom{display:none} }
 @media (min-width:760px){
   .sheet{right:auto; left:12px; width:420px}
   .panel{right:auto; width:460px; border-right:1px solid var(--line); box-shadow:var(--shadow)}
@@ -427,7 +474,7 @@ em.res{font-style:normal; color:var(--muted)}
 <body>
 <div class="phone" id="phone">
 
-  <div class="proto">PROTOTYPE · NOT OFFICIAL · 2026 RULES, TRANSCRIBED BY HAND. LAKE AND RIVER EXCEPTIONS ONLY LOADED FOR FMZ 16 AND 17 (TRIAL). CHECK THE OFFICIAL SUMMARY BEFORE YOU FISH.</div>
+  <div class="proto"><b>PROTOTYPE · NOT OFFICIAL</b> · 2026 rules, transcribed by hand. Lake and river exceptions only loaded for FMZ 16 and 17 (trial). Check the official summary before you fish.</div>
 
   <header class="appbar">
     <div class="appbar__top">
@@ -443,7 +490,7 @@ em.res{font-style:normal; color:var(--muted)}
         <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09A1.65 1.65 0 008 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H2a2 2 0 110-4h.09A1.65 1.65 0 004.6 8a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06A1.65 1.65 0 009 3.6 1.65 1.65 0 0010 2.09V2a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06A1.65 1.65 0 0019.4 8v0a1.65 1.65 0 001.51 1H21a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
       </button>
       <div class="dev" id="devMenu">
-        <h4>Demo controls</h4>
+        <h2>Demo controls</h2>
         <label><input type="checkbox" id="offToggle"> Simulate offline</label>
         <p class="ver" id="appVer"></p>
       </div>
@@ -492,13 +539,13 @@ em.res{font-style:normal; color:var(--muted)}
 
   <section class="sheet anim" id="sheet" aria-label="Species for selected location">
     <div class="sheet__grab" id="grab">
-      <div class="bar"></div>
+      <button class="bar" id="sheetToggle" type="button" aria-controls="sheet" aria-expanded="false" aria-label="Show more of the species list"></button>
       <div class="sheet__head">
         <div style="flex:1;min-width:0">
           <h2 class="zonename" id="zoneName">Pick a spot on the map</h2>
           <p class="zonesub" id="zoneSub">Tap the map or use your location</p>
-          <p class="badgerow" id="dataBadge"></p>
-          <p class="locstat" id="locStat" aria-live="polite"></p>
+          <div class="metarow"><span class="badgerow" id="dataBadge"></span><span class="locstat" id="locStat" aria-live="polite"></span></div>
+          <button class="sheetdate" id="sheetDate" type="button" aria-label="Change date"></button>
         </div>
         <div class="countpill zero" id="countPill">—</div>
       </div>
@@ -540,8 +587,8 @@ em.res{font-style:normal; color:var(--muted)}
   </section>
 
   <div class="scrim" id="scrim">
-    <div class="modal">
-      <h3>Save this spot</h3>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="saveTitle">
+      <h3 id="saveTitle">Save this spot</h3>
       <p id="modalZone"></p>
       <input type="text" id="spotName" placeholder="e.g. Bay behind the island" maxlength="42">
       <div class="modal__row">
@@ -2397,7 +2444,14 @@ function resolveAt(doc, lat, lng, date){
   const closures = closuresAll.filter(p => !p.night), nightClosures = closuresAll.filter(p => p.night);
   const acc = state.pinSource === 'gps' && state.fix ? state.fix.acc : 0;
   const near = isNaN(lat) ? [] : exceptionsNear(lat, lng, acc).filter(x => !here.includes(x.area));
+  /* Exceptions close enough that the pin (or the boundary, or a GPS fix) could
+     really be on them. A card whose species they touch must say "Check", not a
+     bare "Open": anglers fish on the river, not 141 m from it. */
+  const checkM = Math.max(doc.zone.toleranceM || 200, acc);
+  const close = near.filter(x => x.d <= checkM);
+  cards.forEach(c => { c.check = close.filter(x => excTouches(x.doc, x.area, c.species)); });
   return {
+    close,
     doc, here, cards,
     restrictions: live.filter(p => p.type === 'restriction' && !p.target && !(here.find(a => a.id === p.areaId) || {}).exc),
     areaRestrictions: live.filter(p => p.type === 'restriction' && !p.target && (here.find(a => a.id === p.areaId) || {}).exc),
@@ -2508,6 +2562,19 @@ function excSummary(doc, a, date){
   if(sp.length) bits.push('Own rules for '+(sp.length > 4 ? sp.length+' species' : listText(sp)));
   if(ps.some(p => p.type === 'restriction')) bits.push('gear rules');
   return bits.join(' · ');
+}
+/* Does this exception change the season, limits or fishing for any of these
+   species? (A closure with no species closes everything; a gear rule alone
+   doesn't change whether a species is open, so it is only listed.) */
+function excTouches(doc, a, species){
+  return doc.provisions.some(p => p.areaId === a.id &&
+    (p.type === 'closure' ? (!p.target || speciesOf(p.target).some(s => species.includes(s)))
+     : (p.type === 'season' || p.type === 'limit') && speciesOf(p.target).some(s => species.includes(s))));
+}
+/* The exception's rules that matter for these species (or all, if none given). */
+function excRulesFor(doc, a, species){
+  const ps = doc.provisions.filter(p => p.areaId === a.id && (!species || !p.target || speciesOf(p.target).some(s => species.includes(s))));
+  return ps.length ? '<ul class="plain" style="margin-top:6px">'+ruleItems(ps)+'</ul>' : '';
 }
 const excActiveClosure = (doc, a, date) => doc.provisions.find(p => p.areaId === a.id && p.type === 'closure' && !p.night && evaluate({windows:p.windows}, date).open);
 
@@ -2686,8 +2753,11 @@ function showExc(id){
   const a = ZONE_DOCS.flatMap(d => d.areas).find(x => x.id === id);
   if(!a || !MAP_OK) return;
   const b = excBox(a);
-  map.fitBounds([[b[1], b[0]], [b[3], b[2]]], {maxZoom:14, padding:[30, 30]});
   if(sheetY < SNAP.half) setSheet(SNAP.half);
+  // Fit the water into the part of the map the sheet leaves uncovered.
+  const v = visibleMapBox(sheetY), sz = map.getSize();
+  map.fitBounds([[b[1], b[0]], [b[3], b[2]]], {maxZoom:14,
+    paddingTopLeft:[v.l + 30, v.t + 30], paddingBottomRight:[sz.x - v.r + 30, sz.y - v.b + 30]});
 }
 
 const pinIcon = L.divIcon({
@@ -2707,9 +2777,50 @@ function setPin(lat, lng, opts){
   else pinMarker = L.marker([lat,lng], {icon:pinIcon}).addTo(map);
   restyleZones();
 
-  if(opts.fly && MAP_OK) map.flyTo([lat,lng], Math.max(map.getZoom(), opts.zoom || 8), {duration:.7});
+  // The sheet rises to half height after a pin drops (and always for a
+  // GPS fix or saved spot, which may arrive with the sheet fully open), so
+  // aim the map at the part the sheet will leave uncovered.
+  const finalY = (opts.fly || sheetY > SNAP.half) ? SNAP.half : sheetY;
   render();
-  if(sheetY > SNAP.half) setSheet(SNAP.half);
+  // A new place is a new answer: start the list at the top, where the
+  // warnings about this spot are, not where the last spot was scrolled to.
+  document.getElementById('list').scrollTop = 0;
+  if(finalY !== sheetY) setSheet(finalY);
+  if(MAP_OK) placePin(lat, lng, finalY, opts.fly ? Math.max(map.getZoom(), opts.zoom || 8) : null);
+}
+
+/* The part of the map not covered by the sheet, in map-container pixels,
+   for a given sheet position. On phones the sheet covers the bottom; from
+   760px it docks on the left. */
+function visibleMapBox(sheetPos){
+  const m = map.getContainer().getBoundingClientRect();
+  const s = sheet.getBoundingClientRect();
+  const sTop = sheet.offsetParent.getBoundingClientRect().top + sheet.offsetTop + sheetPos;
+  const box = {l:0, t:0, r:m.width, b:m.height};
+  if(s.width >= m.width * 0.8) box.b = Math.min(box.b, sTop - m.top);
+  else if(s.left - m.left < m.width / 2) box.l = Math.max(box.l, s.right - m.left);
+  if(box.b - box.t < 120) box.b = Math.min(m.height, box.t + 120);
+  return box;
+}
+
+/* Keep the pin in view. zoom given: fly there with the pin centred in the
+   visible box. zoom null (a tap): only pan if the pin ended up covered. */
+function placePin(lat, lng, sheetPos, zoom){
+  const box = visibleMapBox(sheetPos);
+  const size = map.getSize();
+  // Pin tip a little below the box's middle, so the whole marker shows.
+  const want = L.point((box.l + box.r) / 2, box.t + (box.b - box.t) * 0.5 + 16);
+  const still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(zoom == null){
+    const p = map.latLngToContainerPoint([lat, lng]);
+    const pad = 24;
+    if(p.x >= box.l + pad && p.x <= box.r - pad && p.y >= box.t + 40 && p.y <= box.b - pad) return;
+    map.panBy(p.subtract(want), {animate:!still});
+    return;
+  }
+  const centre = map.unproject(map.project([lat, lng], zoom).add(size.divideBy(2)).subtract(want), zoom);
+  if(still) map.setView(centre, zoom, {animate:false});
+  else map.flyTo(centre, zoom, {duration:.7});
 }
 
 function restyleZones(){
@@ -2734,8 +2845,25 @@ function setSheet(y, animate){
   sheetY = Math.max(SNAP.full, Math.min(SNAP.peek, y));
   sheet.classList.toggle('anim', animate !== false);
   sheet.style.transform = 'translateY('+sheetY+'px)';
+  // Fully open, the sheet covers the date row: show the date in its header.
+  sheet.classList.toggle('is-full', sheetY < SNAP.half * 0.5);
+  const tg = document.getElementById('sheetToggle');
+  if(tg){
+    tg.setAttribute('aria-expanded', String(sheetY < SNAP.peek - 1));
+    tg.setAttribute('aria-label', sheetY < SNAP.half * 0.5 ? 'Make the species list smaller' : 'Show more of the species list');
+  }
   const visible = sheet.offsetHeight - sheetY;
   mapBtns.style.bottom = Math.min(visible + 12, sheet.offsetHeight*0.6) + 'px';
+  // The map credit (© OpenStreetMap, required by its licence) must stay
+  // visible: on phones it rides just above the sheet, on the left so it clears
+  // the map buttons; from 760px the sheet is docked left, so it stays bottom right.
+  if(MAP_OK && map.attributionControl){
+    const wide = sheet.offsetWidth < map.getContainer().offsetWidth * 0.8;
+    const pos = wide ? 'bottomright' : 'bottomleft';
+    if(map.attributionControl.getPosition() !== pos) map.attributionControl.setPosition(pos);
+    const box = map.getContainer().querySelector('.leaflet-bottom.leaflet-left');
+    if(box) box.style.bottom = wide ? '' : Math.min(visible, sheet.offsetHeight*0.6) + 'px';
+  }
   mapBtns.style.opacity = sheetY < SNAP.half*0.6 ? '0' : '1';
   mapBtns.style.pointerEvents = sheetY < SNAP.half*0.6 ? 'none' : 'auto';
 }
@@ -2748,6 +2876,8 @@ function nearestSnap(y, velocity){
 
 let drag = null;
 grab.addEventListener('pointerdown', e => {
+  // Buttons and "More" toggles inside the sheet header work as taps, not drags.
+  if(e.target.closest('button:not(.bar), summary, a, input')) return;
   drag = {startY:e.clientY, startSheet:sheetY, lastY:e.clientY, lastT:performance.now(), v:0, moved:false};
   grab.setPointerCapture(e.pointerId);
   sheet.classList.remove('anim');
@@ -2793,7 +2923,7 @@ function visibleCards(){
 function badgeFor(doc){
   if(!doc) return '';
   const pick = isPicked() ? ' <span class="databadge picked">'+ICONS.alert+'Zone chosen by you, not by GPS</span>' : '';
-  return '<span class="databadge real">'+ICONS.check+'Real '+esc(doc.meta.edition)+' · unofficial transcription</span>'+pick;
+  return '<span class="databadge real">'+ICONS.rule+'Unofficial '+esc(doc.meta.edition.replace(/\s*regulations?$/i,''))+' transcription</span>'+pick;
 }
 
 function render(){
@@ -2805,6 +2935,8 @@ function render(){
     dd.toLocaleDateString('en-CA',{weekday:'long', month:'long', day:'numeric', year:'numeric'}) +
     (rel === 0 ? ' · today' : rel > 0 ? ' · in '+rel+' days' : ' · '+Math.abs(rel)+' days ago');
   el('dateInput').value = isoOf(dd);
+  el('sheetDate').textContent = dd.toLocaleDateString('en-CA',{weekday:'short', month:'short', day:'numeric', year:'numeric'}) +
+    (rel === 0 ? ' · today' : rel > 0 ? ' · in '+rel+' days' : ' · '+Math.abs(rel)+' days ago') + ' · change';
 
   const doc = state.zone, res = state.res, list = el('list');
   el('dataBadge').innerHTML = doc ? badgeFor(doc) : '';
@@ -2859,6 +2991,17 @@ function render(){
       '<p><b>'+esc(a ? a.name : '')+'</b>: '+esc(p.text)+'.</p></div>';
   });
   res.maybe.forEach(x => { html += maybeBox(x, dd); });
+  const closeOff = res.close.filter(x => !x.on);
+  if(closeOff.length === 1) html += closeBox(closeOff[0], dd);
+  else if(closeOff.length > 1){
+    // Several stretches of the same river often overlap here: one box, each
+    // stretch collapsible, instead of a wall of boxes above the species.
+    const hit = res.cards.filter(c => c.check && c.check.length).map(c => c.title);
+    html += '<div class="maybe"><b>'+ICONS.alert+'Check — '+closeOff.length+' waters with their own rules are within '+esc(distText(closeOff[closeOff.length-1].d))+'</b>'+
+      'Your pin and the map can each be off by a couple of hundred metres, so you may be fishing one of them. '+
+      (hit.length ? 'Their rules would apply to '+esc(listText(hit))+' instead of the zone-wide ones (cards marked “Check”).' : '')+
+      '<div class="excnear" style="margin-top:8px">'+closeOff.map(x => excItem(x, dd)).join('')+'</div></div>';
+  }
   /* rules from a lake or river that replace the zone-wide ones here */
   const local = res.here.filter(a => a.kind !== 'advisory' && doc.provisions.some(p => p.areaId === a.id && p.type !== 'notice'));
   local.forEach(a => {
@@ -2876,14 +3019,14 @@ function render(){
   }));
   res.notices.filter(p => p.kind === 'exceptions_not_loaded').forEach(p => {
     html += '<details class="excbox"><summary>'+ICONS.alert+'<span><b>This zone has lake and river exceptions that aren’t loaded.</b> Check before you fish. <u>Show more</u></span></summary>'+
-      '<p>'+esc(p.text)+'</p>'+(p.list ? '<ul>'+p.list.map(x => '<li>'+esc(x)+'</li>').join('')+'</ul>' : '')+(p.more ? '<p>'+esc(p.more)+'</p>' : '')+'</details>';
+      '<p>'+esc(plainRef(p.text))+'</p>'+(p.list ? '<ul>'+p.list.map(x => '<li>'+esc(x)+'</li>').join('')+'</ul>' : '')+(p.more ? '<p>'+esc(p.more)+'</p>' : '')+'</details>';
   });
   if(res.nearby.length){
     const shutN = res.nearby.filter(x => excActiveClosure(x.doc, x.area, dd)).length;
     html += '<details class="excnear"'+(state.nearOpen ? ' open' : '')+' data-nearbox><summary>'+ICONS.alert+'<span>'+res.nearby.length+' exception'+(res.nearby.length > 1 ? 's' : '')+' within '+distText(EXC_NEAR_M)+
       (shutN ? ' · '+shutN+' closed now' : '')+'</span><u>Show</u></summary>'+res.nearby.map(x => excItem(x, dd)).join('')+'</details>';
   }
-  res.notices.filter(p => p.kind === 'exceptions_loaded').forEach(p => { html += '<p class="excinfo">'+ICONS.alert+' '+esc(p.text)+'</p>'; });
+  res.notices.filter(p => p.kind === 'exceptions_loaded').forEach(p => { html += '<p class="excinfo">'+ICONS.alert+' '+esc(plainRef(p.text))+'</p>'; });
   if(state.query && state.query.length >= 3) html += waterSearch(state.query, dd);
 
   const shown = visibleCards();
@@ -2905,9 +3048,51 @@ function render(){
 
 /* A rule line. Prohibitions get a "no" mark and requirements a neutral one,
    never a tick, which reads as "allowed". */
-function ruleLi(t){
+function ruleLi(t, printed){
   const ban = /^no\b|\b(may|shall|must) not\b|prohibited|not permitted|not allowed/i.test(t);
-  return '<li'+(ban ? ' class="is-ban"' : '')+'>'+(ban ? ICONS.ban : ICONS.rule)+'<span>'+esc(t)+'</span></li>';
+  return '<li'+(ban ? ' class="is-ban"' : '')+'>'+(ban ? ICONS.ban : ICONS.rule)+'<span>'+esc(plainRef(t))+
+    (printed ? '<span class="printed" style="display:block">As printed: “'+esc(printed)+'”</span>' : '')+'</span></li>';
+}
+
+/* Cross-references in the summary point at sections this app doesn't have.
+   Say so instead of sending the angler to "Species Exceptions". Display only:
+   the stored text stays exactly as printed. */
+function plainRef(t){
+  return String(t)
+    .replace(/Refer to Bait \(p\.\s?(\d+)\) for more details\./g, 'The bait rules aren’t in this app: see p. $1 of the summary.')
+    .replace(/Refer to p\.\s?(\d+) for details\./g, 'The map isn’t in this app: see p. $1 of the summary.')
+    .replace(/Refer to the Boundary Waters section for information on licences and limits in boundary waters/g,
+             'Boundary-water licences and limits aren’t in this app (see the Boundary Waters section of the summary)')
+    .replace(/\s*-?\s*[Rr]efer to Species Exceptions( for more details)?\./g, '. Species exceptions are only loaded for FMZ 16 and 17 in this app; elsewhere see the Species Exceptions section of the summary.')
+    .replace(/[Rr]efer to Waterbody Exceptions for catch and possession limits/g, 'see the Waterbody Exceptions section of the summary for catch and possession limits')
+    .replace(/\bBMZs\b/g, t.includes('(BMZ)') ? 'BMZs' : 'Bait Management Zones')
+    .replace(/\.\./g, '.');
+}
+
+/* "S-5 and C-2" in words, from the structured limits. */
+function limitPlain(limits){
+  const q = lic => { const l = (limits || []).find(x => x.licence === lic && x.kind === 'catch'); return l ? l.quantity : undefined; };
+  const s = q('sport'), c = q('conservation');
+  if(s === 0 && (c === 0 || c === undefined)) return 'catch and release only: keep none';
+  const part = (n, lic) => n === undefined ? '' : n === null ? 'no limit with a '+lic+' licence' : n === 0 ? 'none with a '+lic+' licence' : 'keep '+n+' a day with a '+lic+' licence';
+  return [part(s, 'sport'), part(c, 'conservation')].filter(Boolean).join(', ');
+}
+
+/* An exception's rules as list items: limits in words (shorthand kept as
+   "As printed"), other rules as printed with cross-references explained. */
+function ruleItems(ps){
+  const groups = [], byText = {};
+  ps.forEach(p => {
+    const g = byText[p.text] || (byText[p.text] = groups[groups.push({p, species:[]}) - 1]);
+    if(p.type === 'limit') speciesOf(p.target).forEach(s => { if(!g.species.includes(s)) g.species.push(s); });
+  });
+  return groups.map(({p, species}) => {
+    if(p.type !== 'limit' || !p.limits) return ruleLi(p.text);
+    const who = species.map(s => SPECIES[s].common.toLowerCase());
+    const plain = (who.length ? listText(who).replace(/^./, ch => ch.toUpperCase())+': ' : '')+limitPlain(p.limits)+
+      (p.text.includes(';') ? ' (size rules too)' : '');
+    return ruleLi(plain, p.text);
+  }).join('');
 }
 function excItem(x, dd, opts){
   const a = x.area, doc = x.doc, shut = excActiveClosure(doc, a, dd);
@@ -2926,9 +3111,7 @@ const PRECISION_TEXT = {
 };
 function excRules(doc, a){
   const ps = doc.provisions.filter(p => p.areaId === a.id);
-  const seen = new Set(), items = [];
-  ps.forEach(p => { if(!seen.has(p.text)){ seen.add(p.text); items.push(p.text); } });
-  return items.length ? '<ul class="plain" style="margin-top:6px">'+items.map(ruleLi).join('')+'</ul>' : '';
+  return ps.length ? '<ul class="plain" style="margin-top:6px">'+ruleItems(ps)+'</ul>' : '';
 }
 function maybeBox(x, dd){
   const a = x.area, doc = x.doc, shut = excActiveClosure(doc, a, dd);
@@ -2941,6 +3124,20 @@ function maybeBox(x, dd){
     (a.note ? '<span class="legal">'+esc(a.note)+'</span>' : '')+
     '<span class="legal">As printed: '+esc(a.legalDescription)+(a.page ? ' (p. '+a.page+')' : '')+'</span></div>';
 }
+/* An exception within the zone's tolerance of the pin but not under it. */
+function closeBox(x, dd){
+  const a = x.area, doc = x.doc, shut = excActiveClosure(doc, a, dd);
+  const hit = state.res.cards.filter(c => (c.check || []).includes(x)).map(c => c.title);
+  return '<div class="maybe"><b>'+ICONS.alert+'Check — '+esc(a.name)+' is '+esc(distText(x.d))+' away</b>'+
+    'Your pin and the map can each be off by a couple of hundred metres, so you may be fishing it. '+
+    (hit.length ? 'If you are, its own rules apply to '+esc(listText(hit))+' instead of the zone-wide ones (cards marked “Check”):'
+                : 'If you are, these rules apply too:')+
+    excRules(doc, a)+
+    (shut ? '<span class="stop">'+ICONS.x+' If you are on it, there is no fishing there now.</span>' : '')+
+    (a.note ? '<span class="legal">'+esc(a.note)+'</span>' : '')+
+    '<span class="legal">As printed: '+esc(a.legalDescription)+(a.page ? ' (p. '+a.page+')' : '')+'</span></div>';
+}
+
 /* "Check a lake or river before you go": waters whose name matches the search. */
 function waterSearch(q, dd){
   const n = q.toLowerCase().replace(/[’']/g, '');
@@ -2966,12 +3163,19 @@ function card(c){
   const s = statusLine(c.ev, closure);
   if(c.releaseOnly && c.ev.open && !closure) s.text += ' · catch and release only';
   const local = [c.season, c.mainLimit].find(p => p && p.rank > AREA_RANK.fmz);
+  // Near an exception that changes this species: lead with "Check", keep the
+  // zone-wide answer as the second line.
+  const chk = !closure && c.check && c.check.length ? c.check : null;
+  const statusHTML = chk
+    ? '<div class="card__line soon">'+ICONS.alert+'<span>Check: '+esc(chk[0].area.name.replace(/\s*\(.*\)$/, ''))+' rules may differ</span></div>'+
+      '<div class="card__zone">Zone-wide: '+esc(s.text)+'</div>'
+    : '<div class="card__line '+s.cls+'">'+ICONS[s.icon]+'<span>'+esc(s.text)+'</span></div>';
   return '<button class="card '+(c.ev.open && !closure ? '' : 'closed')+'" data-card="'+esc(c.id)+'">'+
     fishSVG(c.shape,'card__fish')+
     '<div class="card__body">'+
       '<div class="card__name">'+esc(c.title)+'</div>'+
       '<div class="card__sci">'+esc(c.sci)+'</div>'+
-      '<div class="card__line '+s.cls+'">'+ICONS[s.icon]+'<span>'+esc(s.text)+'</span></div>'+
+      statusHTML+
       (local ? '<div class="ruletag">'+esc(local.areaName)+' rule</div>' : '')+
     '</div>'+
     '<svg class="card__chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>'+
@@ -3067,6 +3271,24 @@ function limitsTable(prov){
   return '<table class="limits">'+rows.join('')+'</table>';
 }
 
+/* Detail: nearby waters that may change this species. One water: its rules
+   inline. Several (often overlapping stretches of one river): one box, each
+   water collapsible, so the season and limits aren't pushed off screen. */
+function checkDetail(c){
+  const xs = c.check, dd = state.date;
+  const rulesOf = x => excRulesFor(x.doc, x.area, c.species)+
+    (excActiveClosure(x.doc, x.area, dd) ? '<span class="stop">'+ICONS.x+' If you are on it, there is no fishing there now.</span>' : '')+
+    '<span class="legal">As printed: '+esc(x.area.legalDescription)+(x.area.page ? ' (p. '+x.area.page+')' : '')+'</span>';
+  const head = xs.length === 1
+    ? 'Check — '+esc(xs[0].area.name)+' is '+esc(distText(xs[0].d))+' away'
+    : 'Check — '+xs.length+' nearby waters have their own rules for '+esc(c.title.toLowerCase());
+  const body = xs.length === 1
+    ? 'Your pin and the map can each be off by a couple of hundred metres. If you are fishing it, these rules apply instead of the zone-wide ones below:'+rulesOf(xs[0])
+    : 'Your pin and the map can each be off by a couple of hundred metres. If you are fishing one of these, its rules apply instead of the zone-wide ones below.'+
+      '<div class="excnear" style="margin-top:8px">'+xs.map(x => '<details class="excitem"><summary><span class="nm">'+esc(x.area.name)+'</span><span class="dist">'+esc(distText(x.d))+'</span></summary>'+rulesOf(x)+'</details>').join('')+'</div>';
+  return '<div class="sec"><div class="maybe" style="margin-top:0"><b>'+ICONS.alert+head+'</b>'+body+'</div></div>';
+}
+
 function openDetail(cardId){
   const doc = state.zone, res = state.res;
   const c = res && res.cards.find(x => x.id === cardId);
@@ -3092,7 +3314,9 @@ function openDetail(cardId){
 
     '<div class="status '+cls+'">'+ICONS[s.icon]+
       '<div><div>'+esc(s.text)+'</div>'+
-      '<small>'+esc(doc.zone.name+' · '+doc.zone.subtitle)+'</small></div></div>'+
+      '<small>'+esc((c.check && c.check.length && !closure ? 'Zone-wide · ' : '')+doc.zone.name+' · '+doc.zone.subtitle)+'</small></div></div>'+
+
+    (closure || !(c.check || []).length ? '' : checkDetail(c))+
 
     '<div class="sec"><h3>Season</h3><div class="box">'+
       (c.ev.closedAllYear
@@ -3104,7 +3328,7 @@ function openDetail(cardId){
     (c.ev.closedAllYear || !c.mainLimit ? '' :
     '<div class="sec"><h3>Catch limits</h3><div class="box">'+limitsTable(c.mainLimit)+
       (gl && gl.members.length > 1 ? '<p class="note" style="margin:8px 0 0">Combined total for '+esc(gl.name.toLowerCase())+'.'+(gl.note ? ' '+esc(gl.note) : '')+'</p>' : '')+
-      c.alsoLimits.map(p => '<p class="note" style="margin:8px 0 0"><b style="color:var(--text)">Also counts toward:</b> '+esc(GROUPS[p.target.group].name)+' — '+esc(p.text.split(';')[0])+'.</p>').join('')+
+      c.alsoLimits.map(p => '<p class="note" style="margin:8px 0 0"><b style="color:var(--text)">Also counts toward:</b> '+esc(GROUPS[p.target.group].name)+' — '+esc(limitPlain(p.limits))+' combined.</p>').join('')+
       (ml.when ? '<p class="note" style="margin:8px 0 0"><b style="color:var(--text)">Applies '+esc(ml.whenText)+'.</b> The limits change at other times of year; see the rule as printed below.</p>'
                : c.limitVaries ? '<p class="note" style="margin:8px 0 0"><b style="color:var(--text)">On your selected date.</b> The limits change at other times of year; see the rule as printed below.</p>' : '')+
       (ml.residentNote ? '<p class="note" style="margin:8px 0 0"><b style="color:var(--text)">The numbers above are for Ontario and Canadian residents.</b> '+esc(ml.residentNote)+'</p>' : '')+
@@ -3117,18 +3341,18 @@ function openDetail(cardId){
       allRestr.map(p => ruleLi(p.text)).join('')+
       '</ul></div></div>' : '')+
 
-    c.areaNotes.map(p => '<div class="sec"><h3>Sub-area exception</h3><div class="exception"><b>'+esc(p.areaName)+'</b>'+esc(p.text)+'</div></div>').join('')+
+    c.areaNotes.map(p => '<div class="sec"><h3>Sub-area exception</h3><div class="exception"><b>'+esc(p.areaName)+'</b>'+esc(plainRef(p.text))+'</div></div>').join('')+
 
-    (c.notes.length ? '<div class="sec"><h3>Notes</h3><div class="box">'+c.notes.map(p => '<p class="note" style="margin:0">'+esc(p.text)+'</p>').join('')+'</div></div>' : '')+
+    (c.notes.length ? '<div class="sec"><h3>Notes</h3><div class="box">'+c.notes.map(p => '<p class="note" style="margin:0">'+esc(plainRef(p.text))+'</p>').join('')+'</div></div>' : '')+
 
     '<div class="sec"><button class="btn btn--ghost" id="report">'+
       '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 9v4M12 17v.01"/><circle cx="12" cy="12" r="9"/></svg>'+
       'Report a problem with this listing</button></div>'+
 
-    '<div class="sec"><p class="note" style="font-size:11.5px;color:var(--muted);text-align:center">'+sourceLine(doc)+'<br>PROTOTYPE — not an official source.</p></div>'+
+    '<div class="sec"><p class="note" style="font-size:12px;color:var(--muted);text-align:center">'+sourceLine(doc)+'<br>PROTOTYPE — not an official source.</p></div>'+
   '</div>';
 
-  el('detail').classList.add('show');
+  openLayer('detail');
 }
 
 /* =====================================================================
@@ -3144,11 +3368,11 @@ function renderSpots(){
     const d = zoneAt(sp.lat, sp.lng) || (sp.pickCode ? docById(sp.pickCode) : null);
     const r = d ? resolveAt(d, sp.lat, sp.lng, state.date) : null;
     const n = r ? (r.closures.length ? 0 : r.cards.filter(c => c.ev.open).length) : 0;
-    return '<div class="spot" data-spot="'+sp.id+'">'+
+    return '<div class="spot"><button class="spot__go" type="button" data-spot="'+sp.id+'">'+
       '<div class="spot__pin"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1116 0z"/><circle cx="12" cy="10" r="2.6"/></svg></div>'+
       '<div class="spot__b"><div class="spot__n">'+esc(sp.name)+'</div>'+
-        '<div class="spot__m">'+esc(d ? d.zone.name : 'Zone not on the map')+(sp.pickCode && d && !zoneAt(sp.lat, sp.lng) ? ' (chosen by you)' : '')+' · '+(r ? n+' open now' : 'no zone')+'</div></div>'+
-      '<button class="spot__del" data-del="'+sp.id+'" aria-label="Delete spot"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg></button>'+
+        '<div class="spot__m">'+esc(d ? d.zone.name : 'Zone not on the map')+(sp.pickCode && d && !zoneAt(sp.lat, sp.lng) ? ' (chosen by you)' : '')+' · '+(r ? n+' open '+(daysBetween(TODAY, state.date) === 0 ? 'today' : 'on '+prettyDate(state.date)) : 'no zone')+'</div></div></button>'+
+      '<button class="spot__del" data-del="'+sp.id+'" aria-label="Delete '+esc(sp.name)+'"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg></button>'+
     '</div>';
   }).join('');
 }
@@ -3228,22 +3452,66 @@ el('list').addEventListener('click', e => {
   if(e.target.closest('[data-unpick]')) pickZone(null);
 });
 
+/* ---------- focus: panels and dialogs ----------
+   Opening a panel or dialog moves focus into it; closing returns focus to
+   whatever opened it. Esc closes the topmost one. */
+const focusBack = {};
+function openLayer(id, focusEl){
+  if(!el(id).classList.contains('show')) focusBack[id] = document.activeElement;
+  el(id).classList.add('show');
+  const t = focusEl || el(id).querySelector('.back, input, button');
+  if(t) setTimeout(() => t.focus({preventScroll:true}), 60);
+}
+function closeLayer(id){
+  if(!el(id).classList.contains('show')) return;
+  el(id).classList.remove('show');
+  const b = focusBack[id];
+  if(b && document.contains(b) && b.offsetParent !== null) b.focus({preventScroll:true});
+  delete focusBack[id];
+}
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape'){
+    const top = ['locScrim', 'scrim'].find(id => el(id).classList.contains('show'));
+    if(top){ closeLayer(top); e.preventDefault(); return; }
+    if(el('devMenu').classList.contains('show')){ el('devMenu').classList.remove('show'); el('btnDev').setAttribute('aria-expanded', 'false'); el('btnDev').focus(); return; }
+    const panel = ['detail', 'spots'].find(id => el(id).classList.contains('show'));
+    if(panel){ closeLayer(panel); e.preventDefault(); }
+    return;
+  }
+  // Keep Tab inside an open dialog.
+  if(e.key === 'Tab'){
+    const open = ['locScrim', 'scrim'].find(id => el(id).classList.contains('show'));
+    if(!open) return;
+    const f = [...el(open).querySelectorAll('button, input, [href], [tabindex]:not([tabindex="-1"])')].filter(x => x.offsetParent !== null);
+    if(!f.length) return;
+    const first = f[0], last = f[f.length - 1];
+    if(e.shiftKey && document.activeElement === first){ last.focus(); e.preventDefault(); }
+    else if(!e.shiftKey && document.activeElement === last){ first.focus(); e.preventDefault(); }
+  }
+});
+// Sheet handle from the keyboard (a pointer tap is handled by the drag code):
+// Enter or Space cycles peek → half → full → peek.
+el('sheetToggle').addEventListener('click', e => {
+  if(e.detail !== 0) return;
+  setSheet(sheetY >= SNAP.peek - 1 ? SNAP.half : sheetY > SNAP.full + 1 ? SNAP.full : SNAP.peek);
+});
+
 // panels
 document.addEventListener('click', e => {
   const back = e.target.closest('[data-close]');
-  if(back) el(back.dataset.close).classList.remove('show');
+  if(back) closeLayer(back.dataset.close);
   if(e.target.closest('#report')) toast("Reporting isn't connected in this prototype. Nothing was sent.");
 });
 
 // saved spots
-el('btnSpots').addEventListener('click', () => { renderSpots(); el('spots').classList.add('show'); });
+el('btnSpots').addEventListener('click', () => { renderSpots(); openLayer('spots'); });
 el('spotList').addEventListener('click', e => {
   const del = e.target.closest('[data-del]');
   if(del){ state.spots = state.spots.filter(s => s.id !== del.dataset.del); renderSpots(); toast("Spot removed."); return; }
   const row = e.target.closest('[data-spot]');
   if(row){
     const sp = state.spots.find(s => s.id === row.dataset.spot);
-    el('spots').classList.remove('show');
+    closeLayer('spots');
     if(sp.pickCode) state.picked = {code:sp.pickCode, lat:sp.lat, lng:sp.lng};
     setPin(sp.lat, sp.lng, {fly:true, source:'saved', label:sp.name});
   }
@@ -3255,15 +3523,14 @@ el('btnSave').addEventListener('click', () => {
     ? state.zone.zone.name+' · '+state.zone.zone.subtitle+(isPicked() ? ' (chosen by you)' : '')
     : 'Outside Ontario’s fishing zones';
   el('spotName').value = "";
-  el('scrim').classList.add('show');
-  setTimeout(() => el('spotName').focus(), 60);
+  openLayer('scrim', el('spotName'));
 });
-el('cancelSave').addEventListener('click', () => el('scrim').classList.remove('show'));
-el('scrim').addEventListener('click', e => { if(e.target === el('scrim')) el('scrim').classList.remove('show'); });
+el('cancelSave').addEventListener('click', () => closeLayer('scrim'));
+el('scrim').addEventListener('click', e => { if(e.target === el('scrim')) closeLayer('scrim'); });
 el('confirmSave').addEventListener('click', () => {
   const name = el('spotName').value.trim() || (state.zone ? state.zone.zone.name+' spot' : 'Unnamed spot');
   state.spots.unshift({id:'s'+Date.now(), name, lat:state.pin.lat, lng:state.pin.lng, pickCode:isPicked() ? state.zone.zone.code : null});
-  el('scrim').classList.remove('show');
+  closeLayer('scrim');
   toast('Saved “'+name+'”.');
 });
 el('spotName').addEventListener('keydown', e => { if(e.key === 'Enter') el('confirmSave').click(); });
@@ -3276,7 +3543,7 @@ el('spotName').addEventListener('keydown', e => { if(e.key === 'Enter') el('conf
    and how to fix it. Fixes are refined for a few seconds (the first one
    from a phone is often coarse) and the accuracy is always shown.
    ===================================================================== */
-const APP_VERSION = '2026-11-24.5';   // bump with sw.js VERSION on each release
+const APP_VERSION = '2026-11-24.6';   // bump with sw.js VERSION on each release
 const GPS = {
   GOOD_M:    25,     // stop refining once the fix is this accurate
   REFINE_MS: 10000,  // after the first fix, keep improving for up to this long
@@ -3397,9 +3664,9 @@ function renderLoc(){
     ls.className = 'locstat gps';
     txt = 'Your GPS position · ±' + fix.acc + ' m · ' + agoText(fix.t);
   } else if(src === 'saved'){
-    txt = 'Saved spot: ' + state.pinLabel + ' · not your GPS position';
+    txt = 'Saved spot: ' + state.pinLabel + ' · not GPS';
   } else if(src === 'tap'){
-    txt = 'Map point you picked · not your GPS position';
+    txt = 'Map point you picked · not GPS';
   }
   const gps = src === 'gps' && fix;
   if(gps && fix.acc > GPS.POOR_M){
@@ -3414,7 +3681,7 @@ function renderLoc(){
       if(b.kind === 'overlap') warns.push(who+' right on a zone line: the simplified boundaries of two zones overlap here, so either zone’s rules may apply. Check the official zone map before relying on this.');
       else if(b.kind === 'zone') warns.push(who+' within ±' + b.r + ' m of the edge of ' + zoneWord(b.other) + ', so its rules may apply instead. Check where you are on the map before relying on this.');
       else if(b.kind === 'sub') warns.push(who+' within ±' + b.r + ' m of the edge of ' + b.other.name + ', which has its own rules. Check on the map whether you are on it.');
-      else if(b.kind === 'zoneApprox') warns.push(who+' within about ' + distText(b.r) + ' of ' + zoneWord(b.other) + '. The zone lines in this app are simplified from the official map and can be off by up to about '+FMZ_BOUNDARY.simplifiedM+' m, so check which side you are on. The Great Lakes are separate zones from the land around them.');
+      else if(b.kind === 'zoneApprox') warns.push(who+' within about ' + distText(b.r) + ' of ' + zoneWord(b.other) + '. This app’s zone lines are simplified from the official map (each point within about '+FMZ_BOUNDARY.simplifiedM+' m of the real line), so near a line check which side you are on. The Great Lakes are separate zones from the land around them.');
       else if(b.kind === 'subApprox') warns.push(who+' within about ' + distText(b.r) + ' of the shore of ' + b.other.name + '. The shoreline on this map is approximate: if you are fishing ' + b.other.name + ', use its rules (tap a point out on the lake).');
     }
   }
@@ -3422,7 +3689,14 @@ function renderLoc(){
   if(gps && Date.now() - fix.t > GPS.STALE_MS) warns.push('This position was found ' + agoText(fix.t) + '. If you have moved, press “Use my location” to update it.');
 
   ls.innerHTML = txt ? LOC_ICON.replace('width="16" height="16"','width="13" height="13"') + '<span>' + esc(txt) + '</span>' : '';
-  const html = warns.map(x => '<p>'+esc(x)+'</p>').join('');
+  // One line by default: the first sentence of the first warning, with the
+  // full explanation (and any further warnings) behind "More".
+  const firstSentence = t => { const m = t.match(/^.*?[.!?](?=\s|$)/); return m ? m[0] : t; };
+  const short = warns.length ? firstSentence(warns[0]) : '';
+  const needsMore = warns.length > 1 || (warns[0] && warns[0].length > short.length);
+  const html = !warns.length ? '' : !needsMore ? '<p>'+esc(warns[0])+'</p>' :
+    '<details'+(state.locMoreOpen ? ' open' : '')+' data-locmore><summary>'+esc(short)+(warns.length > 1 ? ' (+'+(warns.length-1)+' more)' : '')+'<u>More</u></summary>'+
+    '<p>'+esc(warns[0].slice(short.length).trim())+'</p>'+warns.slice(1).map(x => '<p>'+esc(x)+'</p>').join('')+'</details>';
   const was = w.innerHTML;
   w.innerHTML = html;
   w.classList.toggle('show', !!html);
@@ -3486,13 +3760,13 @@ function locFail(kind){
   el('locBody').textContent  = T.body;
   el('locSteps').innerHTML   = T.steps.map(x => '<li>'+esc(x)+'</li>').join('');
   el('locRetry').style.display = (kind === 'insecure' || kind === 'unsupported') ? 'none' : '';
-  el('locScrim').classList.add('show');
+  openLayer('locScrim', el('locRetry'));
 }
 
 el('btnLoc').addEventListener('click', locate);
-el('locClose').addEventListener('click', () => el('locScrim').classList.remove('show'));
-el('locRetry').addEventListener('click', () => { el('locScrim').classList.remove('show'); locate(); });
-el('locScrim').addEventListener('click', e => { if(e.target === el('locScrim')) el('locScrim').classList.remove('show'); });
+el('locClose').addEventListener('click', () => closeLayer('locScrim'));
+el('locRetry').addEventListener('click', () => { closeLayer('locScrim'); locate(); });
+el('locScrim').addEventListener('click', e => { if(e.target === el('locScrim')) closeLayer('locScrim'); });
 
 // dev menu / offline simulation
 el('btnDev').addEventListener('click', e => {
@@ -3509,6 +3783,18 @@ el('offToggle').addEventListener('change', e => {
   el('btnDev').classList.toggle('on', state.offline);
   toast(state.offline ? "Offline simulated — cached data shown." : "Back online.");
 });
+
+// Date line in the full-height sheet: lower the sheet to reveal the date row.
+el('sheetDate').addEventListener('click', () => setSheet(SNAP.half));
+// The location warning opens and closes in place; keep the sheet's snap
+// points in step with its new height.
+el('locWarn').addEventListener('toggle', e => {
+  if(!e.target.matches || !e.target.matches('[data-locmore]')) return;
+  state.locMoreOpen = e.target.open;
+  const atPeek = sheetY >= SNAP.peek - 1;
+  measure();
+  if(atPeek) setSheet(SNAP.peek, false);
+}, true);
 
 /* =====================================================================
    INIT
