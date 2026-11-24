@@ -7,7 +7,7 @@
  *
  * Bump VERSION together with APP_VERSION in index.html on each release.
  */
-const VERSION = '2026-11-24.2';
+const VERSION = '2026-11-24.3';
 const CACHE = 'fsf-' + VERSION;
 const SHELL = [
   './', './index.html', './manifest.webmanifest',

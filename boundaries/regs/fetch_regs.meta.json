@@ -1,0 +1,24 @@
+{
+ "dataset": "https://data.ontario.ca/dataset/recreational-fishing-regulations-data",
+ "title": "Recreational fishing regulations data",
+ "licence": "Open Government Licence - Ontario",
+ "licence_url": "https://www.ontario.ca/page/open-government-licence-ontario",
+ "downloaded_utc": "2026-11-24T13:50:00+00:00",
+ "note": "Downloaded on Andrew's PC (cloud cannot reach data.ontario.ca); fetch_regs.py rewrites this file.",
+ "files": [
+  {
+   "name": "Recreational fishing regulations data English",
+   "file": "fishingregulationsexceptionopendata_2026-08-27.xlsx",
+   "url": "https://data.ontario.ca/dataset/74d0fda9-a83b-4191-a6b8-1b6109057f91/resource/e4892489-e6b6-466f-be12-9dc4db5e4860/download/fishingregulationsexceptionopendata_2026-08-27.xlsx",
+   "bytes": 1766076,
+   "last_modified": "2026-08-27"
+  },
+  {
+   "name": "Data Dictionary English",
+   "file": "fishing_regulation_exception_data_dictionary_-_english_-_final_-_2020-03-19.docx",
+   "url": "https://data.ontario.ca/dataset/74d0fda9-a83b-4191-a6b8-1b6109057f91/resource/c0f82bd6-4f81-4d54-9064-6a56a24b9593/download/fishing_regulation_exception_data_dictionary_-_english_-_final_-_2020-03-19.docx",
+   "bytes": 79972,
+   "last_modified": "2020-06-08"
+  }
+ ]
+}

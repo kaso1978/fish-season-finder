@@ -1,0 +1,3410 @@
+{
+ "meta": {
+  "source": "Recreational fishing regulations data (Ontario Ministry of Natural Resources), Open Government Licence - Ontario",
+  "dataset": "https://data.ontario.ca/dataset/recreational-fishing-regulations-data",
+  "file": "fishingregulationsexceptionopendata_2026-08-27.xlsx"
+ },
+ "places": {
+  "X16-BELLS": {
+   "ogfId": "125208639",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Bells Lake (44°19'17\"N., 80°44'10\"W.) - Glenelg Township",
+   "points": [
+    [
+     44.3209701,
+     -80.7360927,
+     "Bells Lake"
+    ]
+   ],
+   "score": 0.74,
+   "distM": 32,
+   "useOfficialPoint": false
+  },
+  "X16-BIGCREEK-LOWER": {
+   "ogfId": "125208640",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Big Creek - Walsingham Twp., downstream from Regional Road 21 to Long Point Bay of Lake Erie.",
+   "points": [
+    [
+     42.6021265,
+     -80.4521628,
+     "Big Creek"
+    ]
+   ],
+   "score": 1.0,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-NTHAMES": {
+   "ogfId": "125208641",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "North Thames River (main branch only) - Middlesex County",
+   "points": [
+    [
+     42.9815425,
+     -81.2573105,
+     "North Thames River"
+    ]
+   ],
+   "score": 1.0,
+   "distM": 14,
+   "useOfficialPoint": false
+  },
+  "X16-BLACKCREEK": {
+   "ogfId": "125208664",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Black Creek - City of Nanticoke from Hwy. 3 to the junction with the Lynn River.",
+   "points": [
+    [
+     42.7839734,
+     -80.1991449,
+     "Lynn River"
+    ],
+    [
+     42.7897666,
+     -80.1978856,
+     "Black Creek"
+    ]
+   ],
+   "score": 1.0,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-BRONTE-LOWER": {
+   "ogfId": "125208665",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Bronte Creek - Town of Oakville, from Highway 2 (Lakeshore Road West) to Lake Ontario",
+   "points": [
+    [
+     43.3932775,
+     -79.7092189,
+     "Bronte Creek"
+    ]
+   ],
+   "score": 1.0,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-CREDIT-LOWER": {
+   "ogfId": "125208666",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Credit River and tributaries - City of Mississauga from the south side of Hwy. 403 bridge downstream to Lake Ontario.",
+   "points": [
+    [
+     43.5428269,
+     -79.6577191,
+     "Sawmill Creek"
+    ],
+    [
+     43.5555905,
+     -79.6674018,
+     "Mullet Creek"
+    ],
+    [
+     43.5584744,
+     -79.6011732,
+     "Kenollie Creek"
+    ],
+    [
+     43.5566254,
+     -79.6150453,
+     "Wolfedale Creek"
+    ],
+    [
+     43.5550302,
+     -79.6037787,
+     "Stavebank Creek"
+    ],
+    [
+     43.5394063,
+     -79.6501456,
+     "Loyalist Creek"
+    ],
+    [
+     43.5476487,
+     -79.5807716,
+     "Credit River"
+    ]
+   ],
+   "score": 1.0,
+   "distM": 3,
+   "useOfficialPoint": false
+  },
+  "X16-DON-LOWER": {
+   "ogfId": "125208667",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Don River and tributaries – City of Toronto from Lake Ontario upstream to Eglinton Avenue.",
+   "points": [
+    [
+     43.7201035,
+     -79.3232399,
+     "Tyler Creek"
+    ],
+    [
+     43.703376,
+     -79.3330593,
+     "Taylor Creek"
+    ],
+    [
+     43.7032034,
+     -79.3353731,
+     "Don River East Branch"
+    ],
+    [
+     43.7032076,
+     -79.3353777,
+     "Don River West Branch"
+    ],
+    [
+     43.6787069,
+     -79.3552845,
+     "Don River"
+    ]
+   ],
+   "score": 1.0,
+   "distM": 2,
+   "useOfficialPoint": false
+  },
+  "X16-FIFTEEN": {
+   "ogfId": "125208668",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Fifteen Mile Creek - City of St. Catharines and town of Lincoln between the Queen Elizabeth Way and Lake Ontario.",
+   "points": [
+    [
+     43.171105,
+     -79.3189419,
+     "Fifteen Mile Creek"
+    ]
+   ],
+   "score": 1.0,
+   "distM": 11,
+   "useOfficialPoint": false
+  },
+  "X16-FORTY": {
+   "ogfId": "125208669",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Forty Mile Creek - Town of Grimsby between the Queen Elizabeth Way and Lake Ontario.",
+   "points": [
+    [
+     43.2033788,
+     -79.5523699,
+     "Forty Mile Creek"
+    ]
+   ],
+   "score": 1.0,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-GRINDSTONE-LOWER": {
+   "ogfId": "125208670",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Grindstone Creek - City of Burlington from Hwy. 2 (Plains Road) to Hamilton Harbour of Lake Ontario - City of Hamilton and Region of Halton.",
+   "points": [
+    [
+     43.290341,
+     -79.8831545,
+     "Grindstone Creek"
+    ]
+   ],
+   "score": 0.97,
+   "distM": 113,
+   "useOfficialPoint": false
+  },
+  "X16-HIGHLAND": {
+   "ogfId": "125208671",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Highland Creek - City of Toronto from the downstream edge of the Hwy. 2 (Kingston Road) bridge to Lake Ontario.",
+   "points": [
+    [
+     43.7666902,
+     -79.1445872,
+     "Highland Creek"
+    ]
+   ],
+   "score": 1.0,
+   "distM": 15,
+   "useOfficialPoint": false
+  },
+  "X16-HUMBER-LOWER": {
+   "ogfId": "125208672",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Humber River - City of Toronto between Eglinton Ave. and Lake Ontario.",
+   "points": [
+    [
+     43.6312644,
+     -79.4706744,
+     "Humber River"
+    ]
+   ],
+   "score": 0.98,
+   "distM": 8,
+   "useOfficialPoint": false
+  },
+  "X16-NOTTAWASAGA-LOWER": {
+   "ogfId": "125208673",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Nottawasaga River - from the Boyne River downstream (north) to Georgian Bay.",
+   "points": [
+    [
+     44.5366969,
+     -80.0081322,
+     "Nottawasaga River"
+    ]
+   ],
+   "score": 1.0,
+   "distM": 5203,
+   "useOfficialPoint": false
+  },
+  "X16-ROUGE-LOWER": {
+   "ogfId": "125208674",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Rouge River - City of Toronto, between Highway 2 (Kingston Road) and Lake Ontario",
+   "points": [
+    [
+     43.7947288,
+     -79.1151707,
+     "Rouge River"
+    ]
+   ],
+   "score": 1.0,
+   "distM": 18,
+   "useOfficialPoint": false
+  },
+  "X16-SIXTEEN-OAK-LOWER": {
+   "ogfId": "125208675",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Sixteen Mile Creek (Oakville Creek) - Town of Oakville, from Highway 2 (Lakeshore Road) to Lake Ontario",
+   "points": [
+    [
+     43.4394384,
+     -79.6657846,
+     "Sixteen Mile Creek"
+    ]
+   ],
+   "score": 1.0,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-SIXTEEN-LINCOLN": {
+   "ogfId": "125208676",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Sixteen Mile Creek - Town of Lincoln between the Queen Elizabeth Way and Lake Ontario.",
+   "points": [
+    [
+     43.1594199,
+     -79.3339106,
+     "Sixteen Mile Creek"
+    ]
+   ],
+   "score": 1.0,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-SPENCER": {
+   "ogfId": "125208677",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Spencer Creek - City of Hamilton from Hwy. 102 (Cootes Dr.) to Lake Ontario.",
+   "points": [
+    [
+     43.2670796,
+     -79.9293329,
+     "Spencer Creek"
+    ]
+   ],
+   "score": 0.98,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-THAMES-MAIN": {
+   "ogfId": "125208678",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Thames River (main branch only) - Elgin County and Middlesex County and the Municipality of Chatham-Kent.",
+   "points": [
+    [
+     42.3190946,
+     -82.4542614,
+     "Thames River"
+    ]
+   ],
+   "score": 0.83,
+   "distM": 4,
+   "useOfficialPoint": false
+  },
+  "X16-WATERFORD": {
+   "ogfId": "125208679",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Trout Pond of Waterford Ponds - City of Nanticoke.",
+   "points": [
+    [
+     42.931199,
+     -80.3153958,
+     "Waterford Ponds"
+    ]
+   ],
+   "score": 1.0,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-TWELVE": {
+   "ogfId": "125208680",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Twelve Mile Creek (Zone 20) - City of St. Catherines between Lakeport Road and Lake Ontario.",
+   "points": [
+    [
+     43.1786936,
+     -79.2724744,
+     "Twelve Mile Creek"
+    ]
+   ],
+   "score": 0.99,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-TWENTY": {
+   "ogfId": "125208681",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Twenty Mile Creek - Town of Lincoln between the Queen Elizabeth Way and Lake Ontario.",
+   "points": [
+    [
+     43.1577535,
+     -79.3718139,
+     "Twenty Mile Creek"
+    ]
+   ],
+   "score": 1.0,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-YOUNGS-LOWER": {
+   "ogfId": "125208682",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Young's Creek (Ryerse Creek) - Woodhouse Twp., from the downstream side of the Front Road bridge to Lake Erie at Port Ryerse.",
+   "points": [
+    [
+     42.753969,
+     -80.2563465,
+     "Young's Creek"
+    ]
+   ],
+   "score": 1.0,
+   "distM": 9,
+   "useOfficialPoint": false
+  },
+  "X16-BAYFIELD-EXT": {
+   "ogfId": "125208642",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Bayfield River - Goderich and Stanley Twps. from Hwy. 4 to the downstream side of the Hwy. 21 bridge (Huron County).",
+   "points": [
+    [
+     43.5696829,
+     -81.7096016,
+     "Bayfield River"
+    ]
+   ],
+   "score": 0.98,
+   "distM": 866,
+   "useOfficialPoint": false
+  },
+  "X16-BEAVER-THORNBURY": {
+   "ogfId": "125208643",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Beaver River - Collingwood Twp. from the Thornbury Dam to Georgian Bay (Grey County).",
+   "points": [
+    [
+     44.5649903,
+     -80.447795,
+     "Beaver River"
+    ]
+   ],
+   "score": 1.0,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-BIGCREEK-MID": {
+   "ogfId": "125208644",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Big Creek - Walsingham Twp., south of the Quance Dam to Regional Road 21 at Lynedoch.",
+   "points": [
+    [
+     42.6021265,
+     -80.4521628,
+     "Big Creek"
+    ]
+   ],
+   "score": 1.0,
+   "distM": 22689,
+   "useOfficialPoint": false
+  },
+  "X16-BIGOTTER": {
+   "ogfId": "125208645",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Big Otter Creek - Bayham Twp. (Elgin County).",
+   "points": [
+    [
+     42.6397086,
+     -80.8075138,
+     "Big Otter Creek"
+    ]
+   ],
+   "score": 1.0,
+   "distM": 4,
+   "useOfficialPoint": false
+  },
+  "X16-BIGHEAD": {
+   "ogfId": "125208646",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Bighead River - St. Vincent Twp. (Grey County).",
+   "points": [
+    [
+     44.6076561,
+     -80.5891009,
+     "Bighead River"
+    ]
+   ],
+   "score": 1.0,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-BRONTE-MID": {
+   "ogfId": "125208647",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Bronte Creek - Town of Oakville from Highway 2 (Lakeshore Road West) upstream to the south side of Highway 407",
+   "points": [
+    [
+     43.3932775,
+     -79.7092189,
+     "Bronte Creek"
+    ]
+   ],
+   "score": 1.0,
+   "distM": 398,
+   "useOfficialPoint": false
+  },
+  "X16-CREDIT-MID": {
+   "ogfId": "125208648",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Credit River and tributaries - from the south side of Britannia Road in the City of Mississauga upstream to the south side of the Hwy. 407 Bridge in the City of Brampton.",
+   "points": [
+    [
+     43.6175262,
+     -79.7335651,
+     "Levi's Creek"
+    ],
+    [
+     43.60978,
+     -79.7179667,
+     "Fletchers Creek"
+    ],
+    [
+     43.5476487,
+     -79.5807716,
+     "Credit River"
+    ]
+   ],
+   "score": 1.0,
+   "distM": 12068,
+   "useOfficialPoint": false
+  },
+  "X16-DON-UPPER": {
+   "ogfId": "125208649",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Don River and tributaries - upstream from Eglinton Ave. in the City of Toronto to the south side of Hwy. 407 in the Regional Municipality of York.",
+   "points": [
+    [
+     43.7777213,
+     -79.3704248,
+     "Newtonbrook Creek"
+    ],
+    [
+     43.7967885,
+     -79.3821332,
+     "German Mills Creek"
+    ],
+    [
+     43.6787069,
+     -79.3552845,
+     "Don River"
+    ],
+    [
+     43.7651154,
+     -79.3582265,
+     "Deerlick Creek"
+    ]
+   ],
+   "score": 0.99,
+   "distM": 655,
+   "useOfficialPoint": false
+  },
+  "X16-GRAND-EXT": {
+   "ogfId": "125208650",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Grand River - from a line across the Grand River in Paris at 100 m downstream of the Highway 2 (Dundas Street West) bridge to the edge of Lake Erie",
+   "points": [
+    [
+     42.8551723,
+     -79.5778563,
+     "Grand River"
+    ]
+   ],
+   "score": 0.82,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-HOG": {
+   "ogfId": "125208651",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Hog Creek - Tay Twp. from the C.P.R. bridge (Lot 10, Conc. 6) downstream (north) to Georgian Bay (Simcoe County).",
+   "points": [
+    [
+     44.7427513,
+     -79.7849302,
+     "Hogg Creek"
+    ]
+   ],
+   "score": 0.97,
+   "distM": 25,
+   "useOfficialPoint": false
+  },
+  "X16-HUMBER-UPPER": {
+   "ogfId": "125208652",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Humber River and tributaries - upstream from Eglinton Ave. in the City of Toronto to the south side of the Hwy. 407 bridge in the Regional Municipality of York.",
+   "points": [
+    [
+     43.6735902,
+     -79.512388,
+     "Silver Creek"
+    ],
+    [
+     43.750353,
+     -79.578191,
+     "Rowntree Creek"
+    ],
+    [
+     43.7423594,
+     -79.5805042,
+     "Masseygrove Creek"
+    ],
+    [
+     43.6312644,
+     -79.4706744,
+     "Humber River"
+    ],
+    [
+     43.7054933,
+     -79.496325,
+     "Maple Leaf Creek"
+    ],
+    [
+     43.6905223,
+     -79.512979,
+     "Humber Creek"
+    ],
+    [
+     43.7405268,
+     -79.5461068,
+     "Emery Creek"
+    ],
+    [
+     43.74673,
+     -79.542,
+     "Cook Creek"
+    ],
+    [
+     43.7186259,
+     -79.5436727,
+     "Berry Creek"
+    ],
+    [
+     43.6691308,
+     -79.5114818,
+     "Black Creek"
+    ],
+    [
+     43.7328781,
+     -79.5489172,
+     "West Humber River"
+    ]
+   ],
+   "score": 0.99,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-LITTLEOTTER": {
+   "ogfId": "125208653",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Little Otter Creek - East branch of Big Otter Creek in Bayham Twp.",
+   "points": [
+    [
+     42.7393419,
+     -80.8396651,
+     "Little Otter Creek"
+    ]
+   ],
+   "score": 0.74,
+   "distM": 6,
+   "useOfficialPoint": false
+  },
+  "X16-LSAUBLE-EXT": {
+   "ogfId": "125208654",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Little Sauble River - Bruce Twp. from Hwy. 21 to Lake Huron (Bruce County).",
+   "points": [
+    [
+     44.2906674,
+     -81.5917856,
+     "Little Sauble River"
+    ]
+   ],
+   "score": 1.0,
+   "distM": 2,
+   "useOfficialPoint": false
+  },
+  "X16-MAITLAND-EXT": {
+   "ogfId": "125208655",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Maitland River - Colborne, Goderich, Hullett, East and West Wawanosh, Turnberry twps. between County Road 4 and the downstream side of the Hwy. 21 bridge (Huron County).",
+   "points": [
+    [
+     43.7879452,
+     -81.4601422,
+     "Maitland River"
+    ]
+   ],
+   "score": 0.97,
+   "distM": 6509,
+   "useOfficialPoint": false
+  },
+  "X16-NINEMILE-EXT": {
+   "ogfId": "125208656",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Nine Mile (Lucknow) River - Ashfield and West Wawanosh Twps. between County Road 86 and Lake Huron.",
+   "points": [
+    [
+     43.87879,
+     -81.72344,
+     "Nine Mile River"
+    ]
+   ],
+   "score": 0.94,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-NORTHCREEK-MID": {
+   "ogfId": "125208657",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "North Creek - Middleton Twp. downstream of Hwy 3.",
+   "points": [
+    [
+     42.8499142,
+     -80.5087181,
+     "North Creek"
+    ]
+   ],
+   "score": 0.96,
+   "distM": 14,
+   "useOfficialPoint": false
+  },
+  "X16-ROUGE-UPPER": {
+   "ogfId": "125208658",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Rouge River - from Highway 2 (Kingston Road) in the City of Toronto upstream to the south side of Highway 407 in the Town of Markham",
+   "points": [
+    [
+     43.7947288,
+     -79.1151707,
+     "Rouge River"
+    ]
+   ],
+   "score": 1.0,
+   "distM": 2010,
+   "useOfficialPoint": false
+  },
+  "X16-SAUBLE-FALLS": {
+   "ogfId": "125208659",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Sauble River - Amabel Twp. from the lowest ledge of Sauble Falls 440 m (1443 ft.) downstream to a line drawn perpendicular to the rivers current.",
+   "points": [
+    [
+     44.6615852,
+     -81.2789414,
+     "Sauble River"
+    ],
+    [
+     44.67652,
+     -81.25623,
+     "Sauble Falls"
+    ]
+   ],
+   "score": 0.97,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-SAUGEEN-EXT": {
+   "ogfId": "125208660",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Saugeen River - Arran, Amabel, Brant, Carrick, Elderslie and Saugeen Townships and in the Town of Walkerton and the Village of Paisley, between the southerly edge of the Municipality of Brockton Concession 2 SDR. bridge and the westerly edge of the concre",
+   "points": [
+    [
+     44.501018,
+     -81.3736663,
+     "Saugeen River"
+    ]
+   ],
+   "score": 0.93,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-SIXTEEN-OAK-UPPER": {
+   "ogfId": "125208661",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Sixteen Mile Creek (Oakville Creek) and tributaries - Town of Oakville from Highway 2 (Lakeshore Road) upstream to the south side of Highway 407",
+   "points": [
+    [
+     43.4394384,
+     -79.6657846,
+     "Sixteen Mile Creek"
+    ],
+    [
+     43.4514853,
+     -79.6995509,
+     "Munn's Creek"
+    ],
+    [
+     43.4578114,
+     -79.7224203,
+     "Shannon's Creek"
+    ],
+    [
+     43.4567625,
+     -79.7235772,
+     "Osenego Creek"
+    ]
+   ],
+   "score": 1.0,
+   "distM": 588,
+   "useOfficialPoint": false
+  },
+  "X16-STURGEON-EXT": {
+   "ogfId": "125208662",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Sturgeon River and tributaries - Tay and OroMedonte Twps. (Simcoe County) - including the mouth of the Sturgeon River at Georgian Bay.",
+   "points": [
+    [
+     44.7366623,
+     -79.7381004,
+     "Sturgeon River"
+    ],
+    [
+     45.2701303,
+     -80.8349139,
+     "Georgian Bay"
+    ]
+   ],
+   "score": 0.98,
+   "distM": 115,
+   "useOfficialPoint": false
+  },
+  "X16-YOUNGS-MID": {
+   "ogfId": "125208663",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Young’s Creek - from the dam on Lot 23, Conc. III to the downstream side of the Front Road bridge.",
+   "points": [
+    [
+     42.753969,
+     -80.2563465,
+     "Young's Creek"
+    ]
+   ],
+   "score": 0.95,
+   "distM": 347,
+   "useOfficialPoint": false
+  },
+  "X16-CHENAIL": {
+   "ogfId": "125208636",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Chenail Ecarte - from the mouth of the Chenail Ecarte at Lake St. Clair to the mouth of the Sydenham River.",
+   "points": [
+    [
+     42.3999372,
+     -82.6214458,
+     "Lake St. Clair"
+    ],
+    [
+     42.5605695,
+     -82.4116259,
+     "Sydenham River"
+    ],
+    [
+     42.4851344,
+     -82.4468632,
+     "Chenail Ecarté (The Snye)"
+    ]
+   ],
+   "score": 1.0,
+   "distM": 1892,
+   "useOfficialPoint": false
+  },
+  "X16-SYDENHAM-DRESDEN": {
+   "ogfId": "125208637",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Sydenham River - from the mouth of the Sydenham River at the Chenail Ecarte to the downstream side of the St. George Street Bridge in the Town of Dresden.",
+   "points": [
+    [
+     42.5605695,
+     -82.4116259,
+     "Sydenham River"
+    ]
+   ],
+   "score": 1.0,
+   "distM": 3803,
+   "useOfficialPoint": false
+  },
+  "X16-THAMES-CHATHAM": {
+   "ogfId": "125208638",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Thames River - from the mouth of the Thames River at Lake St. Clair to the downstream side of the Keil Street Bridge in the Municipality of Chatham.",
+   "points": [
+    [
+     42.3190946,
+     -82.4542614,
+     "Thames River"
+    ]
+   ],
+   "score": 1.0,
+   "distM": 4,
+   "useOfficialPoint": false
+  },
+  "X16-BAYFIELD-21": {
+   "ogfId": "107036022",
+   "sheet": "Fish Sanctuaries",
+   "description": "Bayfield River on upstream side of Hwy. 21 bridge in Huron County.",
+   "points": [
+    [
+     43.5695914,
+     -81.6971139999999,
+     ""
+    ]
+   ],
+   "score": 1.0,
+   "distM": 17,
+   "useOfficialPoint": false
+  },
+  "X16-BAYFIELD-TRIBS": {
+   "ogfId": "107036023",
+   "sheet": "Fish Sanctuaries",
+   "description": "Bayfield River Tributaries - Huron County.",
+   "points": [
+    [
+     43.5725303199999,
+     -81.57420218,
+     ""
+    ]
+   ],
+   "score": 1.0,
+   "distM": 692,
+   "useOfficialPoint": false
+  },
+  "X16-BIGCREEK-QUANCE": {
+   "ogfId": "107036026",
+   "sheet": "Fish Sanctuaries",
+   "description": "Big Creek - Walsingham Twp., south of the Quance Dam to Regional Road 21 at Lynedoch.",
+   "points": [
+    [
+     42.8542203,
+     -80.5023757999999,
+     ""
+    ]
+   ],
+   "score": 1.0,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-BIGCREEK-TEETER": {
+   "ogfId": "107036027",
+   "sheet": "Fish Sanctuaries",
+   "description": "Big Creek in the Twp. of Walsingham lying southerly of the dam in the Hamlet of Teeterville to the Quance Dam in the Town of Delhi.",
+   "points": [
+    [
+     42.941074,
+     -80.4509592,
+     ""
+    ]
+   ],
+   "score": 0.89,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-BRUCEGREY": {
+   "ogfId": "125209544",
+   "sheet": "Waterbody Exceptions",
+   "description": "Bruce and Grey Counties (inland rivers/streams only) excluding those waters identified for this area in the Zone 16 additional fishing opportunities.",
+   "points": [
+    [
+     42.8551723,
+     -79.5778563,
+     "Grand River"
+    ],
+    [
+     44.1109138,
+     -81.0197655,
+     "Carrick Creek"
+    ],
+    [
+     43.993957,
+     -80.8173469,
+     "Fairbanks Creek"
+    ],
+    [
+     44.3836949,
+     -80.8206974,
+     "Hamilton Creek"
+    ],
+    [
+     44.1472692,
+     -81.0420495,
+     "South Saugeen River"
+    ],
+    [
+     44.1222713,
+     -80.9526784,
+     "Beatty Saugeen River"
+    ],
+    [
+     44.7680992,
+     -81.0954738,
+     "Gleason Brook"
+    ],
+    [
+     44.6773767,
+     -81.250565,
+     "Rankin River"
+    ],
+    [
+     44.5360592,
+     -80.481585,
+     "Grier Creek"
+    ],
+    [
+     43.978429,
+     -81.2324344,
+     "Belmore Creek"
+    ],
+    [
+     44.132242,
+     -81.2418075,
+     "Allens Creek"
+    ],
+    [
+     44.1506754,
+     -81.0422871,
+     "Marl Creek"
+    ],
+    [
+     44.2478229,
+     -81.6076774,
+     "Lorne Creek"
+    ],
+    [
+     44.4389321,
+     -81.3607139,
+     "Mill Creek"
+    ],
+    [
+     44.2906674,
+     -81.5917856,
+     "Little Sauble River"
+    ],
+    [
+     44.2723781,
+     -81.6044486,
+     "Tiverton Creek"
+    ],
+    [
+     44.3013575,
+     -80.4812597,
+     "Little Beaver River"
+    ],
+    [
+     44.4116933,
+     -81.0988882,
+     "Grimston Creek"
+    ],
+    [
+     44.63554,
+     -81.17565,
+     "Spring Creek"
+    ],
+    [
+     44.5963423,
+     -81.159557,
+     "Park Head Creek"
+    ],
+    [
+     44.7124923,
+     -80.7756461,
+     "Johnson Creek"
+    ],
+    [
+     44.5139391,
+     -81.1734783,
+     "Arkwright Creek"
+    ],
+    [
+     44.2862565,
+     -80.5444582,
+     "Boyne River"
+    ],
+    [
+     44.4725348,
+     -81.1671762,
+     "Tara Creek"
+    ],
+    [
+     44.0627373,
+     -80.7901199,
+     "Norman Reeves Creek"
+    ],
+    [
+     44.1342736,
+     -81.1541598,
+     "Silver Creek"
+    ],
+    [
+     44.1027051,
+     -81.1382181,
+     "Otter Creek"
+    ],
+    [
+     44.2537041,
+     -81.1777053,
+     "Pearl Creek"
+    ],
+    [
+     44.7807106,
+     -81.1240602,
+     "Colpoy's Creek"
+    ],
+    [
+     44.3398293,
+     -80.4914177,
+     "Black's Creek"
+    ],
+    [
+     44.643657,
+     -81.0970996,
+     "Hepworth Creek"
+    ],
+    [
+     44.501018,
+     -81.3736663,
+     "Saugeen River"
+    ],
+    [
+     44.6035058,
+     -81.0859814,
+     "Cashore Creek"
+    ],
+    [
+     44.7003695,
+     -80.7983574,
+     "Waterton Creek"
+    ],
+    [
+     44.60183,
+     -81.08235,
+     "Davidson Creek"
+    ],
+    [
+     44.5023729,
+     -80.1918275,
+     "Pretty River"
+    ],
+    [
+     44.140954,
+     -81.0731111,
+     "Ruhl Creek"
+    ],
+    [
+     44.9612079,
+     -81.2140149,
+     "Judges Creek"
+    ],
+    [
+     44.4837293,
+     -80.4994415,
+     "Mill Creek"
+    ],
+    [
+     44.507023,
+     -80.2317573,
+     "Black Ash Creek"
+    ],
+    [
+     44.740841,
+     -81.2141495,
+     "Clavering Creek"
+    ],
+    [
+     44.1659348,
+     -81.0096911,
+     "Habermehl Creek"
+    ],
+    [
+     44.2636267,
+     -81.2098688,
+     "Deer Creek"
+    ],
+    [
+     44.4614266,
+     -81.1158538,
+     "Keady Creek"
+    ],
+    [
+     44.1400341,
+     -81.3169751,
+     "Schmidt Creek"
+    ],
+    [
+     44.2774767,
+     -80.2605682,
+     "Priddle Creek"
+    ],
+    [
+     44.0658794,
+     -81.3330677,
+     "Formosa Creek"
+    ],
+    [
+     44.0809014,
+     -81.3326754,
+     "Kinlough Creek"
+    ],
+    [
+     44.1931972,
+     -80.7443253,
+     "Bell Creek"
+    ],
+    [
+     44.7929558,
+     -80.9478074,
+     "Big Bay Creek"
+    ],
+    [
+     44.4161786,
+     -81.3522779,
+     "Burgoyne Creek"
+    ],
+    [
+     44.5490733,
+     -81.3266074,
+     "Stoney Creek"
+    ],
+    [
+     44.6334007,
+     -80.8725522,
+     "Keefer Creek"
+    ],
+    [
+     44.5756891,
+     -80.888574,
+     "Telfer Creek"
+    ],
+    [
+     44.2054386,
+     -80.8859688,
+     "Rocky Saugeen River"
+    ],
+    [
+     44.6172176,
+     -80.9452923,
+     "Indian Creek"
+    ],
+    [
+     45.0395083,
+     -81.3353976,
+     "Chin Creek"
+    ],
+    [
+     44.1702725,
+     -81.6361126,
+     "North Penetangore River"
+    ],
+    [
+     44.6615852,
+     -81.2789414,
+     "Sauble River"
+    ],
+    [
+     44.0850831,
+     -81.3311625,
+     "Greenock Creek"
+    ],
+    [
+     44.4467248,
+     -80.884825,
+     "Congers Creek"
+    ],
+    [
+     44.278621,
+     -80.8995669,
+     "Mountain Creek"
+    ],
+    [
+     44.8298069,
+     -81.319269,
+     "Sucker Creek"
+    ],
+    [
+     44.5085982,
+     -80.8707315,
+     "North Spey River"
+    ],
+    [
+     44.5781727,
+     -80.9449985,
+     "Pottawatomi River"
+    ],
+    [
+     44.5593967,
+     -80.9780686,
+     "Maxwell Creek"
+    ],
+    [
+     44.5489912,
+     -80.4226492,
+     "Indian Brook"
+    ],
+    [
+     44.3661417,
+     -80.9164722,
+     "Negro Creek"
+    ],
+    [
+     44.2536192,
+     -81.6045886,
+     "Andrews Creek"
+    ],
+    [
+     44.3718174,
+     -81.3590896,
+     "Little Mill Creek"
+    ],
+    [
+     44.1188635,
+     -81.0215929,
+     "Meux Creek"
+    ],
+    [
+     44.1701964,
+     -80.9386183,
+     "Camp Creek"
+    ],
+    [
+     44.9681589,
+     -81.3660613,
+     "Black Creek"
+    ],
+    [
+     44.1759768,
+     -81.6018126,
+     "Kincardine Creek"
+    ],
+    [
+     44.5693111,
+     -80.4580378,
+     "Little Beaver Creek"
+    ],
+    [
+     44.8178263,
+     -81.2378966,
+     "Albemarle Brook"
+    ],
+    [
+     44.2872971,
+     -81.244094,
+     "Vesta Creek"
+    ],
+    [
+     44.1768758,
+     -81.6383068,
+     "Penetangore River"
+    ],
+    [
+     44.470269,
+     -80.8921129,
+     "Spey River"
+    ],
+    [
+     44.6539007,
+     -80.9593794,
+     "Mud Creek"
+    ],
+    [
+     43.9932239,
+     -81.3436219,
+     "Alps Creek"
+    ],
+    [
+     44.3176919,
+     -81.2722725,
+     "Willow Creek"
+    ],
+    [
+     44.2576417,
+     -80.8351506,
+     "McKechnie Creek"
+    ],
+    [
+     44.3067827,
+     -81.2726803,
+     "Teeswater River"
+    ],
+    [
+     44.6259271,
+     -80.8774716,
+     "Bothwell's Creek"
+    ],
+    [
+     44.1261023,
+     -80.9306013,
+     "Aljoe Creek"
+    ],
+    [
+     44.2219084,
+     -81.2681275,
+     "Plum Creek"
+    ],
+    [
+     44.0000087,
+     -81.2775086,
+     "Muskrat Creek"
+    ],
+    [
+     43.9976137,
+     -80.948015,
+     "Raccoon Creek"
+    ],
+    [
+     44.180266,
+     -80.949376,
+     "Styx River"
+    ],
+    [
+     44.2424384,
+     -80.9607079,
+     "Louise Creek"
+    ],
+    [
+     44.5791365,
+     -80.9404356,
+     "Sydenham River"
+    ],
+    [
+     44.9657,
+     -81.35399,
+     "Old Woman's River"
+    ],
+    [
+     44.3177501,
+     -81.2683865,
+     "North Saugeen River"
+    ],
+    [
+     44.4162681,
+     -80.6354734,
+     "Johnston's Creek"
+    ],
+    [
+     45.027016,
+     -81.4542285,
+     "Spring Creek"
+    ],
+    [
+     44.5300702,
+     -80.7445587,
+     "Walters Creek"
+    ],
+    [
+     44.623998,
+     -80.6108578,
+     "Centreville Creek"
+    ],
+    [
+     44.6076561,
+     -80.5891009,
+     "Bighead River"
+    ],
+    [
+     44.5998161,
+     -80.5562418,
+     "Workman's Creek"
+    ],
+    [
+     44.2786887,
+     -80.5461872,
+     "Flesherton Creek"
+    ],
+    [
+     44.7200232,
+     -80.7282807,
+     "Sucker Creek"
+    ],
+    [
+     45.12487,
+     -81.54333,
+     "Crane River"
+    ],
+    [
+     44.2672737,
+     -80.7559347,
+     "Black's Creek"
+    ],
+    [
+     45.0660998,
+     -81.4833472,
+     "Sadler Creek"
+    ],
+    [
+     44.3448394,
+     -81.5508578,
+     "Underwood Creek"
+    ],
+    [
+     44.0776303,
+     -81.7539208,
+     "Clark Creek"
+    ],
+    [
+     44.5741254,
+     -80.6141095,
+     "East Minniehill Creek"
+    ],
+    [
+     44.3030943,
+     -80.6655364,
+     "Barrhead Creek"
+    ],
+    [
+     44.6071936,
+     -80.5811751,
+     "Meaford Creek"
+    ],
+    [
+     44.269592,
+     -80.7453321,
+     "Traverston Creek"
+    ],
+    [
+     44.3533309,
+     -80.5411068,
+     "Wodehouse Creek"
+    ],
+    [
+     44.3818145,
+     -80.5488022,
+     "Bill's Creek"
+    ],
+    [
+     44.0980337,
+     -81.7028816,
+     "South Pine River"
+    ],
+    [
+     44.4086736,
+     -79.8992185,
+     "Mad River"
+    ],
+    [
+     44.5344666,
+     -80.722727,
+     "Rocklyn Creek"
+    ],
+    [
+     45.181153,
+     -81.5779616,
+     "Sideroad Creek"
+    ],
+    [
+     44.4213131,
+     -81.3382635,
+     "Snake Creek"
+    ],
+    [
+     44.0213098,
+     -81.7266308,
+     "Boyd Creek"
+    ],
+    [
+     44.5675562,
+     -80.6515426,
+     "Minniehill Creek"
+    ],
+    [
+     44.4087463,
+     -80.743054,
+     "Middleton Creek"
+    ],
+    [
+     44.1000552,
+     -81.6962958,
+     "Royal Oak Creek"
+    ],
+    [
+     45.1560333,
+     -81.575303,
+     "Willow Creek"
+    ],
+    [
+     43.9565982,
+     -81.5170484,
+     "Dickies Creek"
+    ]
+   ],
+   "score": 0.97,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-CREDIT-CALEDON": {
+   "ogfId": "125209549",
+   "sheet": "Waterbody Exceptions",
+   "description": "Credit River and tributaries - upstream of Old Baseline Road, Town of Caledon, Regional Municipality of Peel.",
+   "points": [
+    [
+     43.8598499,
+     -80.0559513,
+     "Credit River Alton Branch"
+    ],
+    [
+     43.5476487,
+     -79.5807716,
+     "Credit River"
+    ],
+    [
+     43.7976514,
+     -79.9293186,
+     "Little Credit River"
+    ],
+    [
+     43.844049,
+     -80.0259204,
+     "Caledon Creek"
+    ],
+    [
+     43.8107306,
+     -79.9404356,
+     "Black Creek"
+    ],
+    [
+     43.802884,
+     -79.99484,
+     "Credit River (Erin Branch)"
+    ]
+   ],
+   "score": 0.69,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-CREDIT-STREETSVILLE": {
+   "ogfId": "107036034",
+   "sheet": "Fish Sanctuaries",
+   "description": "Credit River and tributaries - from the south side of the Britannia Road bridge in the village of Streetsville, upstream to the south side of the Old Baseline Road bridge, town of Caledon, Regional Municipalities of Peel and Halton, excluding Levi's Creek (43°37'N., 79°44'W.) and Fletchers Creek (43°37'N., 79°43'W.).",
+   "points": [
+    [
+     43.5986984,
+     -79.7244283999999,
+     ""
+    ]
+   ],
+   "score": 0.99,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-CREDIT-403": {
+   "ogfId": "107036035",
+   "sheet": "Fish Sanctuaries",
+   "description": "Credit River and tributaries - from the south side of the Hwy. 403 bridge, City of Mississauga, upstream to the south side of the Britannia Road bridge in the village of Streetsville.",
+   "points": [
+    [
+     43.5648595999999,
+     -79.6829781,
+     ""
+    ]
+   ],
+   "score": 0.98,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-CREDIT-HWY9": {
+   "ogfId": "107036036",
+   "sheet": "Fish Sanctuaries",
+   "description": "Credit River and tributaries - from the south side of the Old Baseline Road bridge, Town of Caledon, Regional Municipality of Peel, upstream to Hwy. 9.",
+   "points": [
+    [
+     43.7901712999999,
+     -79.9303737999999,
+     ""
+    ]
+   ],
+   "score": 0.98,
+   "distM": 315,
+   "useOfficialPoint": false
+  },
+  "X16-GRAND-PARIS": {
+   "ogfId": "107036042",
+   "sheet": "Fish Sanctuaries",
+   "description": "Grand River - between the former Town of Paris (City of Brant) and Brantford from a line across the Grand River in Paris at 100 m downstream of the Highway 2 (Dundas Street West) bridge downstream to the pedestrian and service bridge that crosses the Grand River on an angle upstream (west) of the Brant Conservation Area in the City of Brantford",
+   "points": [
+    [
+     43.1493182999999,
+     -80.3220134,
+     ""
+    ]
+   ],
+   "score": 1.0,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-GRAND-BRANTFORD": {
+   "ogfId": "125209554",
+   "sheet": "Waterbody Exceptions",
+   "description": "Grand River - from the pedestrian and service bridge that crosses the Grand River on an angle upstream (west) of the Brant Conservation Area in the City of Brantford to the edge of Lake Erie.",
+   "points": [
+    [
+     42.8551723,
+     -79.5778563,
+     "Grand River"
+    ]
+   ],
+   "score": 1.0,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-GRAND-PENMAN": {
+   "ogfId": "107036041",
+   "sheet": "Fish Sanctuaries",
+   "description": "Grand River - from the Penman Dam downstream to the William Street Bridge in the former town of Paris (City of Brant County).",
+   "points": [
+    [
+     43.1955723,
+     -80.383273,
+     ""
+    ]
+   ],
+   "score": 0.97,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-GRAND-CALEDONIA": {
+   "ogfId": "125209556",
+   "sheet": "Waterbody Exceptions",
+   "description": "Grand River - from the water’s edge of Lake Erie upstream to the dam in the Town of Caledonia - Haldimand County.",
+   "points": [
+    [
+     42.8551723,
+     -79.5778563,
+     "Grand River"
+    ]
+   ],
+   "score": 0.84,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-GRAND-ONONDAGA": {
+   "ogfId": "125209557",
+   "sheet": "Waterbody Exceptions",
+   "description": "Grand River and its tributaries - downstream of the Onondaga and Tuscarora Twps. line to Lake Erie.",
+   "points": [
+    [
+     42.97431,
+     -79.8810399,
+     "Rogers Creek"
+    ],
+    [
+     42.89158,
+     -79.5757754,
+     "Maple Creek"
+    ],
+    [
+     42.8766514,
+     -79.5638099,
+     "Broad Creek"
+    ],
+    [
+     43.019282,
+     -79.8933232,
+     "McKenzie Creek"
+    ],
+    [
+     42.8551723,
+     -79.5778563,
+     "Grand River"
+    ],
+    [
+     42.9368236,
+     -79.8494281,
+     "Pike Creek"
+    ],
+    [
+     42.9177408,
+     -79.8327078,
+     "Holmes Creek"
+    ],
+    [
+     42.9200657,
+     -79.8599755,
+     "Sulphur Creek"
+    ]
+   ],
+   "score": 0.97,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-HUMBER-TROUT": {
+   "ogfId": "125209561",
+   "sheet": "Waterbody Exceptions",
+   "description": "Humber River and tributaries - upstream from Eglinton Ave.",
+   "points": [
+    [
+     43.8869461,
+     -79.7164983,
+     "Cold Creek"
+    ],
+    [
+     43.9531299,
+     -79.8382674,
+     "Palgrave Pond (Unofficial Name)"
+    ],
+    [
+     43.7882415,
+     -79.5898225,
+     "East Humber River"
+    ],
+    [
+     43.9063748,
+     -79.8340964,
+     "Centreville Creek"
+    ],
+    [
+     43.750353,
+     -79.578191,
+     "Rowntree Creek"
+    ],
+    [
+     43.7186259,
+     -79.5436727,
+     "Berry Creek"
+    ],
+    [
+     43.6905223,
+     -79.512979,
+     "Humber Creek"
+    ],
+    [
+     43.6735902,
+     -79.512388,
+     "Silver Creek"
+    ],
+    [
+     43.6312644,
+     -79.4706744,
+     "Humber River"
+    ],
+    [
+     43.7405268,
+     -79.5461068,
+     "Emery Creek"
+    ],
+    [
+     43.6691308,
+     -79.5114818,
+     "Black Creek"
+    ],
+    [
+     43.7328781,
+     -79.5489172,
+     "West Humber River"
+    ]
+   ],
+   "score": 0.94,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-HUMBER-407": {
+   "ogfId": "107036046",
+   "sheet": "Fish Sanctuaries",
+   "description": "Humber River and tributaries - upstream of Hwy. 407, Regional Municipalities of York and Peel and Counties of Dufferin and Simcoe.",
+   "points": [
+    [
+     43.7773383999999,
+     -79.5847954999999,
+     ""
+    ]
+   ],
+   "score": 0.81,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-MAITLAND-FALLS": {
+   "ogfId": "107036053",
+   "sheet": "Fish Sanctuaries",
+   "description": "Maitland River - Colborne and Goderich Twps., extending 550 m (1804 ft.) downstream from Falls Reserve Waterfall to the first natural waterfall.",
+   "points": [
+    [
+     43.71913,
+     -81.6397505999999,
+     ""
+    ]
+   ],
+   "score": 0.95,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-MAITLAND-21": {
+   "ogfId": "107036054",
+   "sheet": "Fish Sanctuaries",
+   "description": "Maitland River - Huron County, from the downstream side of the bridge on Highway 21 to the upstream side of the bridge on County Road 4",
+   "points": [
+    [
+     43.7440295999999,
+     -81.6954505,
+     ""
+    ]
+   ],
+   "score": 1.0,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-MAITLAND-TRIBS": {
+   "ogfId": "107036055",
+   "sheet": "Fish Sanctuaries",
+   "description": "Maitland River tributaries - Huron County, from the downstream side of the bridge on Highway 21 to the upstream side of the bridge on County Road 4.",
+   "points": [
+    [
+     43.7719399799999,
+     -81.53164071,
+     ""
+    ]
+   ],
+   "score": 1.0,
+   "distM": 553,
+   "useOfficialPoint": false
+  },
+  "X16-NINEMILE-FISHWAY": {
+   "ogfId": "107036061",
+   "sheet": "Fish Sanctuaries",
+   "description": "Nine Mile River - 100 m (328 ft.) above Port Albert Fishway - Ashfield Twp.",
+   "points": [
+    [
+     43.8781333,
+     -81.7150574,
+     ""
+    ]
+   ],
+   "score": 1.0,
+   "distM": 25,
+   "useOfficialPoint": false
+  },
+  "X16-NINEMILE-86": {
+   "ogfId": "125208656",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Nine Mile (Lucknow) River - Ashfield and West Wawanosh Twps. between County Road 86 and Lake Huron.",
+   "points": [
+    [
+     43.87879,
+     -81.72344,
+     "Nine Mile River"
+    ]
+   ],
+   "score": 0.94,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-NINEMILE-TRIBS": {
+   "ogfId": "107036060",
+   "sheet": "Fish Sanctuaries",
+   "description": "Nine Mile River tributaries - Huron County, Hwy. 86 downstream to Lake Huron.",
+   "points": [
+    [
+     43.91627588,
+     -81.57320674,
+     ""
+    ]
+   ],
+   "score": 1.0,
+   "distM": 12772,
+   "useOfficialPoint": true
+  },
+  "X16-NOTTAWASAGA-NICHOLSON": {
+   "ogfId": "107036064",
+   "sheet": "Fish Sanctuaries",
+   "description": "Nottawasaga River - Essa Twp., waters lying within Lot 1, Conc. V, from Hwy. 89 above Nicholson Dam downstream to near the confluence of the Boyne River.",
+   "points": [
+    [
+     44.1671094,
+     -79.8111020999999,
+     ""
+    ]
+   ],
+   "score": 0.97,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-NOTTAWASAGA-PINE": {
+   "ogfId": "125209582",
+   "sheet": "Waterbody Exceptions",
+   "description": "Nottawasaga River - from the Boyne River downstream (north) to the Pine River.",
+   "points": [
+    [
+     44.5366969,
+     -80.0081322,
+     "Nottawasaga River"
+    ]
+   ],
+   "score": 1.0,
+   "distM": 25237,
+   "useOfficialPoint": false
+  },
+  "X16-PRETTY-UPPER": {
+   "ogfId": "107035326",
+   "sheet": "Fish Sanctuaries",
+   "description": "Pretty River and tributaries – Collingwood and Osprey Twps.",
+   "points": [
+    [
+     44.4917128,
+     -80.1974811,
+     ""
+    ]
+   ],
+   "score": 0.96,
+   "distM": 7617,
+   "useOfficialPoint": false
+  },
+  "X16-PRETTY-LOWER": {
+   "ogfId": "107035326",
+   "sheet": "Fish Sanctuaries",
+   "description": "Pretty River and tributaries - Town of Collingwood and Nottawasaga Twp.",
+   "points": [
+    [
+     44.4917128,
+     -80.1974811,
+     ""
+    ]
+   ],
+   "score": 1.0,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-SAUGEEN-DENNYS": {
+   "ogfId": "107035329",
+   "sheet": "Fish Sanctuaries",
+   "description": "Saugeen River – Amabel and Saugeen Twps., Denny’s Dam to the concrete abutments downstream.",
+   "points": [
+    [
+     44.5048008999999,
+     -81.3317478999999,
+     ""
+    ]
+   ],
+   "score": 0.97,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-SAUGEEN-MAPLEHILL": {
+   "ogfId": "107035330",
+   "sheet": "Fish Sanctuaries",
+   "description": "Saugeen River - Brant Twp. in the County of Bruce, from the dam face of the Maple Hill Dam to a point 300m downstream and including the hydro-electric power channel.",
+   "points": [
+    [
+     44.1420341999999,
+     -81.0696195,
+     ""
+    ]
+   ],
+   "score": 0.95,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-SYDENHAM-CHANNELS": {
+   "ogfId": "107035336",
+   "sheet": "Fish Sanctuaries",
+   "description": "Sydenham River-Artificial Spawning Channels Nos. 1 and 2 - Derby Twp.",
+   "points": [
+    [
+     44.5311019999999,
+     -80.936766,
+     ""
+    ]
+   ],
+   "score": 0.75,
+   "distM": 2647,
+   "useOfficialPoint": true,
+   "radiusM": 300
+  },
+  "X16-SYDENHAM-MILLDAM": {
+   "ogfId": "107035335",
+   "sheet": "Fish Sanctuaries",
+   "description": "Sydenham River - City of Owen Sound, from the Mill Dam to a point 177 m (581 ft.) downstream.",
+   "points": [
+    [
+     44.5595974,
+     -80.9434406,
+     ""
+    ]
+   ],
+   "score": 0.96,
+   "distM": 205,
+   "useOfficialPoint": false
+  },
+  "X16-SYDENHAM-INGLIS": {
+   "ogfId": "107035339",
+   "sheet": "Fish Sanctuaries",
+   "description": "Sydenham River - City of Owen Sound and Derby Twp., from Inglis Falls to Mill Dam, excluding Artificial Spawning Channels Nos. 1 and 2.",
+   "points": [
+    [
+     44.5589839,
+     -80.9447037,
+     ""
+    ]
+   ],
+   "score": 0.98,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-SYDENHAM-HARRISON": {
+   "ogfId": "107035338",
+   "sheet": "Fish Sanctuaries",
+   "description": "Sydenham River and tributaries, in the City of Owen Sound and Derby Twp., from the base of Inglis Falls downstream to a line drawn due east from the north end of the bridge known locally as either Chinese or Rainbow Bridge to the permanent steel post marker affixed to the shore of the Sydenham River in Harrison Park.",
+   "points": [
+    [
+     44.5447059999999,
+     -80.9365478999999,
+     ""
+    ]
+   ],
+   "score": 0.99,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-THAMES-PITTOCK": {
+   "ogfId": "107035342",
+   "sheet": "Fish Sanctuaries",
+   "description": "Thames River - between the dam at Gordon Pittock Reservoir and the bridge at Hwy. 59.",
+   "points": [
+    [
+     43.1470395999999,
+     -80.7636607,
+     ""
+    ]
+   ],
+   "score": 1.0,
+   "distM": 314,
+   "useOfficialPoint": false
+  },
+  "X16-WHITEMANS-RULES": {
+   "ogfId": "125209602",
+   "sheet": "Waterbody Exceptions",
+   "description": "Whitemans Creek (Horner Creek) - Brantford Twp., between Robinson Road and Cleaver Sideroad.",
+   "points": [
+    [
+     43.1383319,
+     -80.3660641,
+     "Horner Creek"
+    ],
+    [
+     43.1536237,
+     -80.3524937,
+     "Whitemans Creek"
+    ]
+   ],
+   "score": 1.0,
+   "distM": 2777,
+   "useOfficialPoint": false
+  },
+  "X16-WHITEMANS-SANCT": {
+   "ogfId": "107036043",
+   "sheet": "Fish Sanctuaries",
+   "description": "Whitemans Creek (Horner Creek) and tributaries, from the East Quarter Town Line Road downstream to the edge of the Grand River.",
+   "points": [
+    [
+     43.1515896,
+     -80.3542285,
+     ""
+    ]
+   ],
+   "score": 1.0,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-COLPOYS": {
+   "ogfId": "107036033",
+   "sheet": "Fish Sanctuaries",
+   "description": "Colpoy’s Creek - Albemarle Twp., from the upper bridge on County Road 9 downstream to the mouth.",
+   "points": [
+    [
+     44.7813951999999,
+     -81.1243151,
+     ""
+    ]
+   ],
+   "score": 1.0,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-GLEASON": {
+   "ogfId": "107036040",
+   "sheet": "Fish Sanctuaries",
+   "description": "Gleason Brook - Keppel Twp., from the bridge on County Road 26 to the mouth.",
+   "points": [
+    [
+     44.7677881999999,
+     -81.0951795,
+     ""
+    ]
+   ],
+   "score": 1.0,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-BIGOTTER-TILL": {
+   "ogfId": "110462412",
+   "sheet": "Fish Sanctuaries",
+   "description": "Big Otter Creek - Town of Tillsonburg, from Black's Dam to the north side of the bridge at Oxford Street.",
+   "points": [
+    [
+     42.8619510999999,
+     -80.7139593999999,
+     ""
+    ]
+   ],
+   "score": 1.0,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-BRADLEYS": {
+   "ogfId": "107036030",
+   "sheet": "Fish Sanctuaries",
+   "description": "Bradleys Creek - Yarmouth Twp., from the Elgin County Road 35 dam to Catfish Creek.",
+   "points": [
+    [
+     42.7445669,
+     -81.0525861999999,
+     ""
+    ]
+   ],
+   "score": 1.0,
+   "distM": 9,
+   "useOfficialPoint": false
+  },
+  "X16-LAFONTAINE": {
+   "ogfId": "107035407",
+   "sheet": "Fish Sanctuaries",
+   "description": "Lafontaine Creek and its tributaries in the geographical Township of Tiny, County of Simcoe at (44°43’15.167”N, 80°01’48.461”W)",
+   "points": [
+    [
+     44.7232419999999,
+     -80.0302087999999,
+     ""
+    ]
+   ],
+   "score": 0.88,
+   "distM": 261,
+   "useOfficialPoint": false
+  },
+  "X16-NORTHCREEK-WALS": {
+   "ogfId": "107036063",
+   "sheet": "Fish Sanctuaries",
+   "description": "North Creek - Walsingham Twp., south of Hwy. 3.",
+   "points": [
+    [
+     42.8501595999999,
+     -80.5094172999999,
+     ""
+    ]
+   ],
+   "score": 1.0,
+   "useOfficialPoint": true
+  },
+  "X16-STONEY": {
+   "ogfId": "107035333",
+   "sheet": "Fish Sanctuaries",
+   "description": "Stoney Creek -  Walsingham Twp., south of Hwy. 3 to Big Creek.",
+   "points": [
+    [
+     42.8163905999999,
+     -80.5078211,
+     ""
+    ]
+   ],
+   "score": 1.0,
+   "useOfficialPoint": true
+  },
+  "X16-STURGEON-BARRIER": {
+   "ogfId": "107035334",
+   "sheet": "Fish Sanctuaries",
+   "description": "Sturgeon River and tributaries - Tay and Oro-Medonte Twps., upstream (south) from the lamprey barrier.",
+   "points": [
+    [
+     44.7245147,
+     -79.7179981,
+     ""
+    ]
+   ],
+   "score": 0.97,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-YOUNGS-SANCT": {
+   "ogfId": "107035344",
+   "sheet": "Fish Sanctuaries",
+   "description": "Young’s Creek (Ryerse Creek) - Woodhouse Twp. and the City of Nanticoke, between the dam on Lot 23, Conc. III in the former Twp. of Charlotteville and the downstream side of the bridge on the Lakeshore Road at Port Ryerse.",
+   "points": [
+    [
+     42.7570424999999,
+     -80.2608857,
+     ""
+    ]
+   ],
+   "score": 0.96,
+   "distM": 143,
+   "useOfficialPoint": false
+  },
+  "X16-BRONTE-PROGRESTON": {
+   "ogfId": "107036031",
+   "sheet": "Fish Sanctuaries",
+   "description": "Bronte Creek - City of Burlington and Flamborough Twp., from the C.P.R. track in the Village of Progreston downstream to the south side of Hwy. 407, including part of Limestone Creek upstream to Steeles Avenue in the Town of Milton.",
+   "points": [
+    [
+     43.4015229999999,
+     -79.9560081999999,
+     ""
+    ]
+   ],
+   "score": 1.0,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-FISHERS": {
+   "ogfId": "107036038",
+   "sheet": "Fish Sanctuaries",
+   "description": "Fisher’s Creek - Walsingham Twp.",
+   "points": [
+    [
+     42.7209228999999,
+     -80.2955841999999,
+     ""
+    ]
+   ],
+   "score": 1.0,
+   "useOfficialPoint": true
+  },
+  "X16-GALT": {
+   "ogfId": "107036039",
+   "sheet": "Fish Sanctuaries",
+   "description": "Galt Creek (Mill Creek) - upstream from the boundary of North Dumfries and Puslinch Twps., including Aberfoyle Creek.",
+   "points": [
+    [
+     43.3857176,
+     -80.2648408999999,
+     ""
+    ]
+   ],
+   "score": 0.98,
+   "distM": 429,
+   "useOfficialPoint": false
+  },
+  "X16-GRINDSTONE-UPPER": {
+   "ogfId": "107036044",
+   "sheet": "Fish Sanctuaries",
+   "description": "Grindstone Creek - Flamborough Twp. and City of Burlington, from Waterdown Road to Hwy. 2 (Plains Road).",
+   "points": [
+    [
+     43.2934845999999,
+     -79.8834836999999,
+     ""
+    ]
+   ],
+   "score": 1.0,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-GULLY": {
+   "ogfId": "107036045",
+   "sheet": "Fish Sanctuaries",
+   "description": "Gully Creek and tributaries - Goderich Twp.",
+   "points": [
+    [
+     43.615453,
+     -81.7108728999999,
+     ""
+    ]
+   ],
+   "score": 1.0,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-NAFTELS": {
+   "ogfId": "107036058",
+   "sheet": "Fish Sanctuaries",
+   "description": "Naftel’s Creek and tributaries - Huron County.",
+   "points": [
+    [
+     43.6712682,
+     -81.7198209,
+     ""
+    ]
+   ],
+   "score": 1.0,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-NORMANDALE": {
+   "ogfId": "107036062",
+   "sheet": "Fish Sanctuaries",
+   "description": "Normandale Creek (Potters Creek) - Walsingham Twp.",
+   "points": [
+    [
+     42.7101294,
+     -80.3139697999999,
+     ""
+    ]
+   ],
+   "score": 1.0,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-BOYNE": {
+   "ogfId": "107036029",
+   "sheet": "Fish Sanctuaries",
+   "description": "Boyne River - Tosorontio Twp., from the dam in Earl Rowe Provincial Park downstream (east) to the park boundary.",
+   "points": [
+    [
+     44.1518159999999,
+     -79.8892617,
+     ""
+    ]
+   ],
+   "score": 1.0,
+   "distM": 93,
+   "useOfficialPoint": false
+  },
+  "X16-SILVER": {
+   "ogfId": "107035332",
+   "sheet": "Fish Sanctuaries",
+   "description": "Silver Creek and tributaries - Town of Collingwood, Collingwood and Nottawasaga Twps.",
+   "points": [
+    [
+     44.5204178999999,
+     -80.2657573,
+     ""
+    ]
+   ],
+   "score": 0.97,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-BEAVER-BEAVERTON": {
+   "ogfId": "107036025",
+   "sheet": "Fish Sanctuaries",
+   "description": "Beaver River - Thorah Twp., from the CNR railway bridge in the town of Beaverton upstream to Hwy. 12/48.",
+   "points": [
+    [
+     44.4307677999999,
+     -79.156171,
+     ""
+    ]
+   ],
+   "score": 1.0,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-PEFFERLAW": {
+   "ogfId": "107035324",
+   "sheet": "Fish Sanctuaries",
+   "description": "Pefferlaw Brook in the Town of Georgina, from Hwy. 48 upstream to the dam in the village of Pefferlaw.",
+   "points": [
+    [
+     44.3175229,
+     -79.2038873,
+     ""
+    ]
+   ],
+   "score": 0.94,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-SEVERN-COOPERS": {
+   "ogfId": "107035331",
+   "sheet": "Fish Sanctuaries",
+   "description": "Severn River between Coopers Falls Road bridge, downstream to a line extending southerly across the river from the westerly limit of Lot 17, Conc. A, Morrison Twp.",
+   "points": [
+    [
+     44.7792914999999,
+     -79.2938431999999,
+     ""
+    ]
+   ],
+   "score": 0.89,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-TALBOT-16": {
+   "ogfId": "107035340",
+   "sheet": "Fish Sanctuaries",
+   "description": "Talbot River and tributaries excluding the Trent Canal system - Thorah and Mara Townships, the area between the eastern side of Highway 12 upstream to the dam in Lot 6, Concession 11",
+   "points": [
+    [
+     44.5033117999999,
+     -79.1478620999999,
+     ""
+    ]
+   ],
+   "score": 1.0,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-BEATTY": {
+   "ogfId": "107036024",
+   "sheet": "Fish Sanctuaries",
+   "description": "Beatty Saugeen River and tributaries - Normanby, Bentinck Twps. and that part of Egremont Twp. from Hwy. 6 upstream to the dams at Orchard Park.",
+   "points": [
+    [
+     44.1337309999999,
+     -81.020829,
+     ""
+    ]
+   ],
+   "score": 0.97,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-BIGHEAD-TRIBS": {
+   "ogfId": "107036028",
+   "sheet": "Fish Sanctuaries",
+   "description": "Bighead River Tributaries - Sydenham, St. Vincent and Holland Twps.",
+   "points": [
+    [
+     44.6038202,
+     -80.5960565,
+     ""
+    ]
+   ],
+   "score": 0.96,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-INDIANBROOK": {
+   "ogfId": "107036047",
+   "sheet": "Fish Sanctuaries",
+   "description": "Indian Brook and tributaries - Collingwood Twp.",
+   "points": [
+    [
+     44.5476615999999,
+     -80.4265936,
+     ""
+    ]
+   ],
+   "score": 1.0,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-INDIANRIVER": {
+   "ogfId": "107036048",
+   "sheet": "Fish Sanctuaries",
+   "description": "Indian River - Sarawak Twp., from Georgian Bay to Indian Falls.",
+   "points": [
+    [
+     44.6184621,
+     -80.9471365999999,
+     ""
+    ]
+   ],
+   "score": 1.0,
+   "useOfficialPoint": true
+  },
+  "X16-JUDGES": {
+   "ogfId": "107036049",
+   "sheet": "Fish Sanctuaries",
+   "description": "Judges Creek - Eastnor Twp. from the first falls above County Road 9 to Georgian Bay.",
+   "points": [
+    [
+     44.9596617999999,
+     -81.2152557999999,
+     ""
+    ]
+   ],
+   "score": 1.0,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-KEEFERS": {
+   "ogfId": "107036050",
+   "sheet": "Fish Sanctuaries",
+   "description": "Keefer’s Creek - between the waters edge of Owen Sound and Slattery Mills Falls - Sydenham Twp.",
+   "points": [
+    [
+     44.6320532,
+     -80.8689095,
+     ""
+    ]
+   ],
+   "score": 0.81,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-LSAUBLE-INVERHURON": {
+   "ogfId": "107036052",
+   "sheet": "Fish Sanctuaries",
+   "description": "Little Sauble River and tributaries - Bruce Twp., all waters upstream of a line drawn across the river at a point 180 m (590 ft.) upstream from the foot bridge in Inverhuron Provincial Park.",
+   "points": [
+    [
+     44.2969628,
+     -81.5863044,
+     ""
+    ]
+   ],
+   "score": 0.98,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-MEUX": {
+   "ogfId": "107036056",
+   "sheet": "Fish Sanctuaries",
+   "description": "Meux Creek in Neustadt Village - Normanby Twp., from dam face to South Saugeen River.",
+   "points": [
+    [
+     44.1159462999999,
+     -81.0228915999999,
+     ""
+    ]
+   ],
+   "score": 0.96,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-MILLCREEK-GREY": {
+   "ogfId": "107036057",
+   "sheet": "Fish Sanctuaries",
+   "description": "Mill Creek and tributaries - Euphrasia and Collingwood Twps., downstream of Mitchell’s Falls to the Euphrasia/Collingwood Townline.",
+   "points": [
+    [
+     44.4734231999999,
+     -80.495681,
+     ""
+    ]
+   ],
+   "score": 0.97,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-ORCHARD": {
+   "ogfId": "107035322",
+   "sheet": "Fish Sanctuaries",
+   "description": "Orchard Creek (Centreville Creek) and tributaries in St. Vincent Twp.",
+   "points": [
+    [
+     44.6206091999999,
+     -80.6176839999999,
+     ""
+    ]
+   ],
+   "score": 0.98,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-PARKHEAD": {
+   "ogfId": "107035323",
+   "sheet": "Fish Sanctuaries",
+   "description": "Park Head Creek in Amabel Twp., from the confluence of Park Head Creek with the Sauble River upstream to Bruce County Road 10.",
+   "points": [
+    [
+     44.5979373999999,
+     -81.1551625,
+     ""
+    ]
+   ],
+   "score": 0.99,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-SANGS": {
+   "ogfId": "107035327",
+   "sheet": "Fish Sanctuaries",
+   "description": "Sangs Creek and tributaries – Arran Twp.",
+   "points": [
+    [
+     44.4848586,
+     -81.3043368,
+     ""
+    ]
+   ],
+   "score": 1.0,
+   "useOfficialPoint": true
+  },
+  "X16-TELFER": {
+   "ogfId": "107035341",
+   "sheet": "Fish Sanctuaries",
+   "description": "Telfer Creek (Bothwell’s Creek) - Sydenham Twp (Grey County).",
+   "points": [
+    [
+     44.6228608999999,
+     -80.8779289,
+     ""
+    ]
+   ],
+   "score": 0.96,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-WILLOW": {
+   "ogfId": "107035343",
+   "sheet": "Fish Sanctuaries",
+   "description": "Willow Creek - St. Edmunds Twp.",
+   "points": [
+    [
+     45.1575843,
+     -81.5724155,
+     ""
+    ]
+   ],
+   "score": 1.0,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X16-POTTAWATOMI": {
+   "ogfId": "107035325",
+   "sheet": "Fish Sanctuaries",
+   "description": "Pottawatomi River and Maxwell Creek - City of Owen Sound and Derby Twp., from the 4th Avenue West Bridge upstream to the base of the escarpment.",
+   "points": [
+    [
+     44.5740696,
+     -80.9602225,
+     ""
+    ]
+   ],
+   "score": 1.0,
+   "distM": 1,
+   "useOfficialPoint": false
+  },
+  "X17-COBOURG-LOWER": {
+   "ogfId": "125208685",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Cobourg Brook (Cobourg Creek/Factory Creek) - between the southerly limit of the C.N.R. right-of-way and Lake Ontario.",
+   "points": [
+    [
+     43.9542368,
+     -78.1761622,
+     "Cobourg Brook"
+    ]
+   ],
+   "score": 0.98,
+   "distM": 1,
+   "useOfficialPoint": false
+  },
+  "X17-GAGES-LOWER": {
+   "ogfId": "125208686",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Gages Creek - between the southerly limit of the C.N.R. right-of-way and Lake Ontario.",
+   "points": [
+    [
+     43.9507718,
+     -78.265003,
+     "Gage Creek"
+    ]
+   ],
+   "score": 0.99,
+   "distM": 34,
+   "useOfficialPoint": false
+  },
+  "X17-GANARASKA-LOWER": {
+   "ogfId": "125208687",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Ganaraska River - between the southerly limit of the C.N.R. right-of-way and Lake Ontario.",
+   "points": [
+    [
+     43.9417465,
+     -78.2906931,
+     "Ganaraska River"
+    ]
+   ],
+   "score": 0.99,
+   "distM": 1,
+   "useOfficialPoint": false
+  },
+  "X17-DURHAM-CNR": {
+   "ogfId": "125208688",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Regional Municipality of Durham - all waters lying between the southerly limit of the C.N.R. right-of-way and Lake Ontario.",
+   "points": [
+    [
+     43.8532174,
+     -78.8853629,
+     "Corbett Creek"
+    ],
+    [
+     43.9035349,
+     -78.4591976,
+     "Port Granby Creek"
+    ],
+    [
+     43.8159609,
+     -79.0401059,
+     "Duffins Creek"
+    ],
+    [
+     43.908583,
+     -78.8009308,
+     "Black Creek"
+    ],
+    [
+     43.8780761,
+     -78.8194544,
+     "Harmony Creek"
+    ],
+    [
+     43.8856588,
+     -78.6747558,
+     "West Side Creek"
+    ],
+    [
+     43.8959076,
+     -78.5962706,
+     "Wilmot Creek"
+    ],
+    [
+     43.8040618,
+     -79.1040453,
+     "Petticoat Creek"
+    ],
+    [
+     43.8693602,
+     -78.7812165,
+     "Robinson Creek"
+    ],
+    [
+     43.8955575,
+     -78.5759337,
+     "Graham Creek"
+    ],
+    [
+     43.8767591,
+     -78.6912959,
+     "Darlington Creek"
+    ],
+    [
+     43.8563193,
+     -78.9321013,
+     "Pringle Creek"
+    ],
+    [
+     43.8678683,
+     -78.8296892,
+     "Oshawa Creek"
+    ],
+    [
+     43.8684381,
+     -78.76077,
+     "Tooley Creek"
+    ],
+    [
+     43.8809288,
+     -78.8215829,
+     "Farewell Creek"
+    ],
+    [
+     43.8451797,
+     -78.9525692,
+     "Lynde Creek"
+    ],
+    [
+     43.8938593,
+     -78.6714845,
+     "Soper Creek"
+    ],
+    [
+     43.8981644,
+     -78.5978057,
+     "Foster Creek"
+    ],
+    [
+     43.8877956,
+     -78.6642561,
+     "Bowmanville Creek"
+    ]
+   ],
+   "score": 0.99,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X17-NORTHUMBERLAND-HWY2": {
+   "ogfId": "320591828",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Northumberland County - all waters downstream of Hwy. 2, except the Ganaraska River.",
+   "points": [
+    [
+     43.9664764,
+     -78.001338,
+     "Shelter Valley Creek"
+    ],
+    [
+     44.0345331,
+     -77.6713838,
+     "Smithfield Creek"
+    ],
+    [
+     44.0257819,
+     -77.7167842,
+     "Proctors Creek"
+    ],
+    [
+     43.999975,
+     -77.8317724,
+     "Salem Creek"
+    ],
+    [
+     43.9805281,
+     -77.9013053,
+     "Colborne Creek"
+    ],
+    [
+     43.9542368,
+     -78.1761622,
+     "Cobourg Brook"
+    ],
+    [
+     43.9507718,
+     -78.265003,
+     "Gage Creek"
+    ]
+   ],
+   "score": 0.66,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X17-DURHAM-HWY2": {
+   "ogfId": "125208684",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Regional Municipality of Durham - all waters between Hwy. 2 and the southerly limit of the C.N.R. right-of-way.",
+   "points": [
+    [
+     43.8684381,
+     -78.76077,
+     "Tooley Creek"
+    ],
+    [
+     43.8877956,
+     -78.6642561,
+     "Bowmanville Creek"
+    ],
+    [
+     43.8780761,
+     -78.8194544,
+     "Harmony Creek"
+    ],
+    [
+     43.8532174,
+     -78.8853629,
+     "Corbett Creek"
+    ],
+    [
+     43.9035349,
+     -78.4591976,
+     "Port Granby Creek"
+    ],
+    [
+     43.8938593,
+     -78.6714845,
+     "Soper Creek"
+    ],
+    [
+     43.8959076,
+     -78.5962706,
+     "Wilmot Creek"
+    ],
+    [
+     43.8693602,
+     -78.7812165,
+     "Robinson Creek"
+    ],
+    [
+     43.8159609,
+     -79.0401059,
+     "Duffins Creek"
+    ],
+    [
+     43.8981644,
+     -78.5978057,
+     "Foster Creek"
+    ],
+    [
+     43.8856588,
+     -78.6747558,
+     "West Side Creek"
+    ],
+    [
+     43.8451797,
+     -78.9525692,
+     "Lynde Creek"
+    ],
+    [
+     43.8563193,
+     -78.9321013,
+     "Pringle Creek"
+    ],
+    [
+     43.8809288,
+     -78.8215829,
+     "Farewell Creek"
+    ],
+    [
+     43.8678683,
+     -78.8296892,
+     "Oshawa Creek"
+    ],
+    [
+     43.908583,
+     -78.8009308,
+     "Black Creek"
+    ],
+    [
+     43.8040618,
+     -79.1040453,
+     "Petticoat Creek"
+    ],
+    [
+     43.8767591,
+     -78.6912959,
+     "Darlington Creek"
+    ],
+    [
+     43.8955575,
+     -78.5759337,
+     "Graham Creek"
+    ]
+   ],
+   "score": 0.99,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X17-GANARASKA-MID": {
+   "ogfId": "320591818",
+   "sheet": "Additional Fishing Opportunity",
+   "description": "Ganaraska River - between the south side of the Jocelyn Street Bridge and the southerly limit of the C.N.R. right-of-way.",
+   "points": [
+    [
+     43.9417465,
+     -78.2906931,
+     "Ganaraska River"
+    ]
+   ],
+   "score": 0.75,
+   "distM": 588,
+   "useOfficialPoint": false
+  },
+  "X17-CROWE": {
+   "ogfId": "125209610",
+   "sheet": "Waterbody Exceptions",
+   "description": "Crowe Lake (44°29’N., 77°44’W.) Marmora and Belmont Twps., and the waters of the Crowe River in Marmora and Rawdon Twps.",
+   "points": [
+    [
+     44.4838029,
+     -77.7371649,
+     "Crowe Lake"
+    ]
+   ],
+   "score": 0.86,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X17-BALSAM": {
+   "ogfId": "125209606",
+   "sheet": "Waterbody Exceptions",
+   "description": "Balsam Lake (44°34’54”N., 78°51’10”W.) - Bexley Township, including the waters of the Gull River upstream to the dam at Coboconk, the waters of the Rosedale River between the Trent dam at Rosedale upstream to Balsam Lake, the waters of the Trent Canal bet",
+   "points": [
+    [
+     44.5804433,
+     -78.8416754,
+     "Balsam Lake"
+    ],
+    [
+     44.6429592,
+     -78.8042895,
+     "Gull River"
+    ]
+   ],
+   "score": 0.76,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X17-SCUGOG": {
+   "ogfId": "125209619",
+   "sheet": "Waterbody Exceptions",
+   "description": "Lake Scugog and Scugog River - All waters of Lake Scugog and Scugog River - including waters south of Highway 7A, Blackstock Creek, Nonquon River, as well as the Scugog River to the Trent Severn Dam in Lindsay, Mariposa Brook and East Cross Creek",
+   "points": [
+    [
+     44.288167,
+     -78.7386297,
+     "East Cross Creek"
+    ],
+    [
+     44.3879073,
+     -78.7509396,
+     "Scugog River"
+    ],
+    [
+     44.1828135,
+     -78.9418842,
+     "Nonquon River"
+    ],
+    [
+     44.1834347,
+     -78.857241,
+     "Lake Scugog"
+    ],
+    [
+     44.3035613,
+     -78.8072857,
+     "Mariposa Brook"
+    ],
+    [
+     44.1360827,
+     -78.8516408,
+     "Blackstock Creek"
+    ]
+   ],
+   "score": 1.0,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X17-SCUGOG-7A": {
+   "ogfId": "107035357",
+   "sheet": "Fish Sanctuaries",
+   "description": "Lake Scugog (44°11'00\"N., 78°51'26\"W.) - Cartwright Township, 100 m (328 ft.) on both sides of Hwy. 7A (causeways)",
+   "points": [
+    [
+     44.1035169,
+     -78.9306081,
+     ""
+    ]
+   ],
+   "score": 0.76,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X17-SCUGOG-LINDSAY": {
+   "ogfId": "107035365",
+   "sheet": "Fish Sanctuaries",
+   "description": "Scugog River (Lindsay) - Ops Twp., from Trent-Severn Dam to Ops-Fenelon boundary.",
+   "points": [
+    [
+     44.3807570999999,
+     -78.7468103,
+     ""
+    ]
+   ],
+   "score": 0.98,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X17-TRENT-HEALEY": {
+   "ogfId": "107035355",
+   "sheet": "Fish Sanctuaries",
+   "description": "Healey Falls - Seymour Township, all water flowing from the north-westerly side of the bridge on County Road 50 to Crowe Bay",
+   "points": [
+    [
+     44.3756369999999,
+     -77.7877503999999,
+     ""
+    ]
+   ],
+   "score": 0.95,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X17-TRENT-HASTINGS": {
+   "ogfId": "107035367",
+   "sheet": "Fish Sanctuaries",
+   "description": "Trent River - Village of Hastings, 500 m (1640 ft.) upstream of the dam and 1 km (3281 ft.) downstream of the dam.",
+   "points": [
+    [
+     44.3077493999999,
+     -77.9569709,
+     ""
+    ]
+   ],
+   "score": 0.92,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X17-TRENT-LOWER": {
+   "ogfId": "125209631",
+   "sheet": "Waterbody Exceptions",
+   "description": "Trent River - waters from the first dam (Number One) above Lake Ontario upstream to Lock No. 9 (Myers Lock) at the head of Percy Reach.",
+   "points": [
+    [
+     44.1003623,
+     -77.5716718,
+     "Trent River"
+    ]
+   ],
+   "score": 0.98,
+   "distM": 2621,
+   "useOfficialPoint": false
+  },
+  "X17-COBOURG-BARRIER": {
+   "ogfId": "107035349",
+   "sheet": "Fish Sanctuaries",
+   "description": "Cobourg Brook - from the downstream side of the lamprey barrier downstream to the south side of the King St. Bridge in the town of Cobourg.",
+   "points": [
+    [
+     43.9590413,
+     -78.1819961,
+     ""
+    ]
+   ],
+   "score": 0.84,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X17-GANARASKA-401": {
+   "ogfId": "107035352",
+   "sheet": "Fish Sanctuaries",
+   "description": "Ganaraska River - Town of Port Hope, from Hwy. 401 downstream to the south side of the Jocelyn St. Bridge.",
+   "points": [
+    [
+     43.9686007,
+     -78.2947876,
+     ""
+    ]
+   ],
+   "score": 0.98,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X17-CHEMONG": {
+   "ogfId": "107035348",
+   "sheet": "Fish Sanctuaries",
+   "description": "Chemong Lake - Bridgenorth Causeway - Smith and Ennismore Twps., 100 m (328 ft.) on both sides of causeway on County Road 16.",
+   "points": [
+    [
+     44.3870308999999,
+     -78.3885870999999,
+     ""
+    ]
+   ],
+   "score": 0.76,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X17-CROWE-MARMORA": {
+   "ogfId": "107035350",
+   "sheet": "Fish Sanctuaries",
+   "description": "Crowe River - from the Marmora Dam downstream to the north side of the Highway 7 bridge",
+   "points": [
+    [
+     44.4834169,
+     -77.6862165999999,
+     ""
+    ]
+   ],
+   "score": 1.0,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X17-GANNONS": {
+   "ogfId": "107035353",
+   "sheet": "Fish Sanctuaries",
+   "description": "Gannon’s Narrows - Harvey and Ennismore Twps. - within 100 m (328 ft.) of both sides of the causeway on County Road 16.",
+   "points": [
+    [
+     44.4758015,
+     -78.4509845999999,
+     ""
+    ]
+   ],
+   "score": 0.94,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X17-BOBCAYGEON": {
+   "ogfId": "107035360",
+   "sheet": "Fish Sanctuaries",
+   "description": "Bobcaygeon River - Bobcaygeon, from Trent-Severn Dam to Pigeon Lake and Little Bob Dam to Pigeon Lake (100 m from Little Bob Dam)",
+   "points": [
+    [
+     44.5350302499999,
+     -78.5343830999999,
+     ""
+    ]
+   ],
+   "score": 1.0,
+   "distM": 456,
+   "useOfficialPoint": false
+  },
+  "X17-BURLEIGH": {
+   "ogfId": "107035347",
+   "sheet": "Fish Sanctuaries",
+   "description": "Burleigh Falls, Perry’s Creek, Stony Lake - Smith and Harvey Twps., Trent-Severn Dam to Stony Lake.",
+   "points": [
+    [
+     44.5576378,
+     -78.2090862,
+     ""
+    ]
+   ],
+   "score": 0.97,
+   "distM": 244,
+   "useOfficialPoint": false
+  },
+  "X17-FENELON": {
+   "ogfId": "107035361",
+   "sheet": "Fish Sanctuaries",
+   "description": "Fenelon River - Fenelon Falls in Fenelon Township, from Trent-Severn Dam to second power line 1 km downstream",
+   "points": [
+    [
+     44.5335066999999,
+     -78.7337636999999,
+     ""
+    ]
+   ],
+   "score": 1.0,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X17-FISHOG": {
+   "ogfId": "107035351",
+   "sheet": "Fish Sanctuaries",
+   "description": "Fishog River - from the mouth of  the river at Head Lake (44°45’N., 78°54’W.) to the base of the waterfalls approx. 1.5 km (0.9 mi.) upstream.",
+   "points": [
+    [
+     44.7606936999999,
+     -78.8890942999999,
+     ""
+    ]
+   ],
+   "score": 0.95,
+   "distM": 1478,
+   "useOfficialPoint": false
+  },
+  "X17-GULL-COBOCONK": {
+   "ogfId": "107035354",
+   "sheet": "Fish Sanctuaries",
+   "description": "Gull River (Coboconk) - Bexley and Somerville Twps. from Trent-Severn Dam downstream to narrows approaching Balsam Lake.",
+   "points": [
+    [
+     44.6497664999999,
+     -78.8031979,
+     ""
+    ]
+   ],
+   "score": 0.97,
+   "distM": 399,
+   "useOfficialPoint": false
+  },
+  "X17-KATCHEWANOOKA": {
+   "ogfId": "107035356",
+   "sheet": "Fish Sanctuaries",
+   "description": "Katchewanooka Lake (Young’s Point) - Smith and Douro Twps. from Trent Severn Dam to the downstream (west) side of the Hwy. 28 bridge.",
+   "points": [
+    [
+     44.4871984999999,
+     -78.2335235999999,
+     ""
+    ]
+   ],
+   "score": 0.97,
+   "distM": 72,
+   "useOfficialPoint": false
+  },
+  "X17-LOVESICK": {
+   "ogfId": "107035358",
+   "sheet": "Fish Sanctuaries",
+   "description": "Lovesick Dams – former townships of Smith and Harvey, 100 m downstream from each dam.",
+   "points": [
+    [
+     44.5574611999999,
+     -78.24379358,
+     ""
+    ]
+   ],
+   "score": 0.8,
+   "distM": 448,
+   "useOfficialPoint": false
+  },
+  "X17-BUCKHORN": {
+   "ogfId": "107035359",
+   "sheet": "Fish Sanctuaries",
+   "description": "Lower Buckhorn Lake (Buckhorn) - Smith and Harvey Twps. from Trent Severn Dam to a point 400 m (1312 ft.) below the dam.",
+   "points": [
+    [
+     44.5559117999999,
+     -78.3436837,
+     ""
+    ]
+   ],
+   "score": 0.94,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X17-OTONABEE": {
+   "ogfId": "107035363",
+   "sheet": "Fish Sanctuaries",
+   "description": "Otonabee River (Peterborough) from Trent-Severn Dam at Lock 19 to Bensfort Bridge at County Road 2 (20 km downstream).",
+   "points": [
+    [
+     44.2251331,
+     -78.3469647999999,
+     ""
+    ]
+   ],
+   "score": 1.0,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X17-PIGEONRIVER": {
+   "ogfId": "107035364",
+   "sheet": "Fish Sanctuaries",
+   "description": "Pigeon River (Omemee) - Emily Twp., from Omemee Dam to C.N.R. bridge.",
+   "points": [
+    [
+     44.3004589999999,
+     -78.5555561999999,
+     ""
+    ]
+   ],
+   "score": 0.96,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X17-ROSEDALE": {
+   "ogfId": "107035362",
+   "sheet": "Fish Sanctuaries",
+   "description": "Rosedale River - Rosedale in Fenelon Township, from the Trent-Severn Dam to Cameron Lake",
+   "points": [
+    [
+     44.5742083,
+     -78.7811674999999,
+     ""
+    ]
+   ],
+   "score": 1.0,
+   "distM": 0,
+   "useOfficialPoint": false
+  },
+  "X17-TALBOT-KIRKFIELD": {
+   "ogfId": "107035366",
+   "sheet": "Fish Sanctuaries",
+   "description": "Talbot River - Kirkfield - Carden Twp., fronting Conc. VII, VIII and IX.",
+   "points": [
+    [
+     44.5956075,
+     -78.9673999,
+     ""
+    ]
+   ],
+   "score": 0.84,
+   "distM": 20982,
+   "useOfficialPoint": true
+  }
+ }
+}

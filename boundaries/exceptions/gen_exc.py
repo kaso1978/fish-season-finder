@@ -4,6 +4,24 @@ import os
 D = os.path.dirname(os.path.abspath(__file__)) + '/'
 exec(open(D + 'data16_17.py', encoding='utf-8').read())
 GEO = json.load(open(D + 'geoms_small.json'))          # id -> {precision, geometry}
+# official.json (from official.py): the province's OGF ID per place, and official
+# points for places we can't draw from the hydro layer
+try:
+    OFF = json.load(open(D + 'official.json', encoding='utf-8'))['places']
+except FileNotFoundError:
+    OFF = {}
+for pid, e in OFF.items():
+    if e.get('useOfficialPoint'):
+        pts = [[round(q[1], 5), round(q[0], 5)] for q in e['points']]
+        if e.get('radiusM'):
+            import math
+            lng, lat = pts[0]; r = e['radiusM']
+            ring = [[round(lng + r * math.cos(a) / (111320 * math.cos(math.radians(lat))), 5), round(lat + r * math.sin(a) / 111320, 5)]
+                    for a in [i * math.pi / 12 for i in range(24)]]
+            GEO[pid] = {'precision': 'approx', 'official': True, 'geometry': {'type': 'Polygon', 'coordinates': [ring + [ring[0]]]}}
+        else:
+            GEO[pid] = {'precision': 'point', 'official': True,
+                        'geometry': {'type': 'Point', 'coordinates': pts[0]} if len(pts) == 1 else {'type': 'MultiPoint', 'coordinates': pts}}
 P = sys.argv[1]
 s = open(P, encoding='utf-8').read()
 
@@ -21,6 +39,8 @@ for p in PLACES:
     prec = g['precision'] if g else 'none'
     a = "{id:%s, kind:'%s', exc:true, name:%s, legalDescription:%s, page:%d, precision:'%s'" % (
         q(p['id']), p['kind'], q(p['name']), q(p['desc']), p['page'], prec)
+    if p['id'] in OFF: a += ", ogfId:'%s'" % OFF[p['id']]['ogfId']
+    if g and g.get('official'): a += ", pointSource:'official'"
     if p['note']: a += ", note:%s" % q(p['note'])
     if g and g.get('lineBuffer'): a += ", lineBuffer:%d" % g['lineBuffer']
     a += ", geometry:%s}" % (jgeom(g['geometry']) if g else 'null')

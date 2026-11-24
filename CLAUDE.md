@@ -178,8 +178,12 @@ is superseded.
   cut at both printed ends: its rules replace the zone-wide ones when the pin
   is on it), `approx` (shown as "may apply here") or `point` (only listed as
   nearby). Anything within 2 km (`EXC_NEAR_M`) is listed; an active sanctuary
-  under the pin shows a red "No fishing here now" block. The other 18 zones
-  still list the affected waters and warn.
+  under the pin shows a red "No fishing here now" block. Each place also
+  carries the province's `ogfId` from the "Recreational fishing regulations
+  data" open dataset (`boundaries/fetch_regs.py` + `exceptions/official.py`),
+  and places with no hydro shape sit at the official sanctuary point
+  (`pointSource:'official'`). The other 18 zones still list the affected
+  waters and warn.
 - **The rules run to Dec 31, 2026** (`meta.effectiveTo`). After that the app
   still resolves dates but shows a banner that the 2027 summary may differ.
 - **Zone boundaries are simplified.** All 20 zones come from the official

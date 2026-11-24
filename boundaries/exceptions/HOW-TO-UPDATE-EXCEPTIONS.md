@@ -21,11 +21,30 @@ FMZ 16 and 17 come from two hand-made files and the official water layers.
    rules replace the zone-wide ones when the pin is on it), `APPROX` /
    `whole` (shown as "may apply here") or point only (listed as nearby).
    `python build_geo.py ID ...` rebuilds just those places.
-5. `python shrink.py` simplifies it to `geoms_small.json`, and
+5. **Official records**: run `py fetch_regs.py` in `boundaries\` (same PC)
+   to download the province's "Recreational fishing regulations data"
+   (data.ontario.ca, Open Government Licence – Ontario) into
+   `boundaries/regs/`. Then `python official.py` links every place to its
+   official record and writes `official.json`. The dataset has no stretch
+   shapes, only one point per rule (a sanctuary's centroid, or a waterbody's
+   centroid or river mouth) and an OGF ID. We use it to:
+   - store the official `ogfId` on each place (the key an authority portal
+     would use),
+   - place the sanctuaries the hydro layer can't draw, and fix spots we put
+     on the wrong stretch (`USE_OFFICIAL_POINT` in `official.py`),
+   - check our work: it prints `NO MATCH`, `CHECK` (our shape is over 1 km
+     from the official sanctuary centroid) and `NOT IN APP` (an official
+     sanctuary we have no place for). Look at each one.
+6. `python shrink.py` simplifies it to `geoms_small.json`, and
    `python gen_exc.py ../../index.html` writes the `EXC16_*` / `EXC17_*`
    blocks into the app. (On a file that already has them, delete those
    blocks and the "attach the pilot exceptions" lines first.)
 
-Not placed yet (shown only in the lake/river search): North Creek and Stoney
-Creek (Walsingham), Fisher's Creek, Indian River (Sarawak) and Sangs Creek
-have no named shape in the hydro layer.
+North Creek and Stoney Creek (Walsingham), Fisher's Creek, Indian River
+(Sarawak) and Sangs Creek have no named shape in the hydro layer, so they sit
+at the official sanctuary point and are listed as nearby
+(`pointSource:'official'`).
+
+The official file covers all 20 zones, so it is the starting point for
+loading exceptions in other zones: it saves transcribing, but its wording
+sometimes differs from the printed summary, and the app quotes the summary.
