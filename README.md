@@ -12,10 +12,9 @@ the season, size and catch rules that apply.
 > transcribed by hand from the 2026 Ontario Fishing Regulations Summary, plus
 > the Lake Simcoe exception in FMZ 16. It is not an official copy. Lake, river
 > and sanctuary exceptions are not loaded yet (the app lists them and warns).
-> Only FMZ 16 and the Great Lakes zones are drawn on the map so far, with
-> approximate boundaries; anywhere else you choose your zone from a list, and
-> the app says that choice is yours. Always check the official summary at
-> ontario.ca/fishing.
+> Zone boundaries come from the official Land Information Ontario layer,
+> simplified for phones (within about 170 m), and the app warns near zone
+> lines. Always check the official summary at ontario.ca/fishing.
 
 ## Quick start
 
@@ -46,17 +45,15 @@ explains how to fix it on that phone instead of guessing a spot.
   inland (Kitchener, London) for the zone-wide rules. Pick **April 24** and
   then **April 25, 2026** to see the "fourth Saturday in April" trout opener
   resolve.
-- **The Great Lakes** (FMZ 9, 13, 14, 19, 20). Tap out on a lake. On Lake
-  Ontario before May 10, bass are open for catch and release only.
-- **Anywhere else** (Peterborough, Ottawa, Sudbury) the app says it can't
-  place the spot yet and lists the 20 zones. Pick one and it is labelled
-  "chosen by you, not by GPS" until the pin moves more than 20 km.
+- **Anywhere in Ontario.** Tap Peterborough (FMZ 17), Ottawa (18), Sudbury
+  (10), Thunder Bay (6) or out on a Great Lake. On Lake Ontario before May 10,
+  bass are open for catch and release only. Tap Quebec or the US and the app
+  says the spot is outside Ontario's zones and offers a list.
 - **Limits that change through the year.** FMZ 2 lake trout (a size limit in
   September only), FMZ 2/4/5 bass (under 35 cm early in the year), FMZ 12
   walleye (under 40 cm in spring), FMZ 5 limits for non-Canadian residents.
-- **Near a boundary** (the Toronto waterfront, the Lake Simcoe shore, the FMZ
-  16/17 edge east of Lake Simcoe) the app warns that the boundary is
-  approximate.
+- **Near a boundary** (the Toronto waterfront, the Lake Simcoe shore, any
+  zone line) the app warns that you may be in the neighbouring zone.
 
 ## Structure
 
@@ -66,6 +63,7 @@ serve.js              zero-dependency dev server
 sw.js                 service worker: network-first, so no one is stuck on an old version
 manifest.webmanifest  makes it installable (Add to Home Screen)
 icons/                app icons
+boundaries/           official zone layer: download script, phone-copy script, how-to
 CLAUDE.md             orientation for Claude Code: architecture, constraints
 docs/
   prototype-brief.md  the original brief this was built from
@@ -95,3 +93,6 @@ Vanilla JavaScript, no framework, no build step. Leaflet (from cdnjs) with
 OpenStreetMap tiles for the map; if it fails to load, the app degrades to a
 notice and still renders the species data. Light and dark themes follow the
 system setting.
+
+Zone boundaries contain information licensed under the Open Government
+Licence – Ontario (Land Information Ontario, "Fisheries Management Zone").

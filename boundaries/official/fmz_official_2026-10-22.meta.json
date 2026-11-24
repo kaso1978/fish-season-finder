@@ -1,0 +1,140 @@
+{
+  "source": {
+    "dataset": "Fisheries Management Zone",
+    "item_id": "eafadbf2d09448beb483da1e7dfba86d",
+    "item_url": "https://www.arcgis.com/home/item.html?id=eafadbf2d09448beb483da1e7dfba86d",
+    "hub_page": "https://geohub.lio.gov.on.ca/datasets/eafadbf2d09448beb483da1e7dfba86d",
+    "owner": "LandInformationOntario",
+    "publisher": "Ontario Ministry of Energy and Mines © King's Printer for Ontario, 2022",
+    "layer_url": "https://ws.lioservices.lrc.gov.on.ca/arcgis2/rest/services/LIO_OPEN_DATA/LIO_Open07/MapServer/14",
+    "licence": "Open Government Licence - Ontario",
+    "licence_url": "https://www.ontario.ca/page/open-government-licence-ontario",
+    "modified_utc": "2026-10-22T13:09:31+00:00",
+    "found_via": "item ID"
+  },
+  "download": {
+    "downloaded_utc": "2026-11-24T00:28:45+00:00",
+    "query": "where=1=1&outFields=*&outSR=4326&f=geojson (paged, orderBy OBJECTID)",
+    "pages": 5,
+    "file_is_raw_server_response": false,
+    "crs": "EPSG:4326 (WGS84)"
+  },
+  "file": "fmz_official_2026-10-22.geojson",
+  "sha256": "6ba26ad0aa0ded374bd083aa97a35bfb8c0fdb6de27ad6ebb3102c43ce3460e6",
+  "feature_count": 20,
+  "fields": [
+    "OGF_ID",
+    "FISHERIES_MANAGEMENT_ZONE_ID",
+    "BUSINESS_EFFECTIVE_DATE",
+    "LOCATION_DESCR",
+    "GEOMETRY_UPDATE_DATETIME",
+    "EFFECTIVE_DATETIME",
+    "SYSTEM_DATETIME",
+    "OBJECTID",
+    "SHAPE.AREA",
+    "SHAPE.LEN"
+  ],
+  "zones": [
+    {
+      "zone": 1,
+      "description": null,
+      "OBJECTID": 1
+    },
+    {
+      "zone": 2,
+      "description": null,
+      "OBJECTID": 2
+    },
+    {
+      "zone": 3,
+      "description": null,
+      "OBJECTID": 3
+    },
+    {
+      "zone": 4,
+      "description": null,
+      "OBJECTID": 1281
+    },
+    {
+      "zone": 5,
+      "description": null,
+      "OBJECTID": 1313
+    },
+    {
+      "zone": 6,
+      "description": null,
+      "OBJECTID": 1297
+    },
+    {
+      "zone": 7,
+      "description": null,
+      "OBJECTID": 961
+    },
+    {
+      "zone": 8,
+      "description": null,
+      "OBJECTID": 993
+    },
+    {
+      "zone": 9,
+      "description": null,
+      "OBJECTID": 1025
+    },
+    {
+      "zone": 10,
+      "description": null,
+      "OBJECTID": 1009
+    },
+    {
+      "zone": 11,
+      "description": null,
+      "OBJECTID": 1057
+    },
+    {
+      "zone": 12,
+      "description": null,
+      "OBJECTID": 12
+    },
+    {
+      "zone": 13,
+      "description": null,
+      "OBJECTID": 1073
+    },
+    {
+      "zone": 14,
+      "description": null,
+      "OBJECTID": 977
+    },
+    {
+      "zone": 15,
+      "description": null,
+      "OBJECTID": 1041
+    },
+    {
+      "zone": 16,
+      "description": null,
+      "OBJECTID": 2241
+    },
+    {
+      "zone": 17,
+      "description": null,
+      "OBJECTID": 321
+    },
+    {
+      "zone": 18,
+      "description": null,
+      "OBJECTID": 18
+    },
+    {
+      "zone": 19,
+      "description": null,
+      "OBJECTID": 19
+    },
+    {
+      "zone": 20,
+      "description": null,
+      "OBJECTID": 2257
+    }
+  ],
+  "zone_count": 20
+}

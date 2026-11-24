@@ -105,6 +105,8 @@ Toronto), and closed all year (Lake Simcoe musky).
 4. **Single file, no build step.** The app is still all in `index.html`.
    `manifest.webmanifest`, `sw.js` and `icons/` only make it installable and
    usable offline when hosted; the page works without them (e.g. from disk).
+   `boundaries/` is tooling only (download and simplify the official zone
+   layer); the app never loads anything from it at runtime.
 5. **Colour is never the only signal.** Open/closed status always carries an
    icon and a text label alongside the green/grey treatment.
 6. **Never guess the user's location.** Which rules apply depends on where the
@@ -115,10 +117,10 @@ Toronto), and closed all year (Lake Simcoe musky).
    boundaries are approximate, also warn (for any pin, tapped or GPS) when the
    point is within a geometry's `toleranceM` of a zone or lake edge, and when
    it falls in an `advisory` area. A point out on a Great Lake must resolve to
-   that lake's zone, never to FMZ 16. A point the map can't place shows
-   "zone not on the map yet" and a list of zones; a zone picked from the list
-   is always labelled "chosen by you, not by GPS", and the pick is dropped
-   once the pin moves more than 20 km away (`PICK_KEEP_M`).
+   that lake's zone, never to FMZ 16. A point outside every zone shows
+   "outside Ontario's fishing zones" and a list of zones; a zone picked from
+   the list is always labelled "chosen by you, not by GPS", and the pick is
+   dropped once the pin moves more than 20 km away (`PICK_KEEP_M`).
 
 ## Location (GEOLOCATION section)
 
@@ -177,17 +179,17 @@ is superseded.
   drawing the areas.
 - **The rules run to Dec 31, 2026** (`meta.effectiveTo`). After that the app
   still resolves dates but shows a banner that the 2027 summary may differ.
-- **Only some zones are on the map.** The official FMZ layer (Ontario GeoHub /
-  LIO) was blocked from the build environment; Andrew is downloading it, and
-  it is meant to become the source of truth for every zone. Until then:
-  `GEO.fmz16` is Natural Earth 1:10m shorelines and the Ontario border, minus
-  the Great Lakes, with a hand-drawn eastern/northern edge (`ADV-FMZ16-EDGE`
-  warns along it); FMZ 9, 13, 14, 19 and 20 are Natural Earth lake outlines
-  clipped to Ontario (13/14 split along Natural Earth's Georgian Bay and
-  North Channel polygons); Lake Simcoe is Natural Earth plus a hand-drawn
-  Kempenfelt Bay. All other zones have `geometry: null` and are reached
-  through the zone list. Keep the `toleranceM` warnings until the official
-  layer is in.
+- **Zone boundaries are simplified.** All 20 zones come from the official
+  Land Information Ontario "Fisheries Management Zone" layer (edition
+  2026-10-22, Open Government Licence – Ontario; the footer carries the
+  required attribution). `boundaries/simplify_fmz.py` simplifies it with
+  shared borders kept aligned, every point within ~170 m of the official
+  line, so each zone has `toleranceM: 200`. Simplification leaves a few tiny
+  overlaps and self-crossings along borders; `nearBoundary` reports a spot
+  in an overlap as "right on a zone line". `boundaries/HOW-TO-UPDATE-ZONES.md`
+  covers downloading a new edition (`fetch_fmz.py`, run on Andrew's PC: the
+  LIO servers are blocked from the cloud) and loading it. Lake Simcoe and
+  its watershed advisory are still Natural Earth plus hand drawing.
 - **Leaflet loads from cdnjs.** If it fails, the app degrades to a "Map
   unavailable" notice and still renders species data — preserve that fallback if
   you touch the `MAP` section.
