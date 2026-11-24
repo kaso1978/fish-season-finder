@@ -24,6 +24,7 @@
   --accent:#d2662a; --accent-soft:#fbeade;
   --warn:#8a5a12; --warn-bg:#fdf1d8;
   --danger:#b3261e; --danger-bg:#fdecea; --exc-line:#c2410c;
+  --map-sanct:#d1202f; --map-exc:#6d28d9; --map-halo:#ffffff;
   --gps:#1a73e8; --gps-ring:#ffffff;
   --shadow:0 2px 8px rgba(11,58,86,.08), 0 10px 30px rgba(11,58,86,.10);
   --r:14px; --r-sm:10px;
@@ -38,6 +39,7 @@
     --accent:#f08a4b; --accent-soft:#33231a;
     --warn:#f0c274; --warn-bg:#2e2413;
     --danger:#ff8a80; --danger-bg:#3a1a17; --exc-line:#fb923c;
+    --map-sanct:#e0313f; --map-exc:#7c3aed; --map-halo:#ffffff;
     --gps:#5aa2ff; --gps-ring:#0a151d;
     --shadow:0 2px 8px rgba(0,0,0,.3), 0 12px 32px rgba(0,0,0,.4);
   }
@@ -109,6 +111,16 @@ input,select{font:inherit;color:inherit}
 @media (prefers-color-scheme:dark){
   .zonelabel{background:rgba(11,26,36,.86); color:#e6eff4; border-color:rgba(77,159,208,.4)}
 }
+.excmark{width:20px; height:20px; display:grid; place-items:center; filter:drop-shadow(0 1px 2px rgba(0,0,0,.35))}
+.exckey{position:absolute; right:12px; top:12px; z-index:500; background:var(--surface); color:var(--text); border:1px solid var(--line); border-radius:var(--r-sm); box-shadow:var(--shadow); font-size:12px; max-width:230px;}
+.exckey summary{list-style:none; cursor:pointer; padding:7px 10px; font-weight:700; display:flex; align-items:center; gap:6px}
+.exckey summary::-webkit-details-marker{display:none}
+.exckey[open] summary{border-bottom:1px solid var(--line)}
+.exckey ul{list-style:none; margin:0; padding:8px 10px; display:grid; gap:6px}
+.exckey li{display:flex; align-items:center; gap:8px; line-height:1.25}
+.exckey li svg{flex:none}
+.exckey label{display:flex; align-items:center; gap:8px; padding:0 10px 9px; color:var(--muted)}
+.exckey p{margin:0; padding:0 10px 8px; color:var(--muted); font-size:11px}
 .mapbtns{position:absolute; right:12px; z-index:500; display:flex; flex-direction:column; gap:8px; transition:bottom var(--t)}
 .fab{
   min-height:44px; padding:0 15px; border-radius:999px; background:var(--surface); color:var(--blue);
@@ -378,6 +390,8 @@ em.res{font-style:normal; color:var(--muted)}
 .updbar button{min-height:36px; padding:0 14px; border-radius:999px; background:#fff; color:var(--blue-deep); font-weight:750; font-size:13px}
 @media (prefers-color-scheme:dark){ .updbar{background:var(--blue-soft); color:var(--text); border:1px solid var(--blue)} .updbar button{background:var(--blue); color:#08161e} }
 .offbanner.show ~ .updbar.show{top:56px}
+.offbanner.show ~ .exckey, .updbar.show ~ .exckey{top:56px}
+.offbanner.show ~ .updbar.show ~ .exckey{top:100px}
 /* ---------- full-screen fit (after base rules so these win) ---------- */
 /* Phones with a notch / home bar: keep content clear of them. */
 .proto{padding-top:calc(6px + env(safe-area-inset-top))}
@@ -435,6 +449,17 @@ em.res{font-style:normal; color:var(--muted)}
       <span>A new version of the app is available.</span>
       <button id="updReload">Reload</button>
     </div>
+    <details class="exckey" id="excKey">
+      <summary><svg width="14" height="14" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2l8 8-8 8-8-8z" fill="var(--map-exc)" stroke="#fff" stroke-width="2"/></svg>Exception waters</summary>
+      <ul>
+        <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8" fill="var(--map-sanct)" stroke="#fff" stroke-width="2"/><path d="M5.5 14.5l9-9" stroke="#fff" stroke-width="2.4"/></svg>Fish sanctuary: no fishing at set times</li>
+        <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l8.5 8.5-8.5 8.5L1.5 10z" fill="var(--map-exc)" stroke="#fff" stroke-width="2"/><path d="M10 6v5" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/><circle cx="10" cy="13.8" r="1.2" fill="#fff"/></svg>Special rules: different seasons or limits</li>
+        <li><svg width="20" height="8" viewBox="0 0 20 8" aria-hidden="true"><path d="M1 4h18" stroke="var(--map-exc)" stroke-width="4"/></svg>Solid: stretch drawn from both printed ends</li>
+        <li><svg width="20" height="8" viewBox="0 0 20 8" aria-hidden="true"><path d="M1 4h18" stroke="var(--map-exc)" stroke-width="4" stroke-dasharray="5 3"/></svg>Dashed: approximate, check the description</li>
+      </ul>
+      <p>FMZ 16 and 17 only (trial). Tap a symbol or stretch to see its rules.</p>
+      <label><input type="checkbox" id="excShow" checked> Show on map</label>
+    </details>
     <div class="mapbtns" id="mapBtns">
       <button class="fab" id="btnSave">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z"/></svg>
@@ -2573,29 +2598,68 @@ ZONE_DOCS.filter(d => d.zone.geometry).forEach(d => {
   });
 });
 
-/* Exception waters: drawn from zoom 10, so the province view stays readable. */
-const excLayer = MAP_OK ? L.layerGroup() : null;
+/* Exception waters. From zoom 7 every place gets a symbol (sanctuary: red circle
+   with a bar; special rules: purple diamond) so they can be found before
+   dropping a pin; from zoom 10 the stretches themselves are drawn, with a white
+   casing so they stand out on the base map. Shape and symbol, not colour alone,
+   tell the two kinds apart. */
+const excLayer = MAP_OK ? L.layerGroup() : null;     // shapes, zoom >= 10
+const excMarks = MAP_OK ? L.layerGroup() : null;     // symbols, zoom >= 7
+let excOn = true;
 function cssVar(n){ return getComputedStyle(document.documentElement).getPropertyValue(n).trim(); }
+function excIsSanct(d, a){ return a.kind === 'sanctuary' || d.provisions.some(p => p.areaId === a.id && p.type === 'closure' && !p.night); }
+function excIcon(sanct){
+  const col = sanct ? 'var(--map-sanct)' : 'var(--map-exc)';
+  const svg = sanct
+    ? '<svg width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="'+col+'" stroke="#fff" stroke-width="2"/><path d="M5.5 14.5l9-9" stroke="#fff" stroke-width="2.4"/></svg>'
+    : '<svg width="20" height="20" viewBox="0 0 20 20"><path d="M10 1.5l8.5 8.5-8.5 8.5L1.5 10z" fill="'+col+'" stroke="#fff" stroke-width="2"/><path d="M10 6v5" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/><circle cx="10" cy="13.8" r="1.2" fill="#fff"/></svg>';
+  return L.divIcon({className:'excmark', html:svg, iconSize:[20,20], iconAnchor:[10,10]});
+}
+/* a point on the water itself (the vertex nearest the middle of its box), so the symbol sits on the river */
+function excAnchor(a){
+  const b = excBox(a), cx = (b[0]+b[2])/2, cy = (b[1]+b[3])/2;
+  let best = null, bd = Infinity;
+  const walk = c => { if(typeof c[0] === 'number'){ const dd = (c[0]-cx)**2 + (c[1]-cy)**2; if(dd < bd){ bd = dd; best = c; } } else c.forEach(walk); };
+  const g = a.geometry; (g.type === 'GeometryCollection' ? g.geometries : [g]).forEach(x => walk(x.coordinates));
+  return [best[1], best[0]];
+}
 function buildExcLayer(){
   if(!MAP_OK) return;
-  excLayer.clearLayers();
-  const line = cssVar('--exc-line'), red = cssVar('--danger');
+  excLayer.clearLayers(); excMarks.clearLayers();
+  const purple = cssVar('--map-exc'), red = cssVar('--map-sanct'), halo = cssVar('--map-halo');
   ZONE_DOCS.forEach(d => d.areas.filter(a => a.exc && a.geometry).forEach(a => {
-    const sanct = d.provisions.some(p => p.areaId === a.id && p.type === 'closure');
-    const col = sanct ? red : line;
+    const sanct = excIsSanct(d, a), col = sanct ? red : purple;
     const wide = a.kind === 'county_waters';      // a whole area of streams: outline only
-    const st = {color:col, weight:wide ? 1.5 : a.precision === 'drawn' ? 4 : 3, opacity:wide ? .6 : .85, dashArray:a.precision === 'drawn' ? null : '6 5',
-                fillColor:col, fillOpacity:wide ? 0 : .35, interactive:!wide};
-    const lyr = L.geoJSON(a.geometry, {style:st, pointToLayer:(f, ll) => L.circleMarker(ll, {radius:7, color:col, weight:2, fillColor:col, fillOpacity:.35})});
-    lyr.bindTooltip(a.name + (sanct ? ' (fish sanctuary)' : ''), {sticky:true, className:'zonelabel'});
-    lyr.on('click', e => { L.DomEvent.stopPropagation(e); setPin(e.latlng.lat, e.latlng.lng, {source:'tap'}); });
-    excLayer.addLayer(lyr);
+    const tip = a.name + (sanct ? ' · fish sanctuary' : ' · special rules') + (a.precision === 'drawn' ? '' : ' (approximate)');
+    const go = e => { L.DomEvent.stopPropagation(e); setPin(e.latlng.lat, e.latlng.lng, {source:'tap'}); };
+    const isPoint = /Point/.test(a.geometry.type);
+    if(!isPoint){
+      const w = wide ? 2 : a.precision === 'drawn' ? 5 : 4;
+      L.geoJSON(a.geometry, {style:{color:halo, weight:w + 4, opacity:wide ? .5 : .9, fill:false, interactive:false}}).addTo(excLayer);
+      const lyr = L.geoJSON(a.geometry, {style:{color:col, weight:w, opacity:wide ? .7 : 1, dashArray:a.precision === 'drawn' ? null : '8 6',
+        fillColor:col, fillOpacity:wide ? 0 : .3, interactive:!wide}});
+      if(!wide){ lyr.bindTooltip(tip, {sticky:true, className:'zonelabel'}); lyr.on('click', go); }
+      excLayer.addLayer(lyr);
+    }
+    if(wide) return;                               // a county-wide rule gets no symbol: it would sit on one random stream
+    const m = L.marker(excAnchor(a), {icon:excIcon(sanct), keyboard:false, riseOnHover:true, title:tip});
+    m.bindTooltip(tip, {direction:'top', offset:[0,-8], className:'zonelabel'});
+    m.on('click', e => { L.DomEvent.stopPropagation(e); const ll = e.target.getLatLng(); setPin(ll.lat, ll.lng, {source:'tap'}); });
+    excMarks.addLayer(m);
   }));
 }
 buildExcLayer();
-function syncExcLayer(){ if(!MAP_OK) return; const show = map.getZoom() >= 10; if(show && !map.hasLayer(excLayer)) excLayer.addTo(map); else if(!show && map.hasLayer(excLayer)) map.removeLayer(excLayer); }
+function syncExcLayer(){
+  if(!MAP_OK) return;
+  const z = map.getZoom();
+  const want = (lyr, on) => { if(on && !map.hasLayer(lyr)) lyr.addTo(map); else if(!on && map.hasLayer(lyr)) map.removeLayer(lyr); };
+  want(excLayer, excOn && z >= 10);
+  want(excMarks, excOn && z >= 7);
+}
 if(MAP_OK){ map.on('zoomend', syncExcLayer); syncExcLayer(); }
-if(window.matchMedia) window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', buildExcLayer);
+else { const k = document.getElementById('excKey'); if(k) k.hidden = true; }
+document.getElementById('excShow').addEventListener('change', e => { excOn = e.target.checked; syncExcLayer(); });
+if(window.matchMedia) window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { buildExcLayer(); syncExcLayer(); });
 function showExc(id){
   const a = ZONE_DOCS.flatMap(d => d.areas).find(x => x.id === id);
   if(!a || !MAP_OK) return;
@@ -3184,7 +3248,7 @@ el('spotName').addEventListener('keydown', e => { if(e.key === 'Enter') el('conf
    and how to fix it. Fixes are refined for a few seconds (the first one
    from a phone is often coarse) and the accuracy is always shown.
    ===================================================================== */
-const APP_VERSION = '2026-11-24.3';   // bump with sw.js VERSION on each release
+const APP_VERSION = '2026-11-24.4';   // bump with sw.js VERSION on each release
 const GPS = {
   GOOD_M:    25,     // stop refining once the fix is this accurate
   REFINE_MS: 10000,  // after the first fix, keep improving for up to this long
