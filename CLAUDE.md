@@ -209,6 +209,18 @@ is superseded.
   under `prefers-color-scheme: dark`. Never hard-code a hex outside `:root`.
 - All user-facing strings pass through `esc()` before reaching `innerHTML`.
 
+## Design tooling
+
+The Impeccable design skill (v4.10.0 install, engine 0.1.27) lives in
+`.claude/skills/impeccable/` with its agents in `.claude/agents/`; use
+`/impeccable` for design work. Its hooks are in `.claude/settings.json`: a
+quick design check after each edit and a deeper pass when a turn ends. The
+launcher downloads its engine from GitHub releases on first use and checks it
+against `engine-checksums.txt`. Turn the hooks off with
+`.claude/skills/impeccable/scripts/impeccable hooks off`. Nothing here is
+loaded by the app. Hook findings are suggestions: the hard constraints above
+(banner, data badges, colour never the only signal, no `localStorage`) win.
+
 ## What not to build yet
 
 Do not add the conservation-authority portal, user accounts, licence purchasing,
