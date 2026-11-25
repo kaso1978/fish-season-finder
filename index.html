@@ -78,16 +78,6 @@ input,select{font:inherit;color:inherit}
 }
 
 
-/* ---------- prototype banner ---------- */
-/* Sits above the slide-over panels (z 900) so it stays visible on every
-   screen; panels start below it via --proto-h, set in boot(). */
-.proto{
-  position:relative; z-index:1000;
-  flex:0 0 auto; background:var(--warn-bg); color:var(--warn);
-  font-size:12px; font-weight:600; letter-spacing:0; line-height:1.35;
-  padding:6px 12px; text-align:center; border-bottom:1px solid var(--line);
-}
-
 /* ---------- app bar ---------- */
 .appbar{flex:0 0 auto; background:var(--surface); border-bottom:1px solid var(--line); padding:10px 12px 8px}
 .appbar__top{position:relative; display:flex; align-items:center; gap:8px; margin-bottom:9px}
@@ -226,7 +216,7 @@ input,select{font:inherit;color:inherit}
 
 /* ---------- slide-over panels ---------- */
 .panel{
-  position:absolute; inset:0; top:var(--proto-h, 0px); z-index:900; background:var(--bg);
+  position:absolute; inset:0; z-index:900; background:var(--bg);
   transform:translateX(100%); transition:transform 220ms cubic-bezier(.32,.72,.35,1);
   display:flex; flex-direction:column; visibility:hidden;
 }
@@ -432,7 +422,8 @@ em.res{font-style:normal; color:var(--muted)}
 .offbanner.show ~ .updbar.show ~ .exckey{top:100px}
 /* ---------- full-screen fit (after base rules so these win) ---------- */
 /* Phones with a notch / home bar: keep content clear of them. */
-.proto{padding-top:calc(6px + env(safe-area-inset-top))}
+.appbar{padding-top:calc(10px + env(safe-area-inset-top))}
+.panel{padding-top:env(safe-area-inset-top)}
 .list{padding-bottom:calc(28px + env(safe-area-inset-bottom))}
 .panel__scroll{padding-bottom:calc(34px + env(safe-area-inset-bottom))}
 .toast{bottom:calc(22px + env(safe-area-inset-bottom))}
@@ -474,7 +465,6 @@ em.res{font-style:normal; color:var(--muted)}
 <body>
 <div class="phone" id="phone">
 
-  <div class="proto"><b>PROTOTYPE · NOT OFFICIAL</b> · 2026 rules, transcribed by hand. Lake and river exceptions only loaded for FMZ 16 and 17 (trial). Check the official summary before you fish.</div>
 
   <header class="appbar">
     <div class="appbar__top">
@@ -3543,7 +3533,7 @@ el('spotName').addEventListener('keydown', e => { if(e.key === 'Enter') el('conf
    and how to fix it. Fixes are refined for a few seconds (the first one
    from a phone is often coarse) and the accuracy is always shown.
    ===================================================================== */
-const APP_VERSION = '2026-11-24.6';   // bump with sw.js VERSION on each release
+const APP_VERSION = '2026-11-24.7';   // bump with sw.js VERSION on each release
 const GPS = {
   GOOD_M:    25,     // stop refining once the fix is this accurate
   REFINE_MS: 10000,  // after the first fix, keep improving for up to this long
@@ -3800,13 +3790,6 @@ el('locWarn').addEventListener('toggle', e => {
    INIT
    ===================================================================== */
 function boot(){
-  // Panels start below the prototype banner, which wraps to a different
-  // height depending on screen width and the notch inset.
-  const proto = document.querySelector('.proto');
-  const syncProto = () => el('phone').style.setProperty('--proto-h', proto.offsetHeight + 'px');
-  syncProto();
-  if('ResizeObserver' in window) new ResizeObserver(syncProto).observe(proto);
-  else window.addEventListener('resize', syncProto);
   measure();
   setSheet(SNAP.peek, false);
   restoreLocBtn();
