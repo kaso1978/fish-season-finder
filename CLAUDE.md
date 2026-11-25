@@ -87,8 +87,9 @@ Toronto), and closed all year (Lake Simcoe musky).
 1. **Real data is always labelled as an unofficial transcription.** Every
    zone holds real 2026 zone-wide rules transcribed by hand (FMZ 16 also has
    the Lake Simcoe exception). There is no sample data any more; if invented
-   data ever comes back it must be badged `sample`. The `PROTOTYPE ·
-   NOT OFFICIAL` banner stays visible on every screen, every zone shows a badge
+   data ever comes back it must be badged `sample`. The top-of-screen
+   `PROTOTYPE · NOT OFFICIAL` banner was removed at Andrew's request
+   (2026-11-24.7); instead every zone shows a badge
    saying which kind of data it is (`meta.dataStatus`: `transcribed` or
    `sample`), and the footer and species detail say where the rules came from.
    Never present sample numbers as real, and never present the transcription
